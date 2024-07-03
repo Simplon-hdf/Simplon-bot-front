@@ -1,27 +1,42 @@
-# DashboardSimplon
+# Dashboard Simplon
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+![Angular](https://img.shields.io/badge/Angular-v18.0.3-red)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v3.4.4-blue)
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Ce projet est une application Angular conçue pour Simplon. Cette application permet de visualiser les statistiques des formations et des apprenants, de gérer les formations et les apprenants, ainsi que de créer de nouvelles formations en ajoutant des apprenants. L'application est connectée à une base de données et à un bot Discord pour créer automatiquement des salons pour chaque formation.
 
-## Code scaffolding
+## Fonctionnalités
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Visualisation des Statistiques** : Afficher les statistiques sur les formations et les apprenants.
+- **Gestion des Formations** : Voir, ajouter, modifier et supprimer des formations.
+- **Gestion des Apprenants** : Voir, ajouter, modifier et supprimer des apprenants dans une formation.
+- **Création Automatique de Salons Discord** : Lors de la création d'une formation, les salons Discord correspondants sont créés automatiquement.
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Cloner le dépôt :**
 
-## Running unit tests
+   ```bash
+   git clone https://github.com/votre-utilisateur/dashboard-simplon.git
+   cd dashboard-simplon
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. **Installer les dépendances :**
 
-## Running end-to-end tests
+   ```bash
+   npm install
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. **Lancer l'application :**
+   ```bash
+   ng serve
+   ```
+4. **Accéder à l'application :**
+   - Ouvrez votre navigateur et allez sur `http://localhost:4200`.
 
-## Further help
+## Auteurs
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [Hugo](https://github.com/Hugo-walando) - Développeur Front-end
+- [Rémi](https://github.com/RemiDebruyne) - Développeur Front-end

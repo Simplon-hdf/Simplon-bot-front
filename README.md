@@ -8,6 +8,7 @@
 - [Description](#description)
 - [Fonctionnalité](#fonctionnalités)
 - [Conventions et design System](#conventions-et-design-system)
+- [Maquette et Prototype Figma](#maquette-et-prototype-figma)
 - [Installation](#installation)
 - [Auteurs](#auteurs)
 
@@ -28,6 +29,12 @@ Pour plus de détails sur les conventions de code et le design system utilisés 
 
 - [Conventions](./docs/conventions.md)
 - [Design System](./docs/design-system.md)
+
+## Maquette et Prototype Figma
+
+Pour consulter la maquette et le prototype interactif du projet, veuillez utiliser le lien suivant :
+
+- [Prototype Figma](https://www.figma.com/design/OognhFKeekG8u8qqRcqMQQ/Simplon-dashboard?node-id=36-86&t=dFAusiVVELsfZLdl-1)
 
 ## Installation
 

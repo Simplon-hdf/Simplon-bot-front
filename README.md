@@ -3,6 +3,14 @@
 ![Angular](https://img.shields.io/badge/Angular-v18.0.3-red)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v3.4.4-blue)
 
+## Sommaire
+
+- [Description](#description)
+- [Fonctionnalité](#fonctionnalités)
+- [Conventions et design System](#conventions-et-design-system)
+- [Installation](#installation)
+- [Auteurs](#auteurs)
+
 ## Description
 
 Ce projet est une application Angular conçue pour Simplon. Cette application permet de visualiser les statistiques des formations et des apprenants, de gérer les formations et les apprenants, ainsi que de créer de nouvelles formations en ajoutant des apprenants. L'application est connectée à une base de données et à un bot Discord pour créer automatiquement des salons pour chaque formation.
@@ -13,6 +21,13 @@ Ce projet est une application Angular conçue pour Simplon. Cette application pe
 - **Gestion des Formations** : Voir, ajouter, modifier et supprimer des formations.
 - **Gestion des Apprenants** : Voir, ajouter, modifier et supprimer des apprenants dans une formation.
 - **Création Automatique de Salons Discord** : Lors de la création d'une formation, les salons Discord correspondants sont créés automatiquement.
+
+## Conventions et Design System
+
+Pour plus de détails sur les conventions de code et le design system utilisés dans ce projet, veuillez consulter les documents suivants :
+
+- [Conventions](./docs/conventions.md)
+- [Design System](./docs/design-system.md)
 
 ## Installation
 

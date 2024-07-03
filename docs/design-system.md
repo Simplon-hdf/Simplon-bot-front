@@ -16,13 +16,13 @@ Contenu :
 **Palette de Couleurs**
 
 ```scss
---color-primary: #ce0033; //Background Nav & buttons
---color-secondary: #ffffff; //Background Cards
---color-body: #f0f0f0; //Background body
---color-select: #f8fafc; //Background selects
---color-black: #000000; //Text
---color-success: #009640; //Success
---color-disabled: #c4c4c4; //Disabled
+--color-primary: #ce0033; //Background Nav & buttons (Rouge Simplon)
+--color-white: #ffffff; //Background Cards (Blanc)
+--color-body: #f0f0f0; //Background body (Blanc foncé)
+--color-select: #f8fafc; //Background selects (Gris clair)
+--color-black: #000000; //Text (Noir)
+--color-success: #009640; //Success (Vert)
+--color-disabled: #c4c4c4; //Disabled (Gris)
 ```
 
 ## 3. Typographie

@@ -8,7 +8,8 @@ module.exports = {
       nunito: ['Nunito Sans', 'sans-serif'],
     },
     colors: {
-      'color-red': '#ce0033', //Background Nav & buttons (Rouge Simplon)
+      'color-red': '#ce0033',
+      'color-red-light': '#E13851', //Background Nav & buttons (Rouge Simplon)
       'color-white': '#FFFFFF', //Background Cards (Blanc)
       'color-back': '#f0f0f0', //Background body (Blanc foncé)
       'color-select': '#f8fafc', //Background selects (Gris clair)

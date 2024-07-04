@@ -26,11 +26,11 @@ export class FormationService {
     },
   ];
 
-  getFormations() {
+  getFormations(): FormationModel[] {
     return this.formations;
   }
 
-  addFormation(formation: any) {
+  addFormation(formation: FormationModel) {
     this.formations.push({ ...formation, id: this.formations.length + 1 });
   }
 }

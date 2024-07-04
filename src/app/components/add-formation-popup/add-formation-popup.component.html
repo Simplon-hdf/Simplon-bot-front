@@ -1,1 +1,33 @@
-<p>add-formation-popup works!</p>
+<div *ngIf="isVisible" class="popup bg-color-white">
+    <form (ngSubmit)="onSubmit()">
+        <div *ngIf="step === 1">
+            <label for="name">Nom de la Formation:</label>
+            <input type="text" id="name" [(ngModel)]="formation.name"
+                   name="name" required>
+            <label for="start_date">Date de Début:</label>
+            <input type="date" id="start_date"
+                   [(ngModel)]="formation.start_date" name="start_date"
+                   required>
+            <label for="end_date">Date de Fin:</label>
+            <input type="date" id="end_date" [(ngModel)]="formation.end_date"
+                   name="end_date" required>
+            <button type="button" (click)="nextStep()">Suivant</button>
+        </div>
+        <div *ngIf="step === 2">
+            <label for="place">Lieu:</label>
+            <input type="text" id="place" [(ngModel)]="formation.place"
+                   name="place" required>
+            <label for="caps">Caps:</label>
+            <input type="text" id="caps" [(ngModel)]="formation.caps"
+                   name="caps" required>
+            <label for="status">Statut:</label>
+            <select id="status" [(ngModel)]="formation.status" name="status"
+                    required>
+                <option value="en cours">En cours</option>
+                <option value="terminé">Terminé</option>
+            </select>
+            <button type="button" (click)="prevStep()">Précédent</button>
+            <button type="submit">Ajouter</button>
+        </div>
+    </form>
+</div>

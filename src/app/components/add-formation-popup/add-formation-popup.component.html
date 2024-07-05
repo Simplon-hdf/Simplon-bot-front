@@ -1,14 +1,19 @@
 <div
      class="popup bg-color-black bg-opacity-50 absolute w-full h-full z-10 flex justify-center items-center">
     <div class=" w-[600px] h-[500px] bg-color-white rounded-xl p-8 relative">
-        <button class="absolute top-0 right-4 text-3xl"
-                (click)="closePopup.emit()">X</button>
+        <button class="absolute top-3 right-3 text-3xl"
+                (click)="closePopup.emit()"><svg
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                 class="w-4"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path
+                      d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg></button>
         <div *ngIf="step === 1" class="w-full h-full">
             <h1 class="text-center text-2xl">Ajouter une Formation</h1>
             <div class="flex justify-center gap-5 mt-10">
                 <div class="w-[250px] flex flex-col">
                     <label for="name">Nom</label>
-                    <input class="py-3 px-4 pe-9 block w-full bg-color-select border-transparent rounded-lg text-sm mt-1"
+                    <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
                            type="text" placeholder="Nom de la formation ..."
                            id="name" [(ngModel)]="formation.name" name="name"
                            required>
@@ -39,61 +44,92 @@
                            required>
                 </div>
             </div>
-            <button type="button" class="" (click)="nextStep()"><img
+            <button type="button" class="mt-10 block mx-auto"
+                    (click)="nextStep()"><svg fill="currentColor"
                      class="w-8 fill-color-red"
-                     src="images/circle-arrow-right-solid.svg"
-                     alt="Arrow"></button>
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                          d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z" />
+                </svg></button>
         </div>
-        <div *ngIf="step === 2">
-            <div class="flex flex-col">
-                <label for="former_1">Formateur 1:</label>
-                <select id="former_1" [(ngModel)]="formation.former_1"
-                        name="former_1"
-                        class="py-3 px-4 pe-9 block w-full bg-color-select border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:border-transparent dark:text-neutral-400 dark:focus:ring-neutral-600">
-                    <option *ngFor="let person of people" [ngValue]="person">{{
-                        person.name }}</option>
-                </select>
-                <label for="former_2">Formateur 2:</label>
-                <select id="former_2" [(ngModel)]="formation.former_2"
-                        name="former_2">
-                    <option *ngFor="let person of people" [ngValue]="person">{{
-                        person.name }}</option>
-                </select>
-                <label for="caps">Caps:</label>
-                <select id="caps" [(ngModel)]="formation.caps" name="caps">
-                    <option *ngFor="let person of people" [ngValue]="person">{{
-                        person.name }}</option>
-                </select>
-                <label for="admin">Chargé(e) d'Admin:</label>
-                <select id="admin" [(ngModel)]="formation.charge_admin"
-                        name="admin">
-                    <option *ngFor="let person of people" [ngValue]="person">{{
-                        person.name }}</option>
-                </select>
-                <label for="campus_responsible">Responsable Campus:</label>
-                <select id="campus_responsible"
-                        [(ngModel)]="formation.responsable_campus"
-                        name="campus_responsible">
-                    <option *ngFor="let person of people" [ngValue]="person">{{
-                        person.name }}</option>
-                </select>
-                <label for="pedagogical_responsible">Responsable
-                    Pédagogique:</label>
-                <select id="pedagogical_responsible"
-                        [(ngModel)]="formation.responsable_pedagogique"
-                        name="pedagogical_responsible">
-                    <option *ngFor="let person of people" [ngValue]="person">{{
-                        person.name }}</option>
-                </select>
-                <label for="status">Statut:</label>
-                <select id="status" [(ngModel)]="formation.status" name="status"
-                        required>
-                    <option value="en cours">En cours</option>
-                    <option value="terminé">Terminé</option>
-                </select>
+        <div *ngIf="step === 2" class="w-full h-full">
+            <h1 class="text-center text-2xl">Ajouter des Staffs</h1>
+            <div class="flex justify-center gap-5 mt-10">
+                <div class="flex flex-col w-[250px]">
+                    <label for="former_1">Formateur 1:</label>
+                    <select id="former_1" [(ngModel)]="formation.former_1"
+                            name="former_1"
+                            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                        <option *ngFor="let person of people"
+                                [ngValue]="person">{{ person.name }}</option>
+                    </select>
+                    <label class="mt-8" for="former_2">Formateur 2:</label>
+                    <select id="former_2" [(ngModel)]="formation.former_2"
+                            name="former_2"
+                            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                        <option *ngFor="let person of people"
+                                [ngValue]="person">{{ person.name }}</option>
+                    </select>
+                    <label class="mt-8" for="caps">Caps:</label>
+                    <select id="caps"
+                            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+                            [(ngModel)]="formation.caps" name="caps">
+                        <option *ngFor="let person of people"
+                                [ngValue]="person">{{ person.name }}</option>
+                    </select>
+                </div>
+                <div class="flex flex-col w-[250px]">
+                    <label for="admin">Chargé(e) d'Admin:</label>
+                    <select id="admin"
+                            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+                            [(ngModel)]="formation.charge_admin" name="admin">
+                        <option *ngFor="let person of people"
+                                [ngValue]="person">{{ person.name }}</option>
+                    </select>
+                    <label class="mt-8" for="campus_responsible">Responsable
+                        Campus:</label>
+                    <select id="campus_responsible"
+                            [(ngModel)]="formation.responsable_campus"
+                            name="campus_responsible"
+                            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                        <option *ngFor="let person of people"
+                                [ngValue]="person">{{ person.name }}</option>
+                    </select>
+                    <label class="mt-8"
+                           for="pedagogical_responsible">Responsable
+                        Pédagogique:</label>
+                    <select id="pedagogical_responsible"
+                            [(ngModel)]="formation.responsable_pedagogique"
+                            name="pedagogical_responsible"
+                            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                        <option *ngFor="let person of people"
+                                [ngValue]="person">{{ person.name }}</option>
+                    </select>
+                    <!-- <label for="status">Statut:</label>
+                    <select id="status" [(ngModel)]="formation.status"
+                            name="status" required>
+                        <option value="en cours">En cours</option>
+                        <option value="terminé">Terminé</option>
+                    </select> -->
+                </div>
             </div>
-            <button type="button" (click)="prevStep()">Précédent</button>
-            <button type="button" (click)="submitFormation()">Ajouter</button>
+            <div class="w-full flex justify-center gap-4 mt-10">
+                <button type="button" (click)="prevStep()"><svg
+                         xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 512 512"
+                         class="w-8 fill-color-red"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                              d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM231 127c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-71 71L376 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-182.1 0 71 71c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L119 273c-9.4-9.4-9.4-24.6 0-33.9L231 127z" />
+                    </svg></button>
+                <button type="button" (click)="submitFormation()"><svg
+                         fill="currentColor" class="w-8 fill-color-red"
+                         xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                              d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z" />
+                    </svg></button>
+            </div>
         </div>
     </div>
 </div>

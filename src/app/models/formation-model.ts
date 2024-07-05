@@ -1,9 +1,19 @@
 export interface FormationModel {
   id: number;
   name: string;
+  type: 'dev inté' | 'dev front' | 'dev c#';
+  former_1: PersonModel;
+  former_2: PersonModel;
+  caps: PersonModel;
   start_date: string;
   end_date: string;
-  place: string;
-  caps: string;
-  status: 'en cours' | 'terminé';
+  charge_admin: PersonModel;
+  responsable_campus: PersonModel;
+  responsable_pedagogique: PersonModel;
+}
+
+export interface PersonModel {
+  id: number;
+  name: string;
+  profilePictureUrl: string;
 }

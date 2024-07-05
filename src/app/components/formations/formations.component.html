@@ -1,3 +1,6 @@
+<app-add-formation-popup *ngIf="isPopupVisible" (closePopup)="closePopup()"
+                         (addFormation)="addFormation($event)">
+</app-add-formation-popup>
 <section class="w-[1000px] mx-auto">
     <h1 class="font-nunito text-4xl font-semibold mt-20">Formations</h1>
     <div

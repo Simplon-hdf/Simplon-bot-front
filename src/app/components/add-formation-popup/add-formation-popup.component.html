@@ -5,14 +5,14 @@
                 (click)="closePopup.emit()">X</button>
         <div *ngIf="step === 1" class="w-full h-full">
             <h1 class="text-center text-2xl">Ajouter une Formation</h1>
-            <div class="flex justify-center gap-5 mt-20">
+            <div class="flex justify-center gap-5 mt-10">
                 <div class="w-[250px] flex flex-col">
                     <label for="name">Nom</label>
                     <input class="py-3 px-4 pe-9 block w-full bg-color-select border-transparent rounded-lg text-sm mt-1"
                            type="text" placeholder="Nom de la formation ..."
                            id="name" [(ngModel)]="formation.name" name="name"
                            required>
-                    <label class="mt-4" for="type">Type</label>
+                    <label class="mt-8" for="type">Type</label>
                     <select class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
                             id="type" [(ngModel)]="formation.type" name="type"
                             required>
@@ -21,6 +21,10 @@
                         <option value="dev front">Dev Front</option>
                         <option value="dev c#">Dev C#</option>
                     </select>
+                    <label class="mt-8" for="place">Lieu:</label>
+                    <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+                           type="text" id="place" [(ngModel)]="formation.place"
+                           name="place" required>
                 </div>
                 <div class="w-[250px] flex flex-col">
                     <label class="" for="start_date">Date de Début</label>
@@ -28,19 +32,17 @@
                            type="date" id="start_date"
                            [(ngModel)]="formation.start_date" name="start_date"
                            required>
-                    <label class="mt-4" for="end_date">Date de Fin</label>
+                    <label class="mt-8" for="end_date">Date de Fin</label>
                     <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
                            type="date" id="end_date"
                            [(ngModel)]="formation.end_date" name="end_date"
                            required>
-                    <label class="mt-4" for="place">Lieu:</label>
-                    <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                           type="text" id="place" [(ngModel)]="formation.place"
-                           name="place" required>
                 </div>
             </div>
-            <button type="button" class="w-[50px] mx-auto"
-                    (click)="nextStep()">Suivant</button>
+            <button type="button" class="" (click)="nextStep()"><img
+                     class="w-8 fill-color-red"
+                     src="images/circle-arrow-right-solid.svg"
+                     alt="Arrow"></button>
         </div>
         <div *ngIf="step === 2">
             <div class="flex flex-col">

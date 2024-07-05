@@ -62,4 +62,8 @@ export class FormationService {
   addFormation(formation: FormationModel) {
     this.formations.push({ ...formation, id: this.formations.length + 1 });
   }
+
+  getPeople(): PersonModel[] {
+    return this.people;
+  }
 }

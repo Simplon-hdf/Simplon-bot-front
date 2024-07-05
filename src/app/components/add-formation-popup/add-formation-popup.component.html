@@ -10,6 +10,7 @@
             </svg></button>
         <div *ngIf="step === 1" class="w-full h-full">
             <h1 class="text-center text-2xl">Ajouter une Formation</h1>
+            <app-stepper [step]="step"></app-stepper>
             <div class="flex justify-center gap-5 mt-10">
                 <div class="w-[250px] flex flex-col">
                     <label for="name">Nom</label>

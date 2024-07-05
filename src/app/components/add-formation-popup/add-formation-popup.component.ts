@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { FormationService } from '../../services/formation.service';
 import { FormationsComponent } from '../formations/formations.component';
+import { StepperComponent } from '../stepper/stepper.component';
 
 @Component({
   selector: 'app-add-formation-popup',
   templateUrl: './add-formation-popup.component.html',
   styleUrls: ['./add-formation-popup.component.scss'],
   standalone: true,
-  imports: [FormsModule, NgIf, NgFor, FormationsComponent],
+  imports: [FormsModule, NgIf, NgFor, FormationsComponent, StepperComponent],
 })
 export class AddFormationPopupComponent {
   @Output() closePopup = new EventEmitter<void>();

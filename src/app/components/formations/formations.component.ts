@@ -29,6 +29,7 @@ export class FormationsComponent {
 
   addFormation(formation: FormationModel) {
     this.formationService.addFormation(formation);
+    console.log(formation);
     this.closePopup();
   }
 }

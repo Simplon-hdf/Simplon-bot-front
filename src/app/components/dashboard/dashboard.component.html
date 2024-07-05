@@ -1,1 +1,18 @@
-<p class="font-nunito">Dashboard</p>
+<section class="w-fit mx-auto">
+    <p class="font-nunito font-semibold text-5xl my-6">Dashboard</p>
+
+    <div class="flex gap-12">
+        <app-dashboard-graph>
+            <p class="pb-2 text-2xl" graph-title>Formations</p>
+            <div graph>
+                <canvas id="formationsChart">{{ formationsChart }}</canvas>
+            </div>
+        </app-dashboard-graph>
+        <app-dashboard-graph>
+            <p class="pb-2 text-2xl" graph-title>Apprenants</p>
+            <div graph>
+                <canvas id="apprenantsChart">{{ apprenantsChart }}</canvas>
+            </div>
+        </app-dashboard-graph>
+    </div>
+</section>

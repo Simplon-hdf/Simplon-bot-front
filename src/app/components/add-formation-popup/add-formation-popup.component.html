@@ -1,6 +1,8 @@
-<div *ngIf="isVisible" class="popup bg-color-white">
-    <form (ngSubmit)="onSubmit()">
+<div
+     class="popup bg-color-black bg-opacity-50 absolute w-full h-full z-10 flex justify-center items-center">
+    <div class=" w-[600px] h-[500px] bg-color-white rounded-xl p-8">
         <div *ngIf="step === 1">
+            <h1 class="text-center text-2xl">Ajouter une Formation</h1>
             <label for="name">Nom de la Formation:</label>
             <input type="text" id="name" [(ngModel)]="formation.name"
                    name="name" required>
@@ -20,6 +22,13 @@
             <label for="caps">Caps:</label>
             <input type="text" id="caps" [(ngModel)]="formation.caps"
                    name="caps" required>
+            <select
+                    class="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:border-transparent dark:text-neutral-400 dark:focus:ring-neutral-600">
+                <option selected="">Open this select menu</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
             <label for="status">Statut:</label>
             <select id="status" [(ngModel)]="formation.status" name="status"
                     required>
@@ -27,7 +36,7 @@
                 <option value="terminé">Terminé</option>
             </select>
             <button type="button" (click)="prevStep()">Précédent</button>
-            <button type="submit">Ajouter</button>
+            <button type="button" (click)="submitFormation()">Ajouter</button>
         </div>
-    </form>
+    </div>
 </div>

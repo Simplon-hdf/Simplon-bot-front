@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { FormationService } from '../../services/formation.service';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormationModel } from '../../models/formation-model';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -12,7 +11,9 @@ import { NgIf } from '@angular/common';
   imports: [FormsModule, NgIf],
 })
 export class AddFormationPopupComponent {
-  isVisible = false;
+  @Output() closePopup = new EventEmitter<void>();
+  @Output() addFormation = new EventEmitter<FormationModel>();
+
   step = 1;
   formation: FormationModel = {
     id: 0,
@@ -24,14 +25,21 @@ export class AddFormationPopupComponent {
     status: 'en cours',
   };
 
-  constructor(private formationService: FormationService) {}
-
-  show() {
-    this.isVisible = true;
+  nextStep() {
+    this.step++;
   }
 
-  hide() {
-    this.isVisible = false;
+  prevStep() {
+    this.step--;
+  }
+
+  submitFormation() {
+    this.addFormation.emit(this.formation);
+    this.closePopup.emit();
+    this.resetFormation();
+  }
+
+  resetFormation() {
     this.step = 1;
     this.formation = {
       id: 0,
@@ -42,18 +50,5 @@ export class AddFormationPopupComponent {
       caps: '',
       status: 'en cours',
     };
-  }
-
-  nextStep() {
-    this.step = 2;
-  }
-
-  prevStep() {
-    this.step = 1;
-  }
-
-  onSubmit() {
-    this.formationService.addFormation(this.formation);
-    this.hide();
   }
 }

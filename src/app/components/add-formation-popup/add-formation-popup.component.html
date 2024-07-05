@@ -1,40 +1,95 @@
 <div
      class="popup bg-color-black bg-opacity-50 absolute w-full h-full z-10 flex justify-center items-center">
-    <div class=" w-[600px] h-[500px] bg-color-white rounded-xl p-8">
-        <div *ngIf="step === 1">
+    <div class=" w-[600px] h-[500px] bg-color-white rounded-xl p-8 relative">
+        <button class="absolute top-0 right-4 text-3xl"
+                (click)="closePopup.emit()">X</button>
+        <div *ngIf="step === 1" class="w-full h-full">
             <h1 class="text-center text-2xl">Ajouter une Formation</h1>
-            <label for="name">Nom de la Formation:</label>
-            <input type="text" id="name" [(ngModel)]="formation.name"
-                   name="name" required>
-            <label for="start_date">Date de Début:</label>
-            <input type="date" id="start_date"
-                   [(ngModel)]="formation.start_date" name="start_date"
-                   required>
-            <label for="end_date">Date de Fin:</label>
-            <input type="date" id="end_date" [(ngModel)]="formation.end_date"
-                   name="end_date" required>
-            <button type="button" (click)="nextStep()">Suivant</button>
+            <div class="flex justify-center gap-5 mt-20">
+                <div class="w-[250px] flex flex-col">
+                    <label for="name">Nom</label>
+                    <input class="py-3 px-4 pe-9 block w-full bg-color-select border-transparent rounded-lg text-sm mt-1"
+                           type="text" placeholder="Nom de la formation ..."
+                           id="name" [(ngModel)]="formation.name" name="name"
+                           required>
+                    <label class="mt-4" for="type">Type</label>
+                    <select class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+                            id="type" [(ngModel)]="formation.type" name="type"
+                            required>
+                        <option value="">Sélectionner un type</option>
+                        <option value="dev inté">Dev Inté</option>
+                        <option value="dev front">Dev Front</option>
+                        <option value="dev c#">Dev C#</option>
+                    </select>
+                </div>
+                <div class="w-[250px] flex flex-col">
+                    <label class="" for="start_date">Date de Début</label>
+                    <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+                           type="date" id="start_date"
+                           [(ngModel)]="formation.start_date" name="start_date"
+                           required>
+                    <label class="mt-4" for="end_date">Date de Fin</label>
+                    <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+                           type="date" id="end_date"
+                           [(ngModel)]="formation.end_date" name="end_date"
+                           required>
+                    <label class="mt-4" for="place">Lieu:</label>
+                    <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+                           type="text" id="place" [(ngModel)]="formation.place"
+                           name="place" required>
+                </div>
+            </div>
+            <button type="button" class="w-[50px] mx-auto"
+                    (click)="nextStep()">Suivant</button>
         </div>
         <div *ngIf="step === 2">
-            <label for="place">Lieu:</label>
-            <input type="text" id="place" [(ngModel)]="formation.place"
-                   name="place" required>
-            <label for="caps">Caps:</label>
-            <input type="text" id="caps" [(ngModel)]="formation.caps"
-                   name="caps" required>
-            <select
-                    class="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:border-transparent dark:text-neutral-400 dark:focus:ring-neutral-600">
-                <option selected="">Open this select menu</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-            </select>
-            <label for="status">Statut:</label>
-            <select id="status" [(ngModel)]="formation.status" name="status"
-                    required>
-                <option value="en cours">En cours</option>
-                <option value="terminé">Terminé</option>
-            </select>
+            <div class="flex flex-col">
+                <label for="former_1">Formateur 1:</label>
+                <select id="former_1" [(ngModel)]="formation.former_1"
+                        name="former_1"
+                        class="py-3 px-4 pe-9 block w-full bg-color-select border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:border-transparent dark:text-neutral-400 dark:focus:ring-neutral-600">
+                    <option *ngFor="let person of people" [ngValue]="person">{{
+                        person.name }}</option>
+                </select>
+                <label for="former_2">Formateur 2:</label>
+                <select id="former_2" [(ngModel)]="formation.former_2"
+                        name="former_2">
+                    <option *ngFor="let person of people" [ngValue]="person">{{
+                        person.name }}</option>
+                </select>
+                <label for="caps">Caps:</label>
+                <select id="caps" [(ngModel)]="formation.caps" name="caps">
+                    <option *ngFor="let person of people" [ngValue]="person">{{
+                        person.name }}</option>
+                </select>
+                <label for="admin">Chargé(e) d'Admin:</label>
+                <select id="admin" [(ngModel)]="formation.charge_admin"
+                        name="admin">
+                    <option *ngFor="let person of people" [ngValue]="person">{{
+                        person.name }}</option>
+                </select>
+                <label for="campus_responsible">Responsable Campus:</label>
+                <select id="campus_responsible"
+                        [(ngModel)]="formation.responsable_campus"
+                        name="campus_responsible">
+                    <option *ngFor="let person of people" [ngValue]="person">{{
+                        person.name }}</option>
+                </select>
+                <label for="pedagogical_responsible">Responsable
+                    Pédagogique:</label>
+                <select id="pedagogical_responsible"
+                        [(ngModel)]="formation.responsable_pedagogique"
+                        name="pedagogical_responsible">
+                    <option *ngFor="let person of people" [ngValue]="person">{{
+                        person.name }}</option>
+                </select>
+                <label for="status">Statut:</label>
+                <select id="status" [(ngModel)]="formation.status" name="status"
+                        required>
+                    <option value="en cours">En cours</option>
+                    <option value="terminé">Terminé</option>
+                </select>
+            </div>
             <button type="button" (click)="prevStep()">Précédent</button>
             <button type="button" (click)="submitFormation()">Ajouter</button>
         </div>

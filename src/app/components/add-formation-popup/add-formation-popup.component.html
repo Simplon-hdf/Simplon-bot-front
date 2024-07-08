@@ -1,3 +1,5 @@
+<p>form values : {{formationForm.value|json}}</p>
+<p>form values : {{formationForm.status|json}}</p>
 <div
      class="popup bg-color-black bg-opacity-50 absolute w-full h-full z-10 flex justify-center items-center">
     <div class=" w-[600px] h-[500px] bg-color-white rounded-xl p-8 relative">
@@ -8,7 +10,8 @@
                 <path
                       d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
             </svg></button>
-        <div class="w-full h-full">
+        <form class="w-full h-full" [formGroup]="formationForm"
+              (ngSubmit)="submitFormation()">
             <h1 *ngIf="step === 1" class="text-center text-2xl">Ajouter une
                 Formation</h1>
             <h1 *ngIf="step === 2" class="text-center text-2xl">Ajouter des
@@ -16,86 +19,118 @@
             <app-stepper [step]="step"></app-stepper>
             <div *ngIf="step === 1" class="flex justify-center gap-5 mt-5">
                 <div class="w-[250px] flex flex-col">
-                    <label for="name">Nom</label>
+                    <label for="name">Nom <span
+                              class="text-color-red font-bold">*</span></label>
                     <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
                            type="text" placeholder="Nom de la formation ..."
-                           id="name" [(ngModel)]="formation.name" name="name"
-                           required>
-                    <label class="mt-8" for="type">Type</label>
+                           [ngClass]="{'field-touched': formationForm.get('name')?.touched && formationForm.get('name')?.invalid}"
+                           id="name" name="name" formControlName="name"
+                           formControlName="name" required>
+                    <!-- <div *ngIf="formationForm.get('name')?.invalid && formationForm.get('name')?.touched"
+                         class="error-message"> Le nom est requis. </div> -->
+                    <label class="mt-8" for="type">Type <span
+                              class="text-color-red font-bold">*</span></label>
                     <select class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                            id="type" [(ngModel)]="formation.type" name="type"
+                            id="type" name="type" formControlName="type"
+                            [ngClass]="{'field-touched': formationForm.get('type')?.touched && formationForm.get('type')?.invalid}"
                             required>
-                        <option value="">Sélectionner un type</option>
+                        <option value="" selected>Sélectionner un type</option>
                         <option value="dev inté">Dev Inté</option>
                         <option value="dev front">Dev Front</option>
                         <option value="dev c#">Dev C#</option>
                     </select>
-                    <label class="mt-8" for="place">Lieu:</label>
+                    <label class="mt-8" for="place">Lieu <span
+                              class="text-color-red font-bold">*</span></label>
                     <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                           type="text" id="place" [(ngModel)]="formation.place"
+                           type="text" id="place" formControlName="place"
+                           [ngClass]="{'field-touched': formationForm.get('place')?.touched && formationForm.get('place')?.invalid}"
                            name="place" required>
                 </div>
                 <div class="w-[250px] flex flex-col">
-                    <label class="" for="start_date">Date de Début</label>
+                    <label class="" for="start_date">Date de Début <span
+                              class="text-color-red font-bold">*</span></label>
                     <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                           type="date" id="start_date"
-                           [(ngModel)]="formation.start_date" name="start_date"
-                           required>
-                    <label class="mt-8" for="end_date">Date de Fin</label>
+                           type="date" id="start_date" name="start_date"
+                           [ngClass]="{'field-touched': formationForm.get('start_date')?.touched && formationForm.get('start_date')?.invalid}"
+                           formControlName="start_date" required>
+                    <label class="mt-8" for="end_date">Date de Fin <span
+                              class="text-color-red font-bold">*</span></label>
                     <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                           type="date" id="end_date"
-                           [(ngModel)]="formation.end_date" name="end_date"
-                           required>
+                           type="date" id="end_date" name="end_date"
+                           [ngClass]="{'field-touched': formationForm.get('end_date')?.touched && formationForm.get('end_date')?.invalid}"
+                           formControlName="end_date" required>
                 </div>
             </div>
             <div *ngIf="step === 2" class="flex justify-center gap-5 mt-5">
                 <div class="flex flex-col w-[250px]">
-                    <label for="former_1">Formateur 1:</label>
-                    <select id="former_1" [(ngModel)]="formation.former_1"
-                            name="former_1"
+                    <label for="former_1">Formateur 1 <span
+                              class="text-color-red font-bold">*</span></label>
+                    <select id="former_1" name="former_1"
+                            formControlName="former_1"
+                            [ngClass]="{'field-touched': formationForm.get('former_1')?.touched && formationForm.get('former_1')?.invalid}"
                             class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                        <option value="" disabled selected>Sélectionner un
+                            formateur </option>
                         <option *ngFor="let person of people"
                                 [ngValue]="person">{{ person.name }}</option>
                     </select>
-                    <label class="mt-8" for="former_2">Formateur 2:</label>
-                    <select id="former_2" [(ngModel)]="formation.former_2"
-                            name="former_2"
+                    <label class="mt-8" for="former_2">Formateur 2 <span
+                              class="text-color-red font-bold">*</span></label>
+                    <select id="former_2" name="former_2"
+                            [ngClass]="{'field-touched': formationForm.get('former_2')?.touched && formationForm.get('former_2')?.invalid}"
+                            formControlName="former_2"
                             class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                        <option value="" disabled selected>Sélectionner un
+                            formateur </option>
                         <option *ngFor="let person of people"
                                 [ngValue]="person">{{ person.name }}</option>
                     </select>
-                    <label class="mt-8" for="caps">Caps:</label>
+                    <label class="mt-8" for="caps">Caps <span
+                              class="text-color-red font-bold">*</span></label>
                     <select id="caps"
                             class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                            [(ngModel)]="formation.caps" name="caps">
+                            name="caps" formControlName="caps"
+                            [ngClass]="{'field-touched': formationForm.get('caps')?.touched && formationForm.get('caps')?.invalid}">
+                        <option value="" disabled selected>Sélectionner un CAPS
+                        </option>
                         <option *ngFor="let person of people"
                                 [ngValue]="person">{{ person.name }}</option>
                     </select>
                 </div>
                 <div class="flex flex-col w-[250px]">
-                    <label for="admin">Chargé(e) d'Admin:</label>
+                    <label for="admin">Chargé(e) d'Admin <span
+                              class="text-color-red font-bold">*</span></label>
                     <select id="admin"
                             class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                            [(ngModel)]="formation.charge_admin" name="admin">
+                            name="admin" formControlName="charge_admin"
+                            [ngClass]="{'field-touched': formationForm.get('charge_admin')?.touched && formationForm.get('charge_admin')?.invalid}">
+                        <option value="" disabled selected>Sélectionner un
+                            chargé(e) d'admin</option>
                         <option *ngFor="let person of people"
                                 [ngValue]="person">{{ person.name }}</option>
                     </select>
-                    <label class="mt-8" for="campus_responsible">Responsable
-                        Campus:</label>
-                    <select id="campus_responsible"
-                            [(ngModel)]="formation.responsable_campus"
-                            name="campus_responsible"
+                    <label class="mt-8" for="responsable_campus">Responsable
+                        Campus <span
+                              class="text-color-red font-bold">*</span></label>
+                    <select id="responsable_campus" name="responsable_campus"
+                            formControlName="responsable_campus"
+                            [ngClass]="{'field-touched': formationForm.get('responsable_campus')?.touched && formationForm.get('responsable_campus')?.invalid}"
                             class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                        <option value="" disabled selected>Sélectionner un
+                            responsable campus</option>
                         <option *ngFor="let person of people"
                                 [ngValue]="person">{{ person.name }}</option>
                     </select>
                     <label class="mt-8"
-                           for="pedagogical_responsible">Responsable
-                        Pédagogique:</label>
-                    <select id="pedagogical_responsible"
-                            [(ngModel)]="formation.responsable_pedagogique"
-                            name="pedagogical_responsible"
+                           for="responsable_pedagogique">Responsable Pédagogique
+                        <span class="text-color-red font-bold">*</span></label>
+                    <select id="responsable_pedagogique"
+                            name="responsable_pedagogique"
+                            formControlName="responsable_pedagogique"
+                            [ngClass]="{'field-touched': formationForm.get('responsable_pedagogique')?.touched && formationForm.get('responsable_pedagogique')?.invalid}"
                             class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                        <option value="" disabled selected>Sélectionner un
+                            responsable pédagogique</option>
                         <option *ngFor="let person of people"
                                 [ngValue]="person">{{ person.name }}</option>
                     </select>
@@ -127,11 +162,12 @@
                         </svg></button>
                 </div>
                 <div class="w-full flex justify-center mt-2">
-                    <button *ngIf="step === maxSteps" type="button"
-                            class="  block font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light"
+                    <button *ngIf="step === maxSteps" type="submit"
+                            [ngClass]="{'disabled': !formationForm.valid}"
+                            class="  block font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md  bg-color-red hover:bg-color-red-light"
                             (click)="submitFormation()">Terminer</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>

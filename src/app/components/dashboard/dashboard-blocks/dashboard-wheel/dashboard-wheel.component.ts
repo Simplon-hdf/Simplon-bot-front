@@ -11,32 +11,31 @@ export class DashboardWheelComponent implements OnInit {
   //TODO : import real data from API
 
   /**
-   *`data` refers to either the number of channe or the number of role depending on the use of the component
+   *`data` refers to either the number of channels or the number of roles depending on the use of the component
    */
   @Input() maxAmountOfData!: number;
 
   /**
-   *`data` refers to either the number of channe or the number of role depending on the use of the component
+   *`data` refers to either the number of channels or the number of roles depending on the use of the component
    */
   @Input()
-  _amountOfData!: number;
+  _currentData!: number;
 
-  get amountOfData() {
-    return this._amountOfData;
+  get currentData() {
+    return this._currentData;
   }
-  set amountOfData(value: number) {
-    this._amountOfData = value;
-    this.dataPercentage = `--percentage: ${(this._amountOfData * 100) / this.maxAmountOfData}`;
+  set currentData(value: number) {
+    this._currentData = value;
+    this.cssVariable = `--percentage: ${(this._currentData * 100) / this.maxAmountOfData}`;
   }
 
   /**
-   *`data` refers to either the number of channe or the number of role depending on the use of the component
+   *`data` refers to either the number of channels or the number of roles depending on the use of the component
    */
-  dataPercentage!: string;
-  dataPercentageToNumber!: number;
+  cssVariable!: string;
 
+  //cssVariable needs _currentData and maxAmountOfData; as Inputs, they receive data in ngOnInit. So cssVariable needs to be calculated in ngOnInit as well
   ngOnInit() {
-    this.dataPercentage = `--percentage: ${(this._amountOfData * 100) / this.maxAmountOfData}`;
-    this.dataPercentageToNumber = Number(this.dataPercentage.match(/\d+/));
+    this.cssVariable = `--percentage: ${(this._currentData * 100) / this.maxAmountOfData}`;
   }
 }

@@ -2,11 +2,16 @@ import { Component } from '@angular/core';
 import { DashboardSeeAllComponent } from './dashboard-blocks/dashboard-see-all/dashboard-see-all.component';
 import { DashboardGraphComponent } from './dashboard-blocks/dashboard-graph/dashboard-graph/dashboard-graph.component';
 import { Chart, registerables } from 'chart.js';
+import { DashboardWheelComponent } from './dashboard-blocks/dashboard-wheel/dashboard-wheel.component';
 Chart.register(...registerables);
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DashboardSeeAllComponent, DashboardGraphComponent],
+  imports: [
+    DashboardSeeAllComponent,
+    DashboardGraphComponent,
+    DashboardWheelComponent,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
@@ -32,7 +37,7 @@ export class DashboardComponent {
       labels: this.months,
       datasets: [
         {
-          label: 'Formations par mois',
+          label: 'Formations active par mois',
           data: ['3', '12', '7', '9', '16', '3', '8', '10', '2', '8', '1', '3'],
           backgroundColor: '#CE003380',
         },

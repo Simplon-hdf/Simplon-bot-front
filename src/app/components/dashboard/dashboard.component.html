@@ -1,18 +1,28 @@
 <section class="w-fit mx-auto">
     <p class="font-nunito font-semibold text-5xl my-6">Dashboard</p>
 
-    <div class="flex gap-12">
-        <app-dashboard-graph>
-            <p class="pb-2 text-2xl" graph-title>Formations</p>
-            <div graph>
-                <canvas id="formationsChart">{{ formationsChart }}</canvas>
-            </div>
-        </app-dashboard-graph>
-        <app-dashboard-graph>
-            <p class="pb-2 text-2xl" graph-title>Apprenants</p>
-            <div graph>
-                <canvas id="apprenantsChart">{{ apprenantsChart }}</canvas>
-            </div>
-        </app-dashboard-graph>
+    <div class="flex flex-col gap-12">
+        <div class="flex gap-8">
+            <app-dashboard-wheel [maxAmountOfData]="500" [_amountOfData]="234">
+                <p class="font-semibold text-2xl pb-4">Nombre de salons</p>
+            </app-dashboard-wheel>
+            <app-dashboard-wheel [maxAmountOfData]="200" [_amountOfData]="150">
+                <p class="font-semibold text-2xl pb-4">Nombre de role</p>
+            </app-dashboard-wheel>
+        </div>
+        <div class="flex gap-8">
+            <app-dashboard-graph>
+                <p class="pb-2 text-2xl" graph-title>Formations</p>
+                <div graph>
+                    <canvas id="formationsChart">{{ formationsChart }}</canvas>
+                </div>
+            </app-dashboard-graph>
+            <app-dashboard-graph>
+                <p class="pb-2 text-2xl" graph-title>Apprenants</p>
+                <div graph>
+                    <canvas id="apprenantsChart">{{ apprenantsChart }}</canvas>
+                </div>
+            </app-dashboard-graph>
+        </div>
     </div>
 </section>

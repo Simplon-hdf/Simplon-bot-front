@@ -18,6 +18,7 @@ export class AddFormationPopupComponent {
   @Output() addFormation = new EventEmitter<FormationModel>();
 
   step = 1;
+  maxSteps = 2;
   formation: FormationModel = {
     id: 0,
     name: '',
@@ -39,11 +40,15 @@ export class AddFormationPopupComponent {
     this.people = this.formationService.getPeople();
   }
   nextStep() {
-    this.step++;
+    if (this.step < this.maxSteps) {
+      this.step++;
+    }
   }
 
   prevStep() {
-    this.step--;
+    if (this.step > 1) {
+      this.step--;
+    }
   }
 
   submitFormation() {

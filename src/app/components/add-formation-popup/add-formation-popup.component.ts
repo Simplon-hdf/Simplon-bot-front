@@ -73,14 +73,11 @@ export class AddFormationPopupComponent {
     });
   }
   nextStep() {
-    console.log(this.isStep1Valid());
-    if (this.isStep1Valid()) {
+    if (this.step === 1 && this.isStep1Valid()) {
       this.step++;
     } else {
-      this.markAllAsTouched();
+      this.markStep1AsTouched();
     }
-
-    console.log(this.step);
   }
   private isStep1Valid() {
     return (
@@ -107,6 +104,14 @@ export class AddFormationPopupComponent {
     } else {
       this.markAllAsTouched();
     }
+  }
+
+  private markStep1AsTouched() {
+    this.formationForm.get('name')?.markAsTouched();
+    this.formationForm.get('start_date')?.markAsTouched();
+    this.formationForm.get('end_date')?.markAsTouched();
+    this.formationForm.get('type')?.markAsTouched();
+    this.formationForm.get('place')?.markAsTouched();
   }
 
   resetForm() {

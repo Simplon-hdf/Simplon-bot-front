@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormationService } from '../../services/formation.service';
 import { FormationModel, LearnerModel } from '../../models/formation-model';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { StaffCardComponent } from '../staff-card/staff-card.component';
 import {
   FormBuilder,
@@ -15,7 +15,14 @@ import {
 @Component({
   selector: 'app-formation-detail',
   standalone: true,
-  imports: [NgIf, StaffCardComponent, NgFor, FormsModule, ReactiveFormsModule],
+  imports: [
+    NgIf,
+    StaffCardComponent,
+    NgFor,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+  ],
   templateUrl: './formation-detail.component.html',
   styleUrl: './formation-detail.component.scss',
 })

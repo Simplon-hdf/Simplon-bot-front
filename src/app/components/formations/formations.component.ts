@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormationService } from '../../services/formation.service';
 import { FormationModel } from '../../models/formation-model';
+import { Router } from '@angular/router';
 import { AddFormationPopupComponent } from '../add-formation-popup/add-formation-popup.component';
 import { NgFor, NgIf } from '@angular/common';
 
@@ -15,7 +16,10 @@ export class FormationsComponent {
   formations: FormationModel[] = [];
   isPopupVisible = false;
 
-  constructor(private formationService: FormationService) {
+  constructor(
+    private formationService: FormationService,
+    private router: Router
+  ) {
     this.formations = this.formationService.getFormations();
   }
 
@@ -25,6 +29,10 @@ export class FormationsComponent {
 
   closePopup() {
     this.isPopupVisible = false;
+  }
+
+  navigateToFormationDetail(id: number): void {
+    this.router.navigate(['/formations', id]);
   }
 
   addFormation(formation: FormationModel) {

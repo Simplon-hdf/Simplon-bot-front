@@ -1,9 +1,9 @@
 <div *ngIf="person"
      class="bg-color-white rounded-md p-3 w-[150px] h-[200px] relative flex flex-col items-center">
-    <div class="flex justify-center items-center h-[50px]">
+    <div class="flex justify-center font-bold items-center h-[50px]">
         <h3 class="font-semibold text-center">{{ role }}</h3>
     </div>
     <img [src]="person.profilePictureUrl" alt="Photo de {{ person.name }}"
-         class="rounded-full">
+         class="rounded-full w-[90px]">
     <h3 class="mt-2">{{ person.name }}</h3>
 </div>

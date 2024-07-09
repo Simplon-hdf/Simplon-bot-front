@@ -1,14 +1,28 @@
 <div class="px-20 py-20 font-nunito" *ngIf="formation">
     <div>
-        <div class="flex justify-between">
+        <div class="flex items-center gap-5">
             <h1 class="text-5xl font-semibold">{{ formation.name }} à {{
                 formation.place }}</h1>
-            <p>{{ formation.status }}</p>
+            <p class="text-2l">{{ formation.status }}</p>
         </div>
-        <h2 class="text-2xl font-medium">{{formation.start_date}} -
-            {{formation.end_date}}</h2>
+        <h3 class="text-2xl font-medium mt-2">{{formation.start_date}} -
+            {{formation.end_date}}</h3>
     </div>
     <p>Type: {{ formation.type }}</p>
+    <h2 class=" text-3xl mt-14">Staffs</h2>
+    <div class="flex gap-2 mt-2">
+        <app-staff-card [person]="formation.former_1"
+                        role="Formateur 1"></app-staff-card>
+        <app-staff-card [person]="formation.former_2"
+                        role="Formateur 2"></app-staff-card>
+        <app-staff-card [person]="formation.caps" role="CAPS"></app-staff-card>
+        <app-staff-card [person]="formation.charge_admin"
+                        role="Charge Admin"></app-staff-card>
+        <app-staff-card [person]="formation.responsable_campus"
+                        role="Responsable Campus"></app-staff-card>
+        <app-staff-card [person]="formation.responsable_pedagogique"
+                        role="Responsable Pédagogique"></app-staff-card>
+    </div>
 </div>
 <div *ngIf="!formation">
     <p>Formation not found.</p>

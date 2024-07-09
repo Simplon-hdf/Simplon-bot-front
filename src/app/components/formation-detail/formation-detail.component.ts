@@ -3,11 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { FormationService } from '../../services/formation.service';
 import { FormationModel } from '../../models/formation-model';
 import { NgIf } from '@angular/common';
+import { StaffCardComponent } from '../staff-card/staff-card.component';
 
 @Component({
   selector: 'app-formation-detail',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, StaffCardComponent],
   templateUrl: './formation-detail.component.html',
   styleUrl: './formation-detail.component.scss',
 })

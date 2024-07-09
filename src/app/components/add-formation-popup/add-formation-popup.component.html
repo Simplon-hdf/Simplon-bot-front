@@ -52,12 +52,14 @@
                     <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
                            type="date" id="start_date" name="start_date"
                            [ngClass]="{'field-touched': formationForm.get('start_date')?.touched && formationForm.get('start_date')?.invalid}"
+                           [ngClass]="{'field-touched': formationForm.hasError('dateRange') }"
                            formControlName="start_date" required>
                     <label class="mt-8" for="end_date">Date de Fin <span
                               class="text-color-red font-bold">*</span></label>
                     <input class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
                            type="date" id="end_date" name="end_date"
                            [ngClass]="{'field-touched': formationForm.get('end_date')?.touched && formationForm.get('end_date')?.invalid}"
+                           [ngClass]="{'field-touched': formationForm.hasError('dateRange') }"
                            formControlName="end_date" required>
                 </div>
             </div>

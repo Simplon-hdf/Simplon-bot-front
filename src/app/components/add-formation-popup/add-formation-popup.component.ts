@@ -12,6 +12,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { FormationService } from '../../services/formation.service';
 import { FormationsComponent } from '../formations/formations.component';
 import { StepperComponent } from '../stepper/stepper.component';
+import { dateRangeValidator } from '../../date-range.validator';
 
 @Component({
   selector: 'app-add-formation-popup',
@@ -57,20 +58,23 @@ export class AddFormationPopupComponent {
     private fb: FormBuilder
   ) {
     this.people = this.formationService.getPeople();
-    this.formationForm = this.fb.group({
-      name: ['', Validators.required],
-      start_date: ['', Validators.required],
-      end_date: ['', Validators.required],
-      type: ['', Validators.required],
-      place: ['', Validators.required],
-      status: ['en cours', Validators.required],
-      caps: [null, Validators.required],
-      former_1: [null, Validators.required],
-      former_2: [null, Validators.required],
-      charge_admin: [null, Validators.required],
-      responsable_campus: [null, Validators.required],
-      responsable_pedagogique: [null, Validators.required],
-    });
+    this.formationForm = this.fb.group(
+      {
+        name: ['', Validators.required],
+        start_date: ['', Validators.required],
+        end_date: ['', Validators.required],
+        type: ['', Validators.required],
+        place: ['', Validators.required],
+        status: ['en cours', Validators.required],
+        caps: [null, Validators.required],
+        former_1: [null, Validators.required],
+        former_2: [null, Validators.required],
+        charge_admin: [null, Validators.required],
+        responsable_campus: [null, Validators.required],
+        responsable_pedagogique: [null, Validators.required],
+      },
+      { validators: dateRangeValidator() }
+    );
   }
   nextStep() {
     if (this.step === 1 && this.isStep1Valid()) {
@@ -85,7 +89,8 @@ export class AddFormationPopupComponent {
       this.formationForm.get('start_date')?.valid &&
       this.formationForm.get('end_date')?.valid &&
       this.formationForm.get('type')?.valid &&
-      this.formationForm.get('place')?.valid
+      this.formationForm.get('place')?.valid &&
+      !this.formationForm.hasError('dateRange')
     );
   }
 

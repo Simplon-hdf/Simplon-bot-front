@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { FormationModel, PersonModel } from '../models/formation-model';
+import {
+  FormationModel,
+  LearnerModel,
+  PersonModel,
+} from '../models/formation-model';
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +48,7 @@ export class FormationService {
         name: 'Rémi',
         profilePictureUrl: 'https://placehold.co/90',
       },
+      learners: [],
     },
   ];
   private people: PersonModel[] = [
@@ -65,6 +70,13 @@ export class FormationService {
 
   addFormation(formation: FormationModel) {
     this.formations.push({ ...formation, id: this.formations.length + 1 });
+  }
+
+  addLearnerToFormation(formationId: number, learner: LearnerModel): void {
+    const formation = this.getFormationById(formationId);
+    if (formation) {
+      formation.learners.push(learner);
+    }
   }
 
   getPeople(): PersonModel[] {

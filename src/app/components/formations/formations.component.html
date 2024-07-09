@@ -62,7 +62,8 @@
                         </thead>
                         <tbody class="divide-y divide-gray-300 ">
                             <tr class="bg-white transition-all duration-500 hover:bg-color-red hover:bg-opacity-10 hover:cursor-pointer"
-                                *ngFor="let formation of formations">
+                                *ngFor="let formation of formations"
+                                (click)="navigateToFormationDetail(formation.id)">
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 ">
                                     {{formation.name}} </td>

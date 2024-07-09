@@ -59,6 +59,10 @@ export class FormationService {
     return this.formations;
   }
 
+  getFormationById(id: number): FormationModel | undefined {
+    return this.formations.find((formation) => formation.id === id);
+  }
+
   addFormation(formation: FormationModel) {
     this.formations.push({ ...formation, id: this.formations.length + 1 });
   }

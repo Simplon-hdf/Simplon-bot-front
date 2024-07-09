@@ -1,10 +1,10 @@
 <div *ngIf="formation">
-    <h1>{{ formation?.name }}</h1>
-    <p>Status: {{ formation?.status }}</p>
-    <p>Type: {{ formation?.type }}</p>
-    <p>Place: {{ formation?.place }}</p>
-    <p>Start Date: {{ formation?.start_date }}</p>
-    <p>End Date: {{ formation?.end_date }}</p>
+    <h1>{{ formation.name }}</h1>
+    <p>Status: {{ formation.status }}</p>
+    <p>Type: {{ formation.type }}</p>
+    <p>Place: {{ formation.place }}</p>
+    <p>Start Date: {{ formation.start_date }}</p>
+    <p>End Date: {{ formation.end_date }}</p>
     <!-- Afficher les autres détails de la formation -->
 </div>
 <div *ngIf="!formation">

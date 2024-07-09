@@ -1,3 +1,6 @@
+<app-add-formation-popup *ngIf="isPopupVisible" (closePopup)="closePopup()"
+                         (addFormation)="addFormation($event)">
+</app-add-formation-popup>
 <section class="w-[1000px] mx-auto">
     <h1 class="font-nunito text-4xl font-semibold mt-20">Formations</h1>
     <div
@@ -27,8 +30,8 @@
                                class="block pr-5 pl-12 w-80 py-1 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-color-disabled rounded-full placeholder-gray-400 focus:outline-none"
                                placeholder="Rechercher une formation">
                     </div>
-                    <button
-                            class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
+                    <button class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light"
+                            (click)="openPopup()">Ajouter</button>
                 </div>
                 <div class="overflow-y-scroll max-h-[60vh] ">
                     <table class=" min-w-full rounded-xl">
@@ -58,26 +61,26 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-300 ">
-                            <tr
-                                class="bg-white transition-all duration-500 hover:bg-color-red hover:bg-opacity-10">
+                            <tr class="bg-white transition-all duration-500 hover:bg-color-red hover:bg-opacity-10 hover:cursor-pointer"
+                                *ngFor="let formation of formations">
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 ">
-                                    Dev Inté P6 testestestestes etse test </td>
+                                    {{formation.name}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    Lens </td>
+                                    {{formation.place}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 max-w-[200px]">
-                                    zoiauhdaoizdhdoiah oazihdazoihaz </td>
+                                    {{formation.caps.name}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    04/07/2024 </td>
+                                    {{formation.start_date}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    04/09/2024 </td>
+                                    {{formation.end_date}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    En cours </td>
+                                    {{formation.status}} </td>
                                 <td class=" p-4 ">
                                     <div class="flex items-center gap-1">
                                         <button

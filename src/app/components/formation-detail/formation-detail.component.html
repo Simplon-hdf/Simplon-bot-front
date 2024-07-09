@@ -1,10 +1,14 @@
-<div *ngIf="formation">
-    <h1>{{ formation.name }}</h1>
-    <p>Status: {{ formation.status }}</p>
+<div class="px-20 py-20 font-nunito" *ngIf="formation">
+    <div>
+        <div class="flex justify-between">
+            <h1 class="text-5xl font-semibold">{{ formation.name }} à {{
+                formation.place }}</h1>
+            <p>{{ formation.status }}</p>
+        </div>
+        <h2 class="text-2xl font-medium">{{formation.start_date}} -
+            {{formation.end_date}}</h2>
+    </div>
     <p>Type: {{ formation.type }}</p>
-    <p>Place: {{ formation.place }}</p>
-    <p>Start Date: {{ formation.start_date }}</p>
-    <p>End Date: {{ formation.end_date }}</p>
     <!-- Afficher les autres détails de la formation -->
 </div>
 <div *ngIf="!formation">

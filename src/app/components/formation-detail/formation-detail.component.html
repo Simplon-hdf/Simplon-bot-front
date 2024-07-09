@@ -26,6 +26,30 @@
         <app-staff-card [person]="formation.responsable_pedagogique"
                         role="Responsable Pédagogique"></app-staff-card>
     </div>
+    <h2>Apprenants</h2>
+    <ul>
+        <li *ngFor="let learner of formation.learners"> {{ learner.name }} - {{
+            learner.phoneNumber }} - {{ learner.email }} </li>
+    </ul>
+    <h3>Ajouter un apprenant</h3>
+    <form [formGroup]="learnerForm" (ngSubmit)="addLearner()">
+        <label for="name">Nom:</label>
+        <input id="name" formControlName="name">
+        <div
+             *ngIf="learnerForm.get('name')?.invalid && learnerForm.get('name')?.touched">
+            Le nom est requis. </div>
+        <label for="phoneNumber">Téléphone:</label>
+        <input id="phoneNumber" formControlName="phoneNumber">
+        <div
+             *ngIf="learnerForm.get('phoneNumber')?.invalid && learnerForm.get('phoneNumber')?.touched">
+            Le numéro de téléphone est requis. </div>
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email">
+        <div
+             *ngIf="learnerForm.get('email')?.invalid && learnerForm.get('email')?.touched">
+            Une adresse email valide est requise. </div>
+        <button type="submit" [disabled]="learnerForm.invalid">Ajouter</button>
+    </form>
 </div>
 <div *ngIf="!formation">
     <p>Formation not found.</p>

@@ -50,6 +50,7 @@ export class AddFormationPopupComponent {
     charge_admin: {} as PersonModel,
     responsable_campus: {} as PersonModel,
     responsable_pedagogique: {} as PersonModel,
+    learners: [],
   };
   people: PersonModel[] = [];
 
@@ -142,6 +143,7 @@ export class AddFormationPopupComponent {
       charge_admin: {} as PersonModel,
       responsable_campus: {} as PersonModel,
       responsable_pedagogique: {} as PersonModel,
+      learners: [],
     };
   }
 

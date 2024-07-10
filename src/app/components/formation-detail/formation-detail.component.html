@@ -1,6 +1,4 @@
-<p>form values : {{learnerForm.value|json}}</p>
-<p>form values : {{learnerForm.status|json}}</p>
-<div class="px-20 py-20 font-nunito" *ngIf="formation">
+<div class="px-20 py-10 font-nunito" *ngIf="formation">
     <div>
         <div class="flex items-center gap-5">
             <h1 class="text-5xl font-semibold">{{ formation.name }} à {{
@@ -14,7 +12,7 @@
             {{formation.end_date}}</h3>
     </div>
     <p>Type: {{ formation.type }}</p>
-    <h2 class=" text-3xl mt-14">Staffs</h2>
+    <h2 class=" text-3xl mt-10">Staffs</h2>
     <div class="flex gap-2 mt-2">
         <app-staff-card [person]="formation.former_1"
                         role="Formateur 1"></app-staff-card>

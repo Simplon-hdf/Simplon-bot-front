@@ -12,6 +12,14 @@ export interface FormationModel {
   charge_admin: PersonModel;
   responsable_campus: PersonModel;
   responsable_pedagogique: PersonModel;
+  learners: LearnerModel[];
+}
+
+export interface LearnerModel {
+  id: number;
+  name: string;
+  phoneNumber: string;
+  email: string;
 }
 
 export interface PersonModel {

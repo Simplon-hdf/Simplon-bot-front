@@ -50,6 +50,7 @@ export class AddFormationPopupComponent {
     charge_admin: {} as PersonModel,
     responsable_campus: {} as PersonModel,
     responsable_pedagogique: {} as PersonModel,
+    learners: [],
   };
   people: PersonModel[] = [];
 
@@ -72,6 +73,7 @@ export class AddFormationPopupComponent {
         charge_admin: [null, Validators.required],
         responsable_campus: [null, Validators.required],
         responsable_pedagogique: [null, Validators.required],
+        learners: [[]],
       },
       { validators: dateRangeValidator() }
     );
@@ -142,6 +144,7 @@ export class AddFormationPopupComponent {
       charge_admin: {} as PersonModel,
       responsable_campus: {} as PersonModel,
       responsable_pedagogique: {} as PersonModel,
+      learners: [],
     };
   }
 

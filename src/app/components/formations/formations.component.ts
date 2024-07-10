@@ -28,7 +28,6 @@ export class FormationsComponent {
   }
 
   filterFormations(): void {
-    console.log(this.searchTerm);
     if (!this.searchTerm) {
       this.filteredFormations = this.formations;
     } else {

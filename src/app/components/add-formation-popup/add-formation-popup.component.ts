@@ -73,6 +73,7 @@ export class AddFormationPopupComponent {
         charge_admin: [null, Validators.required],
         responsable_campus: [null, Validators.required],
         responsable_pedagogique: [null, Validators.required],
+        learners: [[]],
       },
       { validators: dateRangeValidator() }
     );

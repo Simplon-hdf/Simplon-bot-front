@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DashboardSeeAllComponent } from './dashboard-blocks/dashboard-see-all/dashboard-see-all.component';
 import { DashboardGraphComponent } from './dashboard-blocks/dashboard-graph/dashboard-graph/dashboard-graph.component';
 import { Chart, registerables } from 'chart.js';
 import { DashboardWheelComponent } from './dashboard-blocks/dashboard-wheel/dashboard-wheel.component';
@@ -7,11 +6,7 @@ Chart.register(...registerables);
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [
-    DashboardSeeAllComponent,
-    DashboardGraphComponent,
-    DashboardWheelComponent,
-  ],
+  imports: [DashboardGraphComponent, DashboardWheelComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
@@ -42,6 +37,13 @@ export class DashboardComponent {
           backgroundColor: '#CE003380',
         },
       ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
     },
   };
 

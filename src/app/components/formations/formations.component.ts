@@ -21,10 +21,23 @@ export class FormationsComponent {
     private router: Router
   ) {
     this.formations = this.formationService.getFormations();
+    this.checkAndUpdateFormationStatus();
   }
 
   openPopup() {
     this.isPopupVisible = true;
+  }
+
+  checkAndUpdateFormationStatus(): void {
+    console.log('checking...');
+    const currentDate = new Date();
+
+    this.formations.forEach((formation) => {
+      const endDate = new Date(formation.end_date);
+      if (endDate < currentDate && formation.status !== 'terminé') {
+        formation.status = 'terminé';
+      }
+    });
   }
 
   closePopup() {

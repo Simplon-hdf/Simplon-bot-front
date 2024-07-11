@@ -61,11 +61,17 @@ export class AddFormationPopupComponent {
     this.people = this.formationService.getPeople();
     this.formationForm = this.fb.group(
       {
-        name: ['', Validators.required],
+        name: [
+          '',
+          [Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/)],
+        ],
         start_date: ['', Validators.required],
         end_date: ['', Validators.required],
         type: ['', Validators.required],
-        place: ['', Validators.required],
+        place: [
+          '',
+          [Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/)],
+        ],
         status: [''],
         caps: [null, Validators.required],
         former_1: [null, Validators.required],

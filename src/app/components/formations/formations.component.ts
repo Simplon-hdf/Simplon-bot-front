@@ -3,13 +3,13 @@ import { FormationService } from '../../services/formation.service';
 import { FormationModel } from '../../models/formation-model';
 import { Router } from '@angular/router';
 import { AddFormationPopupComponent } from '../add-formation-popup/add-formation-popup.component';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-formations',
   standalone: true,
-  imports: [NgFor, AddFormationPopupComponent, NgIf, FormsModule],
+  imports: [NgFor, AddFormationPopupComponent, NgIf, FormsModule, CommonModule],
   templateUrl: './formations.component.html',
   styleUrl: './formations.component.scss',
 })

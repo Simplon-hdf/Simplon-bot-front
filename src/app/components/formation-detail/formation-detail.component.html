@@ -10,8 +10,8 @@
             <li class="bg-color-red bg-opacity-5 px-3 py-1 rounded-md text-color-red border-2 border-color-red font-semibold"
                 *ngIf="formation.status === 'terminé'"> Terminé </li>
         </div>
-        <h3 class="text-2xl font-medium mt-2">{{formation.start_date}} -
-            {{formation.end_date}}</h3>
+        <h3 class="text-2xl font-medium mt-2">{{formation.start_date| date:
+            'dd/MM/yyyy'}} - {{formation.end_date| date: 'dd/MM/yyyy'}}</h3>
     </div>
     <p>Type: {{ formation.type }}</p>
     <h2 class=" text-4xl font-semibold mt-10">Staffs</h2>

@@ -3,13 +3,13 @@ import { FormationService } from '../../services/formation.service';
 import { FormationModel } from '../../models/formation-model';
 import { Router } from '@angular/router';
 import { AddFormationPopupComponent } from '../add-formation-popup/add-formation-popup.component';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-formations',
   standalone: true,
-  imports: [NgFor, AddFormationPopupComponent, NgIf, FormsModule],
+  imports: [NgFor, AddFormationPopupComponent, NgIf, FormsModule, CommonModule],
   templateUrl: './formations.component.html',
   styleUrl: './formations.component.scss',
 })
@@ -25,6 +25,7 @@ export class FormationsComponent {
   ) {
     this.formations = this.formationService.getFormations();
     this.filteredFormations = this.formations;
+    this.checkAndUpdateFormationStatus();
   }
 
   filterFormations(): void {
@@ -39,6 +40,23 @@ export class FormationsComponent {
 
   openPopup() {
     this.isPopupVisible = true;
+  }
+
+  checkAndUpdateFormationStatus(): void {
+    console.log('checking ...');
+    const now = new Date();
+    this.formations.forEach((formation) => {
+      const startDate = new Date(formation.start_date);
+      const endDate = new Date(formation.end_date);
+
+      if (endDate < now) {
+        formation.status = 'terminé';
+      } else if (startDate > now) {
+        formation.status = 'à venir';
+      } else {
+        formation.status = 'en cours';
+      }
+    });
   }
 
   closePopup() {

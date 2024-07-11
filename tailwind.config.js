@@ -11,6 +11,7 @@ module.exports = {
       'color-red': '#ce0033', //Background Nav & buttons (Rouge Simplon)
       'color-red-light': '#E13851', //Background Nav & buttons hover
       'color-red-super-light': '#FBE8EB',
+      'color-orange': '#FFB422', // (Orange)
       'color-red-transparent': '#CE003326', //Rouge Simplon with 15% opcaity
       'color-white': '#FFFFFF', //Background Cards (Blanc)
       'color-back': '#f0f0f0', //Background body (Blanc foncé)

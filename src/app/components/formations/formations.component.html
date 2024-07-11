@@ -77,10 +77,12 @@
                                     {{formation.caps.name}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    {{formation.start_date}} </td>
+                                    {{formation.start_date | date:
+                                    'dd/MM/yyyy'}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    {{formation.end_date}} </td>
+                                    {{formation.end_date | date: 'dd/MM/yyyy'}}
+                                </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
                                     {{formation.status}} </td>

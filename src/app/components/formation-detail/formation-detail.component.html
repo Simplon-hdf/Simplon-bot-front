@@ -5,11 +5,13 @@
                 formation.place }}</h1>
             <li class="bg-color-success bg-opacity-5 px-3 py-1 rounded-md text-color-success border-2 border-color-success font-semibold"
                 *ngIf="formation.status === 'en cours'"> En cours </li>
+            <li class="bg-color-orange bg-opacity-5 px-3 py-1 rounded-md text-color-orange border-2 border-color-orange font-semibold"
+                *ngIf="formation.status === 'à venir'"> À venir </li>
             <li class="bg-color-red bg-opacity-5 px-3 py-1 rounded-md text-color-red border-2 border-color-red font-semibold"
                 *ngIf="formation.status === 'terminé'"> Terminé </li>
         </div>
-        <h3 class="text-2xl font-medium mt-2">{{formation.start_date}} -
-            {{formation.end_date}}</h3>
+        <h3 class="text-2xl font-medium mt-2">{{formation.start_date| date:
+            'dd/MM/yyyy'}} - {{formation.end_date| date: 'dd/MM/yyyy'}}</h3>
     </div>
     <p>Type: {{ formation.type }}</p>
     <h2 class=" text-4xl font-semibold mt-10">Staffs</h2>
@@ -73,6 +75,8 @@
                                class="block pr-5 pl-12 w-80 py-1 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-color-disabled rounded-full placeholder-gray-400 focus:outline-none"
                                placeholder="Rechercher un apprenant">
                     </div>
+                    <p class="font-nunito font-bold text-xl">{{
+                        formation.learners.length }} Apprenants</p>
                     <button
                             class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
                 </div>

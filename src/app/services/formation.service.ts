@@ -79,6 +79,13 @@ export class FormationService {
     }
   }
 
+  updateFormationStatus(id: number, status: string): void {
+    const formation = this.formations.find((f) => f.id === id);
+    if (formation) {
+      formation.status = status;
+    }
+  }
+
   getPeople(): PersonModel[] {
     return this.people;
   }

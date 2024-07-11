@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { parse } from '../../../../node_modules/csv-parse/dist/esm/sync';
+import { LearnerModel } from '../../models/learner-model';
 
 @Component({
   selector: 'app-add-learners-popup',
@@ -9,14 +11,29 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class AddLearnersPopupComponent {
   @Output() closePopup = new EventEmitter<void>();
+  learners: LearnerModel[] | null = null;
 
   onClosePopupClick() {
     this.closePopup.emit();
   }
 
-  //Steps to add apprenants via csv file :
-  //Upload csv in popup
-  //Retrieve CSV
-  //Read it and turn it into an array of apprenantModel
-  //Send it to DB
+  changeListener(uploadedFile: any): void {
+    const file: File = uploadedFile.target.files[0];
+    if (file) {
+      const reader: FileReader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = () => {
+        const csv: string = reader.result as string;
+        console.log('le csv :' + csv);
+        const records: LearnerModel[] = parse(csv, {
+          columns: true,
+          skip_empty_lines: true,
+        });
+        // for (const record of records) {
+        //   console.log(record);
+        // }
+        this.learners = records;
+      };
+    }
+  }
 }

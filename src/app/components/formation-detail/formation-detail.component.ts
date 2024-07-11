@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormationService } from '../../services/formation.service';
-import { FormationModel, LearnerModel } from '../../models/formation-model';
+import { FormationModel } from '../../models/formation-model';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { StaffCardComponent } from '../staff-card/staff-card.component';
 import {
@@ -11,6 +11,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-popup.component';
+import { LearnerModel } from '../../models/learner-model';
 
 @Component({
   selector: 'app-formation-detail',
@@ -22,6 +24,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    AddLearnersPopupComponent,
   ],
   templateUrl: './formation-detail.component.html',
   styleUrl: './formation-detail.component.scss',
@@ -29,6 +32,7 @@ import {
 export class FormationDetailComponent implements OnInit {
   formation: FormationModel | undefined;
   learnerForm: FormGroup;
+  isPopupVisible = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -58,5 +62,13 @@ export class FormationDetailComponent implements OnInit {
       );
       this.learnerForm.reset();
     }
+  }
+
+  openPopup() {
+    this.isPopupVisible = true;
+  }
+
+  closePopup() {
+    this.isPopupVisible = false;
   }
 }

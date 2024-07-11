@@ -1,0 +1,25 @@
+<div class="flex justify-center items-center absolute top-0 left-0 z-10 w-full h-full bg-color-black bg-opacity-50">
+    <div class="*:text-center relative flex flex-col p-2 items-center w-[750px] bg-color-white">
+        <button (click)="onClosePopupClick()">
+            <svg class="absolute top-1 right-1 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#818181"
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </button>
+
+        <p class="text-lg">Ajoutez des apprenants</p>
+        <div>
+            <p class="">Importez un CSV</p>
+            <input type="file" class="appearance-none" />
+            <div class="flex items-center gap-6">
+                <span class="w-[200px] h-[1px] bg-color-black"></span>
+                <span class="inline text-xl align-middle">ou</span>
+                <span class="w-[200px] h-[1px] bg-color-black"></span>
+            </div>
+            <p>Ajoutez un apprenant manuellement</p>
+            <button
+                class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
+        </div>
+    </div>
+</div>

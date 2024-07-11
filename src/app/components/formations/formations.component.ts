@@ -25,6 +25,7 @@ export class FormationsComponent {
   ) {
     this.formations = this.formationService.getFormations();
     this.filteredFormations = this.formations;
+    this.checkAndUpdateFormationStatus();
   }
 
   filterFormations(): void {
@@ -35,7 +36,6 @@ export class FormationsComponent {
         formation.name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
-    this.checkAndUpdateFormationStatus();
   }
 
   openPopup() {
@@ -43,13 +43,18 @@ export class FormationsComponent {
   }
 
   checkAndUpdateFormationStatus(): void {
-    console.log('checking...');
-    const currentDate = new Date();
-
+    console.log('checking ...');
+    const now = new Date();
     this.formations.forEach((formation) => {
+      const startDate = new Date(formation.start_date);
       const endDate = new Date(formation.end_date);
-      if (endDate < currentDate && formation.status !== 'terminé') {
+
+      if (endDate < now) {
         formation.status = 'terminé';
+      } else if (startDate > now) {
+        formation.status = 'à venir';
+      } else {
+        formation.status = 'en cours';
       }
     });
   }

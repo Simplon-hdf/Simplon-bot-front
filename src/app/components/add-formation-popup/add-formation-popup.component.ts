@@ -66,7 +66,7 @@ export class AddFormationPopupComponent {
         end_date: ['', Validators.required],
         type: ['', Validators.required],
         place: ['', Validators.required],
-        status: ['', Validators.required],
+        status: [''],
         caps: [null, Validators.required],
         former_1: [null, Validators.required],
         former_2: [null, Validators.required],
@@ -77,6 +77,7 @@ export class AddFormationPopupComponent {
       },
       { validators: dateRangeValidator() }
     );
+    this.updateStatus();
   }
   nextStep() {
     if (this.step === 1 && this.isStep1Valid()) {
@@ -105,11 +106,26 @@ export class AddFormationPopupComponent {
 
   submitFormation() {
     if (this.formationForm.valid) {
+      this.updateStatus();
       this.addFormation.emit(this.formationForm.value);
       this.closePopup.emit();
       this.resetForm();
     } else {
       this.markAllAsTouched();
+    }
+  }
+
+  updateStatus() {
+    const startDate = new Date(this.formationForm.get('start_date')?.value);
+    const endDate = new Date(this.formationForm.get('end_date')?.value);
+    const now = new Date();
+
+    if (endDate < now) {
+      this.formationForm.get('status')?.setValue('terminé');
+    } else if (startDate > now) {
+      this.formationForm.get('status')?.setValue('à venir');
+    } else {
+      this.formationForm.get('status')?.setValue('en cours');
     }
   }
 

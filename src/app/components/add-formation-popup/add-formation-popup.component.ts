@@ -39,7 +39,7 @@ export class AddFormationPopupComponent {
   formation: FormationModel = {
     id: 0,
     name: '',
-    status: 'en cours',
+    status: '',
     type: '',
     place: '',
     former_1: {} as PersonModel,
@@ -66,7 +66,7 @@ export class AddFormationPopupComponent {
         end_date: ['', Validators.required],
         type: ['', Validators.required],
         place: ['', Validators.required],
-        status: ['en cours', Validators.required],
+        status: ['', Validators.required],
         caps: [null, Validators.required],
         former_1: [null, Validators.required],
         former_2: [null, Validators.required],
@@ -123,9 +123,7 @@ export class AddFormationPopupComponent {
 
   resetForm() {
     this.step = 1;
-    this.formationForm.reset({
-      status: 'en cours',
-    });
+    this.formationForm.reset();
   }
 
   resetFormation() {
@@ -133,7 +131,7 @@ export class AddFormationPopupComponent {
     this.formation = {
       id: 0,
       name: '',
-      status: 'en cours',
+      status: '',
       type: '',
       place: '',
       former_1: {} as PersonModel,

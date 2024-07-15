@@ -13,6 +13,7 @@ import { FormationService } from '../../services/formation.service';
 import { FormationsComponent } from '../formations/formations.component';
 import { StepperComponent } from '../stepper/stepper.component';
 import { dateRangeValidator } from '../../date-range.validator';
+import { Step1Component } from '../popup-promo/step-1/step-1.component';
 
 @Component({
   selector: 'app-add-formation-popup',
@@ -27,6 +28,7 @@ import { dateRangeValidator } from '../../date-range.validator';
     FormationsComponent,
     StepperComponent,
     CommonModule,
+    Step1Component,
   ],
 })
 export class AddFormationPopupComponent {
@@ -85,29 +87,12 @@ export class AddFormationPopupComponent {
     );
     this.updateStatus();
   }
-  nextStep() {
-    if (this.step === 1 && this.isStep1Valid()) {
-      this.step++;
-    } else {
-      this.markStep1AsTouched();
-    }
-  }
-  private isStep1Valid() {
-    return (
-      this.formationForm.get('name')?.valid &&
-      this.formationForm.get('start_date')?.valid &&
-      this.formationForm.get('end_date')?.valid &&
-      this.formationForm.get('type')?.valid &&
-      this.formationForm.get('place')?.valid &&
-      !this.formationForm.hasError('dateRange')
-    );
+  goToNextStep() {
+    this.step++;
   }
 
-  prevStep() {
-    if (this.step > 1) {
-      this.step--;
-    }
-    console.log(this.step);
+  goToPreviousStep() {
+    this.step--;
   }
 
   submitFormation() {
@@ -133,14 +118,6 @@ export class AddFormationPopupComponent {
     } else {
       this.formationForm.get('status')?.setValue('en cours');
     }
-  }
-
-  private markStep1AsTouched() {
-    this.formationForm.get('name')?.markAsTouched();
-    this.formationForm.get('start_date')?.markAsTouched();
-    this.formationForm.get('end_date')?.markAsTouched();
-    this.formationForm.get('type')?.markAsTouched();
-    this.formationForm.get('place')?.markAsTouched();
   }
 
   resetForm() {

@@ -1,5 +1,5 @@
 <div class="flex justify-center items-center absolute top-0 left-0 z-10 w-full h-full bg-color-black bg-opacity-50">
-    <div class="*:text-center relative flex flex-col items-center gap-20 p-2 w-[750px]  bg-color-white">
+    <div class="*:text-center relative flex flex-col items-center p-2 w-[750px]  bg-color-white">
         <button (click)="onClosePopupClick()">
             <svg class="absolute top-1 right-1 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -8,9 +8,10 @@
             </svg>
         </button>
         <p class="text-4xl">Ajoutez des apprenants</p>
-        @if(learners === null){
+        @if(!isAddingLearners){
+        @if(learners.length === 0){
 
-        <!-- CSV drop zone -->
+        <!-- #region CSV input -->
         <div class="flex flex-col items-center gap-8">
             <p class="text-2xl">Importez un CSV</p>
             <label for="csv">
@@ -31,12 +32,13 @@
                 <span class="w-[200px] h-[1px] bg-color-black"></span>
             </div>
             <p class="text-2xl">Ajoutez un apprenant manuellement</p>
-            <button
+            <button (click)="onAddingLearners()"
                 class="self-center font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
         </div>
+        <!--#endregion -->
 
         } @else{
-        <!-- #region  learners table -->
+        <!-- #region  display learners to be add in a table -->
         <div class="overflow-y-scroll max-h-[60vh] ">
             <table class=" min-w-full rounded-xl">
                 <thead>
@@ -57,7 +59,7 @@
                         <td class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 ">
                             {{learner.firstName}} {{learner.lastName}} </td>
                         <td class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                            {{learner.email}} </td>
+                            {{learner.mail}} </td>
                         <td
                             class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 max-w-[200px]">
                             {{learner.phoneNumber}} </td>
@@ -94,10 +96,12 @@
                 </tbody>
             </table>
         </div>
+        <button>Ajouter</button>
         <!--#endregion -->
         }
-
-
-
+        }
+        @else{
+        <app-add-learners-popup-form (formSubmitted)="addLearner($event)" />
+        }
     </div>
 </div>

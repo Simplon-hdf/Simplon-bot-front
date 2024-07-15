@@ -4,7 +4,7 @@ export interface LearnerModel {
   id: number | undefined;
   lastName: string;
   firstName: string;
-  email: string;
+  mail: string;
   phoneNumber: string;
   formationId: FormationModel | undefined;
 }

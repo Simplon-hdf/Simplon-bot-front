@@ -14,7 +14,7 @@ export class MapperService {
         id: undefined,
         firstName: row.Prénom,
         lastName: row.NOM,
-        email: row.Mail,
+        mail: row.Mail,
         phoneNumber: row.Téléphone,
         formationId: undefined,
       };

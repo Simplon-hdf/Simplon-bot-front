@@ -1,5 +1,5 @@
 <div class="flex justify-center items-center absolute top-0 left-0 z-10 w-full h-full bg-color-black bg-opacity-50">
-    <div class="*:text-center relative flex flex-col p-2 items-center w-[750px] bg-color-white">
+    <div class="*:text-center relative flex flex-col items-center gap-20 p-2 w-[750px]  bg-color-white">
         <button (click)="onClosePopupClick()">
             <svg class="absolute top-1 right-1 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -7,21 +7,34 @@
                     d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
             </svg>
         </button>
-        <p class="text-lg">Ajoutez des apprenants</p>
+        <p class="text-4xl">Ajoutez des apprenants</p>
         @if(learners === null){
-        <div>
-            <p class="">Importez un CSV</p>
-            <input type="file" class="appearance-none" accept=".csv" (change)="changeListener($event)" />
+
+        <!-- CSV drop zone -->
+        <div class="flex flex-col items-center gap-8">
+            <p class="text-2xl">Importez un CSV</p>
+            <label for="csv">
+                <div
+                    class="group flex justify-center items-center bg-color-back w-80 h-44 rounded-xl cursor-pointer hover:bg-color-red-super-light ">
+                    <svg class="fill-[#b1b1b1] group-hover:fill-color-red-light" xmlns="http://www.w3.org/2000/svg"
+                        height="48" width="60" viewBox="0 0 640 512">
+                        <path
+                            d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z" />
+                    </svg>
+                </div>
+                <input id="csv" type="file" class="hidden appearance-none bg-color-red" accept=".csv"
+                    (change)="changeListener($event)" />
+            </label>
             <div class="flex items-center gap-6">
                 <span class="w-[200px] h-[1px] bg-color-black"></span>
                 <span class="inline text-xl align-middle">ou</span>
                 <span class="w-[200px] h-[1px] bg-color-black"></span>
             </div>
-            <p>Ajoutez un apprenant manuellement</p>
+            <p class="text-2xl">Ajoutez un apprenant manuellement</p>
             <button
-                class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
-
+                class="self-center font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
         </div>
+
         } @else{
         <!-- #region  learners table -->
         <div class="overflow-y-scroll max-h-[60vh] ">

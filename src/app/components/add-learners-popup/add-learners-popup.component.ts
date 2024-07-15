@@ -13,9 +13,28 @@ import { MapperService } from '../../services/mapper.service';
   styleUrl: './add-learners-popup.component.scss',
 })
 export class AddLearnersPopupComponent {
-  mapper: MapperService = inject(MapperService);
+  private mapper: MapperService = inject(MapperService);
+  private _learners: LearnerModel[] | undefined = undefined;
+  private _isAddingLearners = false;
   @Output() closePopup = new EventEmitter<void>();
-  learners: LearnerModel[] | null = null;
+
+  //#region getters setter
+  public get isAddingLearners() {
+    return this._isAddingLearners;
+  }
+
+  public set isAddingLearners(value) {
+    this._isAddingLearners = value;
+  }
+
+  public get learners(): LearnerModel[] | undefined {
+    return this._learners;
+  }
+
+  public set learners(value: LearnerModel[] | undefined) {
+    this._learners = value;
+  }
+  //#endregion
 
   onClosePopupClick() {
     this.closePopup.emit();
@@ -32,8 +51,12 @@ export class AddLearnersPopupComponent {
           columns: true,
           skip_empty_lines: true,
         });
-        this.learners = this.mapper.CsvToLearner(records);
+        this.learners = this.mapper.csvToLearner(records);
       };
     }
+  }
+
+  onAddingLearner() {
+    this.isAddingLearners = true;
   }
 }

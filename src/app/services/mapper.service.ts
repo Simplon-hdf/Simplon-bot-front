@@ -6,16 +6,17 @@ import { LearnerModel } from '../models/learner-model';
   providedIn: 'root',
 })
 export class MapperService {
-  CsvToLearner(csvModels: CsvModel[]): LearnerModel[] {
+  public csvToLearner(csvModels: CsvModel[]): LearnerModel[] {
     const learners: LearnerModel[] = [];
+    //Remplacer
     for (const row of csvModels) {
       const learner: LearnerModel = {
-        id: null,
+        id: undefined,
         firstName: row.Prénom,
         lastName: row.NOM,
         email: row.Mail,
         phoneNumber: row.Téléphone,
-        formation: null,
+        formationId: undefined,
       };
       learners.push(learner);
     }

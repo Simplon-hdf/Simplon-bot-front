@@ -1,10 +1,10 @@
 import { FormationModel } from './formation-model';
 
 export interface LearnerModel {
-  id: number | null;
+  id: number | undefined;
   lastName: string;
   firstName: string;
   email: string;
   phoneNumber: string;
-  formation: FormationModel | null;
+  formationId: FormationModel | undefined;
 }

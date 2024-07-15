@@ -32,7 +32,7 @@ export class AddLearnersPopupComponent {
   private _isAddingLearners = false;
   @Output() closePopup = new EventEmitter<void>();
 
-  //#region getters setter
+  //#region ACCESSORS
   public get isAddingLearners() {
     return this._isAddingLearners;
   }

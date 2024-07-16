@@ -1,1 +1,68 @@
-<p>step-2 works!</p>
+<h1 class="text-center text-2xl">Ajouter des Staffs</h1>
+<div class="flex flex-col w-[250px]">
+    <label for="former_1">Formateur 1 <span
+              class="text-color-red font-bold">*</span></label>
+    <select id="former_1" name="former_1" formControlName="former_1"
+            [ngClass]="{'field-touched': formationForm.get('former_1')?.touched && formationForm.get('former_1')?.invalid}"
+            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+        <option value="" disabled selected>Sélectionner un formateur </option>
+        <option *ngFor="let person of people" [ngValue]="person">{{ person.name
+            }}</option>
+    </select>
+    <label class="mt-8" for="former_2">Formateur 2 <span
+              class="text-color-red font-bold">*</span></label>
+    <select id="former_2" name="former_2"
+            [ngClass]="{'field-touched': formationForm.get('former_2')?.touched && formationForm.get('former_2')?.invalid}"
+            formControlName="former_2"
+            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+        <option value="" disabled selected>Sélectionner un formateur </option>
+        <option *ngFor="let person of people" [ngValue]="person">{{ person.name
+            }}</option>
+    </select>
+    <label class="mt-8" for="caps">Caps <span
+              class="text-color-red font-bold">*</span></label>
+    <select id="caps"
+            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+            name="caps" formControlName="caps"
+            [ngClass]="{'field-touched': formationForm.get('caps')?.touched && formationForm.get('caps')?.invalid}">
+        <option value="" disabled selected>Sélectionner un CAPS </option>
+        <option *ngFor="let person of people" [ngValue]="person">{{ person.name
+            }}</option>
+    </select>
+</div>
+<div class="flex flex-col w-[250px]">
+    <label for="admin">Chargé(e) d'Admin <span
+              class="text-color-red font-bold">*</span></label>
+    <select id="admin"
+            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+            name="admin" formControlName="charge_admin"
+            [ngClass]="{'field-touched': formationForm.get('charge_admin')?.touched && formationForm.get('charge_admin')?.invalid}">
+        <option value="" disabled selected>Sélectionner un chargé(e) d'admin
+        </option>
+        <option *ngFor="let person of people" [ngValue]="person">{{ person.name
+            }}</option>
+    </select>
+    <label class="mt-8" for="responsable_campus">Responsable Campus <span
+              class="text-color-red font-bold">*</span></label>
+    <select id="responsable_campus" name="responsable_campus"
+            formControlName="responsable_campus"
+            [ngClass]="{'field-touched': formationForm.get('responsable_campus')?.touched && formationForm.get('responsable_campus')?.invalid}"
+            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+        <option value="" disabled selected>Sélectionner un responsable campus
+        </option>
+        <option *ngFor="let person of people" [ngValue]="person">{{ person.name
+            }}</option>
+    </select>
+    <label class="mt-8" for="responsable_pedagogique">Responsable Pédagogique
+        <span class="text-color-red font-bold">*</span>
+    </label>
+    <select id="responsable_pedagogique" name="responsable_pedagogique"
+            formControlName="responsable_pedagogique"
+            [ngClass]="{'field-touched': formationForm.get('responsable_pedagogique')?.touched && formationForm.get('responsable_pedagogique')?.invalid}"
+            class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+        <option value="" disabled selected>Sélectionner un responsable
+            pédagogique</option>
+        <option *ngFor="let person of people" [ngValue]="person">{{ person.name
+            }}</option>
+    </select>
+</div>

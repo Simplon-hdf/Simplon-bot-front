@@ -33,7 +33,9 @@ export class FormationsComponent {
       this.filteredFormations = this.formations;
     } else {
       this.filteredFormations = this.formations.filter((formation) =>
-        formation.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        formation.basicInfo.name
+          .toLowerCase()
+          .includes(this.searchTerm.toLowerCase())
       );
     }
   }
@@ -46,15 +48,15 @@ export class FormationsComponent {
     console.log('checking ...');
     const now = new Date();
     this.formations.forEach((formation) => {
-      const startDate = new Date(formation.start_date);
-      const endDate = new Date(formation.end_date);
+      const startDate = new Date(formation.basicInfo.start_date);
+      const endDate = new Date(formation.basicInfo.end_date);
 
       if (endDate < now) {
-        formation.status = 'terminé';
+        formation.basicInfo.status = 'terminé';
       } else if (startDate > now) {
-        formation.status = 'à venir';
+        formation.basicInfo.status = 'à venir';
       } else {
-        formation.status = 'en cours';
+        formation.basicInfo.status = 'en cours';
       }
     });
   }

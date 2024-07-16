@@ -1,5 +1,5 @@
 <h1 class="text-center text-2xl">Ajouter une Formation</h1>
-<div class="flex justify-center gap-5 mt-5">
+<form [formGroup]="formationForm" class="flex justify-center gap-5 mt-5">
     <div class="w-[250px] flex flex-col">
         <label for="name">Nom <span
                   class="text-color-red font-bold">*</span></label>
@@ -44,4 +44,4 @@
                [ngClass]="{'field-touched': formationForm.hasError('dateRange') }"
                formControlName="end_date" required>
     </div>
-</div>
+</form>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormGroupDirective,
@@ -15,12 +15,14 @@ import {
   styleUrl: './step-1.component.scss',
 })
 export class Step1Component implements OnInit {
+  @Input() formGroupName!: string;
+
   formationForm!: FormGroup;
 
   constructor(private rootFormGroup: FormGroupDirective) {}
   ngOnInit(): void {
     this.formationForm = this.rootFormGroup.control.get(
-      'basicInfo'
+      this.formGroupName
     ) as FormGroup;
   }
 }

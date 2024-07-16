@@ -1,9 +1,8 @@
-<p>form values : {{learnerForm.value|json}}</p>
-<p>form values : {{learnerForm.status|json}}</p>
 @if(isPopupVisible){
 <app-add-learners-popup (closePopup)="closePopup()" />
 }
-<div class="px-20 py-20 font-nunito" *ngIf="formation">
+
+<div class="px-8 py-8 font-nunito" *ngIf="formation">
     <div>
         <div class="flex items-center gap-5">
             <h1 class="text-5xl font-semibold">{{ formation.name }} à {{
@@ -16,7 +15,7 @@
         <h3 class="text-2xl font-medium mt-2">{{formation.start_date}} -
             {{formation.end_date}}</h3>
     </div>
-    <p class="mb-14">Type: {{ formation.type }}</p>
+    <p class="mb-8">Type: {{ formation.type }}</p>
     <div class="flex justify-between">
         <h2 class=" text-3xl">Staffs</h2>
 
@@ -30,22 +29,6 @@
         <app-staff-card [person]="formation.responsable_pedagogique" role="Responsable Pédagogique"></app-staff-card>
     </div>
     <h2 class=" text-4xl font-semibold mt-10">Apprenants</h2>
-    <h3>Ajouter un apprenant</h3>
-    <form [formGroup]="learnerForm" (ngSubmit)="addLearner()">
-        <label for="name">Nom:</label>
-        <input id="name" formControlName="name">
-        <div *ngIf="learnerForm.get('name')?.invalid && learnerForm.get('name')?.touched">
-            Le nom est requis. </div>
-        <label for="phoneNumber">Téléphone:</label>
-        <input id="phoneNumber" formControlName="phoneNumber">
-        <div *ngIf="learnerForm.get('phoneNumber')?.invalid && learnerForm.get('phoneNumber')?.touched">
-            Le numéro de téléphone est requis. </div>
-        <label for="email">Email:</label>
-        <input id="email" formControlName="email">
-        <div *ngIf="learnerForm.get('email')?.invalid && learnerForm.get('email')?.touched">
-            Une adresse email valide est requise. </div>
-        <button type="submit" [disabled]="learnerForm.invalid">Ajouter</button>
-    </form>
     <div class="flex flex-col mt-8 bg-color-white p-8 border border-color-disabled rounded-2xl font-nunito">
         <div class=" overflow-x-auto">
             <div class="min-w-full inline-block align-middle">

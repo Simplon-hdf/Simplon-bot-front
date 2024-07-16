@@ -124,8 +124,12 @@ export class AddFormationPopupComponent {
   }
 
   updateStatus() {
-    const startDate = new Date(this.formationForm.get('start_date')?.value);
-    const endDate = new Date(this.formationForm.get('end_date')?.value);
+    const startDate = new Date(
+      this.formationForm.get('basicInfo.start_date')?.value
+    );
+    const endDate = new Date(
+      this.formationForm.get('basicInfo.end_date')?.value
+    );
     const now = new Date();
 
     if (endDate < now) {

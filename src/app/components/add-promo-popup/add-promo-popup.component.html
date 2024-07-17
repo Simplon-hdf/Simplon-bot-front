@@ -16,7 +16,8 @@
             <div *ngIf="step === 2">
                 <app-step-2 formGroupName="staffs"></app-step-2>
             </div>
-            <app-stepper [step]="step"></app-stepper>
+            <app-active-step-display-bar
+                                         [step]="step"></app-active-step-display-bar>
             <div class="flex flex-col mt-5">
                 <div class="w-full flex justify-center gap-4 ">
                     <button *ngIf="step > 1" type="button"

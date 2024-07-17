@@ -11,7 +11,7 @@ import {
 import { NgFor, NgIf } from '@angular/common';
 import { PromoService } from '../../services/promo.service';
 import { PromosComponent } from '../promos/promos.component';
-import { StepperComponent } from '../stepper/stepper.component';
+import { ActiveStepDisplayBarComponent } from '../active-step-display-bar/active-step-display-bar.component';
 import { Step1Component } from '../popup-promo/step-1/step-1.component';
 import { Step2Component } from '../popup-promo/step-2/step-2.component';
 import { dateRangeValidator } from '../../validators/date-range.validator';
@@ -27,7 +27,7 @@ import { dateRangeValidator } from '../../validators/date-range.validator';
     NgIf,
     NgFor,
     PromosComponent,
-    StepperComponent,
+    ActiveStepDisplayBarComponent,
     CommonModule,
     Step1Component,
     Step2Component,

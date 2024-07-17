@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormationService } from '../../services/formation.service';
-import { FormationModel, LearnerModel } from '../../models/formation-model';
+import { FormationModel } from '../../models/formation-model';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { StaffCardComponent } from '../staff-card/staff-card.component';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-popup.component';
+import { LearnerModel } from '../../models/learner-model';
+import { LearnersTableComponent } from '../learners-table/learners-table.component';
 
 @Component({
   selector: 'app-formation-detail',
@@ -22,25 +19,48 @@ import {
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    AddLearnersPopupComponent,
+    LearnersTableComponent,
   ],
   templateUrl: './formation-detail.component.html',
   styleUrl: './formation-detail.component.scss',
 })
 export class FormationDetailComponent implements OnInit {
-  formation: FormationModel | undefined;
-  learnerForm: FormGroup;
+  private _isPopupVisible = false;
+  private _learners: LearnerModel[] = [];
+  private _formation: FormationModel | undefined;
+
+  //#region ACCESSORS
+
+  public get formation(): FormationModel | undefined {
+    return this._formation;
+  }
+
+  public set formation(value: FormationModel | undefined) {
+    this._formation = value;
+  }
+
+  public get isPopupVisible() {
+    return this._isPopupVisible;
+  }
+
+  public set isPopupVisible(value) {
+    this._isPopupVisible = value;
+  }
+
+  public get learners(): LearnerModel[] {
+    return this._learners;
+  }
+
+  public set learners(value: LearnerModel[]) {
+    this._learners = value;
+  }
+  //#endregion
 
   constructor(
     private route: ActivatedRoute,
-    private formationService: FormationService,
-    private fb: FormBuilder
-  ) {
-    this.learnerForm = this.fb.group({
-      name: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-    });
-  }
+    private formationService: FormationService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -49,14 +69,15 @@ export class FormationDetailComponent implements OnInit {
     });
   }
 
-  addLearner(): void {
-    if (this.learnerForm.valid) {
-      const newLearner: LearnerModel = this.learnerForm.value;
-      this.formationService.addLearnerToFormation(
-        this.formation!.id,
-        newLearner
-      );
-      this.learnerForm.reset();
-    }
+  addLearnerFromPopup(learners: LearnerModel[]): void {
+    this.learners = learners;
+  }
+
+  openPopup() {
+    this.isPopupVisible = true;
+  }
+
+  closePopup() {
+    this.isPopupVisible = false;
   }
 }

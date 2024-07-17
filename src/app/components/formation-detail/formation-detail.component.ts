@@ -71,8 +71,6 @@ export class FormationDetailComponent implements OnInit {
 
   addLearnerFromPopup(learners: LearnerModel[]): void {
     this.learners = learners;
-    console.log(learners);
-    console.log(this.learners);
   }
 
   openPopup() {

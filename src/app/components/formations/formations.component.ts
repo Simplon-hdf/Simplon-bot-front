@@ -45,7 +45,6 @@ export class FormationsComponent {
   }
 
   checkAndUpdateFormationStatus(): void {
-    console.log('checking ...');
     const now = new Date();
     this.formations.forEach((formation) => {
       const startDate = new Date(formation.basicInfo.start_date);
@@ -71,7 +70,6 @@ export class FormationsComponent {
 
   addFormation(formation: FormationModel) {
     this.formationService.addFormation(formation);
-    console.log(formation);
     this.closePopup();
   }
 }

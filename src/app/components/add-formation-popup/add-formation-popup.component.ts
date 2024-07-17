@@ -80,7 +80,6 @@ export class AddFormationPopupComponent {
 
   goToNextStep() {
     if (this.isCurrentStepValid()) {
-      console.log('Valid');
       this.step++;
     } else {
       this.markCurrentStepAsTouched();
@@ -91,7 +90,6 @@ export class AddFormationPopupComponent {
   private isCurrentStepValid(): boolean {
     const steps = ['basicInfo', 'staffs'];
     const currentStep = steps[this.step - 1];
-    console.log(this.formationForm.get(currentStep)!.valid);
     if (currentStep === 'basicInfo') {
       return (
         this.formationForm.get(currentStep)!.valid &&
@@ -105,7 +103,6 @@ export class AddFormationPopupComponent {
     const steps = ['basicInfo', 'staffs'];
     const currentStep = steps[this.step - 1];
     (this.formationForm.get(currentStep) as FormGroup).markAllAsTouched();
-    console.log('marked');
   }
 
   goToPreviousStep() {

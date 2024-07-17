@@ -27,7 +27,6 @@ export class Step2Component implements OnInit {
     private formationService: FormationService
   ) {
     this.people = this.formationService.getPeople();
-    console.log(this.formGroupName);
   }
   ngOnInit(): void {
     this.formationForm = this.rootFormGroup.control.get(

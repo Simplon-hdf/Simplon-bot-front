@@ -18,10 +18,8 @@
             }
             @if(!isAddingLearners && learners.length !== 0) {
             <app-learners-table [learners]="learners" />
-            <button (click)="onAddClick()"
-                class="self-center font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
-            <button (click)="onFinishClick()"
-                class="self-center mt-4 font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Terminer</button>
+            <button (click)="onAddClick()" class="btn-primary">Ajouter</button>
+            <button (click)="onFinishClick()" class="btn-primary mt-4">Terminer</button>
             }
         </div>
     </div>

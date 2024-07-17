@@ -1,5 +1,5 @@
 @if(isPopupVisible){
-<app-add-learners-popup (closePopup)="closePopup()" />
+<app-add-learners-popup (closePopup)="closePopup()" (finishClick)="addLearnerFromPopup($event)" />
 }
 
 <div class="px-8 py-8 font-nunito" *ngIf="formation">
@@ -74,12 +74,12 @@
                         </thead>
                         <tbody class="divide-y divide-gray-300 ">
                             <tr class="bg-white transition-all duration-500 hover:bg-color-red hover:bg-opacity-10 hover:cursor-pointer"
-                                *ngFor="let learner of formation.learners">
+                                *ngFor="let learner of learners">
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 ">
-                                    {{learner.name}} </td>
+                                    {{learner.firstName}} {{learner.lastName}} </td>
                                 <td class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    {{learner.email}} </td>
+                                    {{learner.mail}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 max-w-[200px]">
                                     {{learner.phoneNumber}} </td>

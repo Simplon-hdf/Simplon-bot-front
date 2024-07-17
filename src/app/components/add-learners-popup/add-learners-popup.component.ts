@@ -31,6 +31,7 @@ export class AddLearnersPopupComponent {
   ];
   private _isAddingLearners = false;
   @Output() closePopup = new EventEmitter<void>();
+  @Output() finishClick = new EventEmitter<LearnerModel[]>();
 
   //#region ACCESSORS
   public get isAddingLearners() {
@@ -66,12 +67,12 @@ export class AddLearnersPopupComponent {
   }
 
   public onFinishClick() {
-    //Not implemented yet
-    //This function will send an array of learners to the API and add them to the database
+    //This function should send an array of learners to the API and add them to the database
+    this.finishClick.emit(this.learners);
+    this.closePopup.emit();
   }
 
   public onAddedCsvFile(learnersFromCsv: LearnerModel[]) {
     this.learners = learnersFromCsv;
-    console.log("learners après avoir écouté l'event : " + this.learners);
   }
 }

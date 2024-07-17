@@ -49,7 +49,6 @@ export class AddLearnersPopupMenuComponent {
         });
         this.learners = this._mapper.csvToLearner(records);
         this.addCsvFile.emit(this.learners);
-        console.log(this.learners);
       };
     }
   }

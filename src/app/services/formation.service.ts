@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-import {
-  FormationModel,
-  LearnerModel,
-  PersonModel,
-} from '../models/formation-model';
+import { ILearner } from '../models/ILearner';
+import { IFormation } from '../models/IFormation';
+import { IPerson } from '../models/IPerson';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormationService {
-  private formations: FormationModel[] = [
+  private formations: IFormation[] = [
     {
       id: 0,
       name: 'Dev Inté P6',
@@ -51,7 +49,7 @@ export class FormationService {
       learners: [],
     },
   ];
-  private people: PersonModel[] = [
+  private people: IPerson[] = [
     { id: 1, name: 'Alice', profilePictureUrl: 'https://placehold.co/90' },
     { id: 2, name: 'Bob', profilePictureUrl: 'https://placehold.co/90' },
     { id: 3, name: 'Charlie', profilePictureUrl: 'https://placehold.co/90' },
@@ -60,19 +58,19 @@ export class FormationService {
     { id: 6, name: 'Rémi', profilePictureUrl: 'https://placehold.co/90' },
   ];
 
-  getFormations(): FormationModel[] {
+  getFormations(): IFormation[] {
     return this.formations;
   }
 
-  getFormationById(id: number): FormationModel | undefined {
+  getFormationById(id: number): IFormation | undefined {
     return this.formations.find((formation) => formation.id === id);
   }
 
-  addFormation(formation: FormationModel) {
+  addFormation(formation: IFormation) {
     this.formations.push({ ...formation, id: this.formations.length + 1 });
   }
 
-  addLearnerToFormation(formationId: number, learner: LearnerModel): void {
+  addLearnerToFormation(formationId: number, learner: ILearner): void {
     const formation = this.getFormationById(formationId);
     if (formation) {
       formation.learners.push(learner);
@@ -86,7 +84,7 @@ export class FormationService {
     }
   }
 
-  getPeople(): PersonModel[] {
+  getPeople(): IPerson[] {
     return this.people;
   }
 }

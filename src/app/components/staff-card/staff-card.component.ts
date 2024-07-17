@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { PersonModel } from '../../models/formation-model';
 import { NgIf } from '@angular/common';
+import { IPerson } from '../../models/IPerson';
 
 @Component({
   selector: 'app-staff-card',
@@ -10,6 +10,6 @@ import { NgIf } from '@angular/common';
   styleUrl: './staff-card.component.scss',
 })
 export class StaffCardComponent {
-  @Input() person: PersonModel | null = null;
+  @Input() person: IPerson | null = null;
   @Input() role = '';
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LearnerModel } from '../../../../models/learner-model';
+import { ILearner } from '../../../../models/ILearner';
 
 @Component({
   selector: 'app-add-learners-popup-form',
@@ -14,7 +14,7 @@ export class AddLearnersPopupFormComponent {
   private _lastName = '';
   private _mail = '';
   private _phoneNumber = '';
-  private _learner: LearnerModel = {
+  private _learner: ILearner = {
     id: undefined,
     firstName: '',
     lastName: '',
@@ -23,7 +23,7 @@ export class AddLearnersPopupFormComponent {
     formationId: undefined,
   };
 
-  @Output() formSubmitted = new EventEmitter<LearnerModel>();
+  @Output() formSubmitted = new EventEmitter<ILearner>();
 
   //#region accessors
   public get firstName(): string {
@@ -58,11 +58,11 @@ export class AddLearnersPopupFormComponent {
     this._phoneNumber = value;
   }
 
-  public get learner(): LearnerModel {
+  public get learner(): ILearner {
     return this._learner;
   }
 
-  public set learner(value: LearnerModel) {
+  public set learner(value: ILearner) {
     this._learner = value;
   }
   //#endregion

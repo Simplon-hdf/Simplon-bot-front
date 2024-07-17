@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { LearnerModel } from '../../models/learner-model';
+import { ILearner } from '../../models/ILearner';
 import { AddLearnersPopupFormComponent } from '../add-learners-popup/add-learners-popup-form/add-learners-popup-form/add-learners-popup-form.component';
 import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-popup.component';
 
@@ -11,19 +11,19 @@ import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-po
   styleUrl: './learners-table.component.scss',
 })
 export class LearnersTableComponent {
-  private _learners: LearnerModel[] = [];
+  private _learners: ILearner[] = [];
   @Output() editButtonClick = new EventEmitter<boolean>();
 
   @Input()
-  public get learners(): LearnerModel[] {
+  public get learners(): ILearner[] {
     return this._learners;
   }
 
-  public set learners(value: LearnerModel[]) {
+  public set learners(value: ILearner[]) {
     this._learners = value;
   }
 
-  public deleteLearner(learner: LearnerModel) {
+  public deleteLearner(learner: ILearner) {
     const learnerIndex = this.learners.indexOf(learner);
     this.learners.splice(learnerIndex, 1);
   }

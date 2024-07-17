@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormationService } from '../../services/formation.service';
-import { FormationModel } from '../../models/formation-model';
+import { IFormation } from '../../models/IFormation';
 import { Router } from '@angular/router';
 import { AddFormationPopupComponent } from '../add-formation-popup/add-formation-popup.component';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
@@ -14,8 +14,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './formations.component.scss',
 })
 export class FormationsComponent {
-  formations: FormationModel[] = [];
-  filteredFormations: FormationModel[] = [];
+  formations: IFormation[] = [];
+  filteredFormations: IFormation[] = [];
   searchTerm: string = '';
   isPopupVisible = false;
 
@@ -67,7 +67,7 @@ export class FormationsComponent {
     this.router.navigate(['/formations', id]);
   }
 
-  addFormation(formation: FormationModel) {
+  addFormation(formation: IFormation) {
     this.formationService.addFormation(formation);
     console.log(formation);
     this.closePopup();

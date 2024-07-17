@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormationModel, PersonModel } from '../../models/formation-model';
+import { IFormation } from '../../models/IFormation';
 import {
   FormBuilder,
   FormGroup,
@@ -13,6 +13,7 @@ import { FormationService } from '../../services/formation.service';
 import { FormationsComponent } from '../formations/formations.component';
 import { StepperComponent } from '../stepper/stepper.component';
 import { dateRangeValidator } from '../../date-range.validator';
+import { IPerson } from '../../models/IPerson';
 
 @Component({
   selector: 'app-add-formation-popup',
@@ -31,28 +32,28 @@ import { dateRangeValidator } from '../../date-range.validator';
 })
 export class AddFormationPopupComponent {
   @Output() closePopup = new EventEmitter<void>();
-  @Output() addFormation = new EventEmitter<FormationModel>();
+  @Output() addFormation = new EventEmitter<IFormation>();
 
   step = 1;
   maxSteps = 2;
   formationForm: FormGroup;
-  formation: FormationModel = {
+  formation: IFormation = {
     id: 0,
     name: '',
     status: '',
     type: '',
     place: '',
-    former_1: {} as PersonModel,
-    former_2: {} as PersonModel,
-    caps: {} as PersonModel,
+    former_1: {} as IPerson,
+    former_2: {} as IPerson,
+    caps: {} as IPerson,
     start_date: '',
     end_date: '',
-    charge_admin: {} as PersonModel,
-    responsable_campus: {} as PersonModel,
-    responsable_pedagogique: {} as PersonModel,
+    charge_admin: {} as IPerson,
+    responsable_campus: {} as IPerson,
+    responsable_pedagogique: {} as IPerson,
     learners: [],
   };
-  people: PersonModel[] = [];
+  people: IPerson[] = [];
 
   constructor(
     private formationService: FormationService,
@@ -156,14 +157,14 @@ export class AddFormationPopupComponent {
       status: '',
       type: '',
       place: '',
-      former_1: {} as PersonModel,
-      former_2: {} as PersonModel,
-      caps: {} as PersonModel,
+      former_1: {} as IPerson,
+      former_2: {} as IPerson,
+      caps: {} as IPerson,
       start_date: '',
       end_date: '',
-      charge_admin: {} as PersonModel,
-      responsable_campus: {} as PersonModel,
-      responsable_pedagogique: {} as PersonModel,
+      charge_admin: {} as IPerson,
+      responsable_campus: {} as IPerson,
+      responsable_pedagogique: {} as IPerson,
       learners: [],
     };
   }

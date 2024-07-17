@@ -17,7 +17,7 @@ export interface Staffs {
   pedagogical_manager: PersonModel;
 }
 
-export interface FormationModel {
+export interface PromoModel {
   id: number;
   basicInfo: BasicInfo;
   staffs: Staffs;

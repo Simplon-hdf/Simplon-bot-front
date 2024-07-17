@@ -5,9 +5,9 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { PersonModel } from '../../../models/formation-model';
+import { PersonModel } from '../../../models/promo-model';
 import { CommonModule, NgFor } from '@angular/common';
-import { FormationService } from '../../../services/formation.service';
+import { PromoService } from '../../../services/promo.service';
 
 @Component({
   selector: 'app-step-2',
@@ -19,17 +19,17 @@ import { FormationService } from '../../../services/formation.service';
 export class Step2Component implements OnInit {
   @Input() formGroupName!: string;
 
-  formationForm!: FormGroup;
+  promoForm!: FormGroup;
   people: PersonModel[] = [];
 
   constructor(
     private rootFormGroup: FormGroupDirective,
-    private formationService: FormationService
+    private promoService: PromoService
   ) {
-    this.people = this.formationService.getPeople();
+    this.people = this.promoService.getPeople();
   }
   ngOnInit(): void {
-    this.formationForm = this.rootFormGroup.control.get(
+    this.promoForm = this.rootFormGroup.control.get(
       this.formGroupName
     ) as FormGroup;
   }

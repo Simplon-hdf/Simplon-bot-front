@@ -1,56 +1,8 @@
-<div class="px-20 py-10 font-nunito" *ngIf="formation">
-    <div>
-        <div class="flex items-center gap-5">
-            <h1 class="text-5xl font-semibold">{{ formation.basicInfo.name }} à
-                {{ formation.basicInfo.place }}</h1>
-            <li class="bg-color-success bg-opacity-5 px-3 py-1 rounded-md text-color-success border-2 border-color-success font-semibold"
-                *ngIf="formation.basicInfo.status === 'en cours'"> En cours
-            </li>
-            <li class="bg-color-orange bg-opacity-5 px-3 py-1 rounded-md text-color-orange border-2 border-color-orange font-semibold"
-                *ngIf="formation.basicInfo.status === 'à venir'"> À venir </li>
-            <li class="bg-color-red bg-opacity-5 px-3 py-1 rounded-md text-color-red border-2 border-color-red font-semibold"
-                *ngIf="formation.basicInfo.status === 'terminé'"> Terminé </li>
-        </div>
-        <h3 class="text-2xl font-medium mt-2">{{formation.basicInfo.start_date|
-            date: 'dd/MM/yyyy'}} - {{formation.basicInfo.end_date| date:
-            'dd/MM/yyyy'}}</h3>
-    </div>
-    <p>Type: {{ formation.basicInfo.type }}</p>
-    <h2 class=" text-4xl font-semibold mt-10">Staffs</h2>
-    <div class="flex gap-2 mt-2">
-        <app-staff-card [person]="formation.staffs.former_1"
-                        role="Formateur 1"></app-staff-card>
-        <app-staff-card [person]="formation.staffs.former_2"
-                        role="Formateur 2"></app-staff-card>
-        <app-staff-card [person]="formation.staffs.caps"
-                        role="CAPS"></app-staff-card>
-        <app-staff-card [person]="formation.staffs.admin_head"
-                        role="Charge Admin"></app-staff-card>
-        <app-staff-card [person]="formation.staffs.campus_manager"
-                        role="Responsable Campus"></app-staff-card>
-        <app-staff-card [person]="formation.staffs.pedagogical_manager"
-                        role="Responsable Pédagogique"></app-staff-card>
-    </div>
-    <h2 class=" text-4xl font-semibold mt-10">Apprenants</h2>
-    <h3>Ajouter un apprenant</h3>
-    <form [formGroup]="learnerForm" (ngSubmit)="addLearner()">
-        <label for="name">Nom:</label>
-        <input id="name" formControlName="name">
-        <div
-             *ngIf="learnerForm.get('name')?.invalid && learnerForm.get('name')?.touched">
-            Le nom est requis. </div>
-        <label for="phone_number">Téléphone:</label>
-        <input id="phone_number" formControlName="phone_number">
-        <div
-             *ngIf="learnerForm.get('phone_number')?.invalid && learnerForm.get('phone_number')?.touched">
-            Le numéro de téléphone est requis. </div>
-        <label for="email">Email:</label>
-        <input id="email" formControlName="email">
-        <div
-             *ngIf="learnerForm.get('email')?.invalid && learnerForm.get('email')?.touched">
-            Une adresse email valide est requise. </div>
-        <button type="submit" [disabled]="learnerForm.invalid">Ajouter</button>
-    </form>
+<app-add-promo-popup *ngIf="isPopupVisible" (closePopup)="closePopup()"
+                     (addPromo)="addPromo($event)">
+</app-add-promo-popup>
+<section class="w-[1000px] mx-auto">
+    <h1 class="font-nunito text-4xl font-semibold mt-20">Promos</h1>
     <div
          class="flex flex-col mt-8 bg-color-white p-8 border border-color-disabled rounded-2xl font-nunito">
         <div class=" overflow-x-auto">
@@ -75,13 +27,12 @@
                             </svg>
                         </div>
                         <input type="text" id="default-search"
+                               [(ngModel)]="searchTerm" (input)="filterPromos()"
                                class="block pr-5 pl-12 w-80 py-1 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-color-disabled rounded-full placeholder-gray-400 focus:outline-none"
-                               placeholder="Rechercher un apprenant">
+                               placeholder="Rechercher une promo">
                     </div>
-                    <p class="font-nunito font-bold text-xl">{{
-                        formation.basicInfo.learners.length }} Apprenants</p>
-                    <button
-                            class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
+                    <button class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light"
+                            (click)="openPopup()">Ajouter</button>
                 </div>
                 <div class="overflow-y-scroll max-h-[60vh] ">
                     <table class=" min-w-full rounded-xl">
@@ -92,27 +43,48 @@
                                     Nom </th>
                                 <th scope="col"
                                     class="p-4 text-left text-nowrap text-sm leading-6 text-gray-900 capitalize">
-                                    Email </th>
+                                    Lieu </th>
                                 <th scope="col"
                                     class="p-4 text-left text-nowrap text-sm leading-6 text-gray-900 capitalize">
-                                    Télephone </th>
+                                    Caps </th>
                                 <th scope="col"
                                     class="p-4 text-left text-nowrap text-sm leading-6 text-gray-900 capitalize">
+                                    Date de début </th>
+                                <th scope="col"
+                                    class="p-4 text-left text-nowrap text-sm leading-6 text-gray-900 capitalize ">
+                                    Date de fin </th>
+                                <th scope="col"
+                                    class="p-4 text-left text-nowrap text-sm leading-6 text-gray-900 capitalize ">
+                                    Status </th>
+                                <th scope="col"
+                                    class="p-4 text-left text-nowraptext-sm leading-6 text-gray-900 capitalize">
                                     Actions </th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-300 ">
                             <tr class="bg-white transition-all duration-500 hover:bg-color-red hover:bg-opacity-10 hover:cursor-pointer"
-                                *ngFor="let learner of formation.basicInfo.learners">
+                                *ngFor="let promo of filteredPromos"
+                                (click)="navigateToPromoDetail(promo.id)">
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 ">
-                                    {{learner.name}} </td>
+                                    {{promo.basicInfo.name}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    {{learner.email}} </td>
+                                    {{promo.basicInfo.place}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 max-w-[200px]">
-                                    {{learner.phone_number}} </td>
+                                    {{promo.staffs.caps.name}} </td>
+                                <td
+                                    class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
+                                    {{promo.basicInfo.start_date | date:
+                                    'dd/MM/yyyy'}} </td>
+                                <td
+                                    class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
+                                    {{promo.basicInfo.end_date | date:
+                                    'dd/MM/yyyy'}} </td>
+                                <td
+                                    class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
+                                    {{promo.basicInfo.status}} </td>
                                 <td class=" p-4 ">
                                     <div class="flex items-center gap-1">
                                         <button
@@ -158,6 +130,4 @@
             </div>
         </div>
     </div>
-    <div *ngIf="!formation">
-        <p>Formation not found.</p>
-    </div>
+</section>

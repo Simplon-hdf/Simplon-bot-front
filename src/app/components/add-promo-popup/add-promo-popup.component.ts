@@ -1,11 +1,6 @@
-import {
-  Component,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormationModel, PersonModel } from '../../models/formation-model';
+import { PromoModel, PersonModel } from '../../models/promo-model';
 import {
   FormBuilder,
   FormGroup,
@@ -14,45 +9,45 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
-import { FormationService } from '../../services/formation.service';
-import { FormationsComponent } from '../formations/formations.component';
+import { PromoService } from '../../services/promo.service';
+import { PromosComponent } from '../promos/promos.component';
 import { StepperComponent } from '../stepper/stepper.component';
 import { Step1Component } from '../popup-promo/step-1/step-1.component';
 import { Step2Component } from '../popup-promo/step-2/step-2.component';
 import { dateRangeValidator } from '../../validators/date-range.validator';
 
 @Component({
-  selector: 'app-add-formation-popup',
-  templateUrl: './add-formation-popup.component.html',
-  styleUrls: ['./add-formation-popup.component.scss'],
+  selector: 'app-add-promo-popup',
+  templateUrl: './add-promo-popup.component.html',
+  styleUrls: ['./add-promo-popup.component.scss'],
   standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,
     NgIf,
     NgFor,
-    FormationsComponent,
+    PromosComponent,
     StepperComponent,
     CommonModule,
     Step1Component,
     Step2Component,
   ],
 })
-export class AddFormationPopupComponent {
+export class AddPromoPopupComponent {
   @Output() closePopup = new EventEmitter<void>();
-  @Output() addFormation = new EventEmitter<FormationModel>();
+  @Output() addPromo = new EventEmitter<PromoModel>();
 
   step = 1;
   maxSteps = 2;
-  formationForm: FormGroup;
+  promoForm: FormGroup;
   people: PersonModel[] = [];
 
   constructor(
-    private formationService: FormationService,
+    private promoService: PromoService,
     private fb: FormBuilder
   ) {
-    this.people = this.formationService.getPeople();
-    this.formationForm = this.fb.group(
+    this.people = this.promoService.getPeople();
+    this.promoForm = this.fb.group(
       {
         basicInfo: this.fb.group({
           name: [
@@ -97,27 +92,27 @@ export class AddFormationPopupComponent {
     const currentStep = steps[this.step - 1];
     if (currentStep === 'basicInfo') {
       return (
-        this.formationForm.get(currentStep)!.valid &&
-        !this.formationForm.hasError('dateRange')
+        this.promoForm.get(currentStep)!.valid &&
+        !this.promoForm.hasError('dateRange')
       );
     }
-    return this.formationForm.get(currentStep)!.valid;
+    return this.promoForm.get(currentStep)!.valid;
   }
 
   private markCurrentStepAsTouched() {
     const steps = ['basicInfo', 'staffs'];
     const currentStep = steps[this.step - 1];
-    (this.formationForm.get(currentStep) as FormGroup).markAllAsTouched();
+    (this.promoForm.get(currentStep) as FormGroup).markAllAsTouched();
   }
 
   goToPreviousStep() {
     this.step--;
   }
 
-  submitFormation() {
-    if (this.formationForm.valid) {
+  submitPromo() {
+    if (this.promoForm.valid) {
       this.updateStatus();
-      this.addFormation.emit(this.formationForm.value);
+      this.addPromo.emit(this.promoForm.value);
       this.closePopup.emit();
       this.resetForm();
     } else {
@@ -127,28 +122,26 @@ export class AddFormationPopupComponent {
 
   updateStatus() {
     const startDate = new Date(
-      this.formationForm.get('basicInfo.start_date')?.value
+      this.promoForm.get('basicInfo.start_date')?.value
     );
-    const endDate = new Date(
-      this.formationForm.get('basicInfo.end_date')?.value
-    );
+    const endDate = new Date(this.promoForm.get('basicInfo.end_date')?.value);
     const now = new Date();
 
     if (endDate < now) {
-      this.formationForm.get('basicInfo.status')?.setValue('terminé');
+      this.promoForm.get('basicInfo.status')?.setValue('terminé');
     } else if (startDate > now) {
-      this.formationForm.get('basicInfo.status')?.setValue('à venir');
+      this.promoForm.get('basicInfo.status')?.setValue('à venir');
     } else {
-      this.formationForm.get('basicInfo.status')?.setValue('en cours');
+      this.promoForm.get('basicInfo.status')?.setValue('en cours');
     }
   }
 
   resetForm() {
     this.step = 1;
-    this.formationForm.reset();
+    this.promoForm.reset();
   }
 
   private markAllAsTouched() {
-    this.formationForm.markAllAsTouched();
+    this.promoForm.markAllAsTouched();
   }
 }

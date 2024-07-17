@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
-import {
-  FormationModel,
-  LearnerModel,
-  PersonModel,
-} from '../models/formation-model';
+import { PromoModel, LearnerModel, PersonModel } from '../models/promo-model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FormationService {
-  private formations: FormationModel[] = [
+export class PromoService {
+  private promos: PromoModel[] = [
     {
       id: 1,
       basicInfo: {
-        name: 'Formation Angular',
+        name: 'Promo Angular',
         status: 'En cours',
         type: 'Développement web',
         place: 'Paris',
@@ -64,29 +60,29 @@ export class FormationService {
     { id: 6, name: 'Rémi', profile_picture_url: 'https://placehold.co/90' },
   ];
 
-  getFormations(): FormationModel[] {
-    return this.formations;
+  getPromos(): PromoModel[] {
+    return this.promos;
   }
 
-  getFormationById(id: number): FormationModel | undefined {
-    return this.formations.find((formation) => formation.id === id);
+  getPromoById(id: number): PromoModel | undefined {
+    return this.promos.find((promo) => promo.id === id);
   }
 
-  addFormation(formation: FormationModel) {
-    this.formations.push({ ...formation, id: this.formations.length + 1 });
+  addPromo(promo: PromoModel) {
+    this.promos.push({ ...promo, id: this.promos.length + 1 });
   }
 
-  addLearnerToFormation(formationId: number, learner: LearnerModel): void {
-    const formation = this.getFormationById(formationId);
-    if (formation) {
-      formation.basicInfo.learners.push(learner);
+  addLearnerToPromo(promoId: number, learner: LearnerModel): void {
+    const promo = this.getPromoById(promoId);
+    if (promo) {
+      promo.basicInfo.learners.push(learner);
     }
   }
 
-  updateFormationStatus(id: number, status: string): void {
-    const formation = this.formations.find((f) => f.id === id);
-    if (formation) {
-      formation.basicInfo.status = status;
+  updatePromoStatus(id: number, status: string): void {
+    const promo = this.promos.find((f) => f.id === id);
+    if (promo) {
+      promo.basicInfo.status = status;
     }
   }
 

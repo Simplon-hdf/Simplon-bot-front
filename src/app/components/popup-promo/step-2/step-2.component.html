@@ -1,10 +1,10 @@
 <h1 class="text-center text-2xl">Ajouter des Staffs</h1>
-<form [formGroup]="formationForm" class="flex justify-center gap-5 mt-5">
-    <div [formGroup]="formationForm" class="flex flex-col w-[250px]">
+<form [formGroup]="promoForm" class="flex justify-center gap-5 mt-5">
+    <div [formGroup]="promoForm" class="flex flex-col w-[250px]">
         <label for="former_1">Formateur 1 <span
                   class="text-color-red font-bold">*</span></label>
         <select id="former_1" name="former_1" formControlName="former_1"
-                [ngClass]="{'field-touched': formationForm.get('former_1')?.touched && formationForm.get('former_1')?.invalid}"
+                [ngClass]="{'field-touched': promoForm.get('former_1')?.touched && promoForm.get('former_1')?.invalid}"
                 class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
             <option value="" disabled selected>Sélectionner un formateur
             </option>
@@ -14,7 +14,7 @@
         <label class="mt-8" for="former_2">Formateur 2 <span
                   class="text-color-red font-bold">*</span></label>
         <select id="former_2" name="former_2"
-                [ngClass]="{'field-touched': formationForm.get('former_2')?.touched && formationForm.get('former_2')?.invalid}"
+                [ngClass]="{'field-touched': promoForm.get('former_2')?.touched && promoForm.get('former_2')?.invalid}"
                 formControlName="former_2"
                 class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
             <option value="" disabled selected>Sélectionner un formateur
@@ -27,7 +27,7 @@
         <select id="caps"
                 class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
                 name="caps" formControlName="caps"
-                [ngClass]="{'field-touched': formationForm.get('caps')?.touched && formationForm.get('caps')?.invalid}">
+                [ngClass]="{'field-touched': promoForm.get('caps')?.touched && promoForm.get('caps')?.invalid}">
             <option value="" disabled selected>Sélectionner un CAPS </option>
             <option *ngFor="let person of people" [ngValue]="person">{{
                 person.name }}</option>
@@ -39,7 +39,7 @@
         <select id="admin"
                 class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
                 name="admin" formControlName="admin_head"
-                [ngClass]="{'field-touched': formationForm.get('admin_head')?.touched && formationForm.get('admin_head')?.invalid}">
+                [ngClass]="{'field-touched': promoForm.get('admin_head')?.touched && promoForm.get('admin_head')?.invalid}">
             <option value="" disabled selected>Sélectionner un chargé(e) d'admin
             </option>
             <option *ngFor="let person of people" [ngValue]="person">{{
@@ -49,7 +49,7 @@
                   class="text-color-red font-bold">*</span></label>
         <select id="campus_manager" name="campus_manager"
                 formControlName="campus_manager"
-                [ngClass]="{'field-touched': formationForm.get('campus_manager')?.touched && formationForm.get('campus_manager')?.invalid}"
+                [ngClass]="{'field-touched': promoForm.get('campus_manager')?.touched && promoForm.get('campus_manager')?.invalid}"
                 class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
             <option value="" disabled selected>Sélectionner un responsable
                 campus </option>
@@ -61,7 +61,7 @@
         </label>
         <select id="pedagogical_manager" name="pedagogical_manager"
                 formControlName="pedagogical_manager"
-                [ngClass]="{'field-touched': formationForm.get('pedagogical_manager')?.touched && formationForm.get('pedagogical_manager')?.invalid}"
+                [ngClass]="{'field-touched': promoForm.get('pedagogical_manager')?.touched && promoForm.get('pedagogical_manager')?.invalid}"
                 class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
             <option value="" disabled selected>Sélectionner un responsable
                 pédagogique</option>

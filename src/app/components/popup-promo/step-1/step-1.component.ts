@@ -17,11 +17,11 @@ import {
 export class Step1Component implements OnInit {
   @Input() formGroupName!: string;
 
-  formationForm!: FormGroup;
+  promoForm!: FormGroup;
 
   constructor(private rootFormGroup: FormGroupDirective) {}
   ngOnInit(): void {
-    this.formationForm = this.rootFormGroup.control.get(
+    this.promoForm = this.rootFormGroup.control.get(
       this.formGroupName
     ) as FormGroup;
   }

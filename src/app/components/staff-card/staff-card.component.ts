@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PersonModel } from '../../models/formation-model';
+import { PersonModel } from '../../models/promo-model';
 import { NgIf } from '@angular/common';
 
 @Component({

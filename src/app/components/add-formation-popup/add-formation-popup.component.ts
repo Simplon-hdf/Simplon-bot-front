@@ -1,4 +1,9 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormationModel, PersonModel } from '../../models/formation-model';
 import {
@@ -44,7 +49,8 @@ export class AddFormationPopupComponent {
 
   constructor(
     private formationService: FormationService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef
   ) {
     this.people = this.formationService.getPeople();
     this.formationForm = this.fb.group(

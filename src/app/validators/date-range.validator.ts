@@ -11,6 +11,7 @@ export function dateRangeValidator(): ValidatorFn {
 
     const start = new Date(startDate);
     const end = new Date(endDate);
+    console.log(start <= end ? null : { dateRange: true });
     return start <= end ? null : { dateRange: true };
   };
 }

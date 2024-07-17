@@ -24,6 +24,5 @@ export class Step1Component implements OnInit {
     this.formationForm = this.rootFormGroup.control.get(
       this.formGroupName
     ) as FormGroup;
-    console.log(this.formationForm.hasError('dateRange'));
   }
 }

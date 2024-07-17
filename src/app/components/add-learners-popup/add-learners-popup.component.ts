@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 // import { parse } from '../../../../node_modules/csv-parse/dist/esm/sync';
-import { ILearner } from '../../models/ILearner';
+import { ILearner } from '../../Interfaces/ILearner';
 import { MapperService } from '../../services/mapper.service';
 import { AddLearnersPopupFormComponent } from './add-learners-popup-form/add-learners-popup-form/add-learners-popup-form.component';
 import { AddLearnersPopupMenuComponent } from './add-learners-popup-menu/add-learners-popup-menu.component';

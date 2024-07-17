@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ILearner } from '../../../../models/ILearner';
+import { ILearner } from '../../../../Interfaces/ILearner';
 
 @Component({
   selector: 'app-add-learners-popup-form',

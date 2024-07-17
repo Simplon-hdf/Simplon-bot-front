@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ILearner } from '../models/ILearner';
-import { IFormation } from '../models/IFormation';
-import { IPerson } from '../models/IPerson';
+import { ILearner } from '../Interfaces/ILearner';
+import { IFormation } from '../Interfaces/IFormation';
+import { IPerson } from '../Interfaces/IPerson';
 
 @Injectable({
   providedIn: 'root',

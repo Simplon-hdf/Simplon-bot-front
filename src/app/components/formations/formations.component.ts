@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormationService } from '../../services/formation.service';
-import { IFormation } from '../../models/IFormation';
+import { IFormation } from '../../Interfaces/IFormation';
 import { Router } from '@angular/router';
 import { AddFormationPopupComponent } from '../add-formation-popup/add-formation-popup.component';
 import { CommonModule, NgFor, NgIf } from '@angular/common';

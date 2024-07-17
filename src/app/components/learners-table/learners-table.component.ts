@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ILearner } from '../../models/ILearner';
+import { ILearner } from '../../Interfaces/ILearner';
 import { AddLearnersPopupFormComponent } from '../add-learners-popup/add-learners-popup-form/add-learners-popup-form/add-learners-popup-form.component';
 import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-popup.component';
 

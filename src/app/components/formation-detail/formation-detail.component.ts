@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormationService } from '../../services/formation.service';
-import { IFormation } from '../../models/IFormation';
+import { IFormation } from '../../Interfaces/IFormation';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { StaffCardComponent } from '../staff-card/staff-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-popup.component';
-import { ILearner } from '../../models/ILearner';
+import { ILearner } from '../../Interfaces/ILearner';
 import { LearnersTableComponent } from '../learners-table/learners-table.component';
 
 @Component({

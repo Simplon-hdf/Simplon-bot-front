@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ICsv } from '../models/ICsv';
-import { ILearner } from '../models/ILearner';
+import { ICsv } from '../Interfaces/ICsv';
+import { ILearner } from '../Interfaces/ILearner';
 
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { MapperService } from '../../../services/mapper.service';
-import { ILearner } from '../../../models/ILearner';
-import { ICsv } from '../../../models/ICsv';
+import { ILearner } from '../../../Interfaces/ILearner';
+import { ICsv } from '../../../Interfaces/ICsv';
 import { parse } from 'csv-parse/browser/esm/sync';
 
 @Component({

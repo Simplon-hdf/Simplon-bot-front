@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IFormation } from '../../models/IFormation';
+import { IFormation } from '../../Interfaces/IFormation';
 import {
   FormBuilder,
   FormGroup,
@@ -13,7 +13,7 @@ import { FormationService } from '../../services/formation.service';
 import { FormationsComponent } from '../formations/formations.component';
 import { StepperComponent } from '../stepper/stepper.component';
 import { dateRangeValidator } from '../../date-range.validator';
-import { IPerson } from '../../models/IPerson';
+import { IPerson } from '../../Interfaces/IPerson';
 
 @Component({
   selector: 'app-add-formation-popup',

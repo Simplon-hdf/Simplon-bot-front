@@ -12,9 +12,9 @@ export interface Staffs {
   caps: PersonModel;
   former_1: PersonModel;
   former_2: PersonModel;
-  charge_admin: PersonModel;
-  responsable_campus: PersonModel;
-  responsable_pedagogique: PersonModel;
+  admin_head: PersonModel;
+  campus_manager: PersonModel;
+  pedagogical_manager: PersonModel;
 }
 
 export interface FormationModel {
@@ -26,12 +26,12 @@ export interface FormationModel {
 export interface LearnerModel {
   id: number;
   name: string;
-  phoneNumber: string;
+  phone_number: string;
   email: string;
 }
 
 export interface PersonModel {
   id: number;
   name: string;
-  profilePictureUrl: string;
+  profile_picture_url: string;
 }

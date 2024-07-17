@@ -24,11 +24,11 @@
                         role="Formateur 2"></app-staff-card>
         <app-staff-card [person]="formation.staffs.caps"
                         role="CAPS"></app-staff-card>
-        <app-staff-card [person]="formation.staffs.charge_admin"
+        <app-staff-card [person]="formation.staffs.admin_head"
                         role="Charge Admin"></app-staff-card>
-        <app-staff-card [person]="formation.staffs.responsable_campus"
+        <app-staff-card [person]="formation.staffs.campus_manager"
                         role="Responsable Campus"></app-staff-card>
-        <app-staff-card [person]="formation.staffs.responsable_pedagogique"
+        <app-staff-card [person]="formation.staffs.pedagogical_manager"
                         role="Responsable Pédagogique"></app-staff-card>
     </div>
     <h2 class=" text-4xl font-semibold mt-10">Apprenants</h2>
@@ -39,10 +39,10 @@
         <div
              *ngIf="learnerForm.get('name')?.invalid && learnerForm.get('name')?.touched">
             Le nom est requis. </div>
-        <label for="phoneNumber">Téléphone:</label>
-        <input id="phoneNumber" formControlName="phoneNumber">
+        <label for="phone_number">Téléphone:</label>
+        <input id="phone_number" formControlName="phone_number">
         <div
-             *ngIf="learnerForm.get('phoneNumber')?.invalid && learnerForm.get('phoneNumber')?.touched">
+             *ngIf="learnerForm.get('phone_number')?.invalid && learnerForm.get('phone_number')?.touched">
             Le numéro de téléphone est requis. </div>
         <label for="email">Email:</label>
         <input id="email" formControlName="email">
@@ -112,7 +112,7 @@
                                     {{learner.email}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 max-w-[200px]">
-                                    {{learner.phoneNumber}} </td>
+                                    {{learner.phone_number}} </td>
                                 <td class=" p-4 ">
                                     <div class="flex items-center gap-1">
                                         <button

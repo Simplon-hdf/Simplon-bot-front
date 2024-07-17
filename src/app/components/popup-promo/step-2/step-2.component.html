@@ -38,30 +38,30 @@
                   class="text-color-red font-bold">*</span></label>
         <select id="admin"
                 class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                name="admin" formControlName="charge_admin"
-                [ngClass]="{'field-touched': formationForm.get('charge_admin')?.touched && formationForm.get('charge_admin')?.invalid}">
+                name="admin" formControlName="admin_head"
+                [ngClass]="{'field-touched': formationForm.get('admin_head')?.touched && formationForm.get('admin_head')?.invalid}">
             <option value="" disabled selected>Sélectionner un chargé(e) d'admin
             </option>
             <option *ngFor="let person of people" [ngValue]="person">{{
                 person.name }}</option>
         </select>
-        <label class="mt-8" for="responsable_campus">Responsable Campus <span
+        <label class="mt-8" for="campus_manager">Responsable Campus <span
                   class="text-color-red font-bold">*</span></label>
-        <select id="responsable_campus" name="responsable_campus"
-                formControlName="responsable_campus"
-                [ngClass]="{'field-touched': formationForm.get('responsable_campus')?.touched && formationForm.get('responsable_campus')?.invalid}"
+        <select id="campus_manager" name="campus_manager"
+                formControlName="campus_manager"
+                [ngClass]="{'field-touched': formationForm.get('campus_manager')?.touched && formationForm.get('campus_manager')?.invalid}"
                 class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
             <option value="" disabled selected>Sélectionner un responsable
                 campus </option>
             <option *ngFor="let person of people" [ngValue]="person">{{
                 person.name }}</option>
         </select>
-        <label class="mt-8" for="responsable_pedagogique">Responsable
-            Pédagogique <span class="text-color-red font-bold">*</span>
+        <label class="mt-8" for="pedagogical_manager">Responsable Pédagogique
+            <span class="text-color-red font-bold">*</span>
         </label>
-        <select id="responsable_pedagogique" name="responsable_pedagogique"
-                formControlName="responsable_pedagogique"
-                [ngClass]="{'field-touched': formationForm.get('responsable_pedagogique')?.touched && formationForm.get('responsable_pedagogique')?.invalid}"
+        <select id="pedagogical_manager" name="pedagogical_manager"
+                formControlName="pedagogical_manager"
+                [ngClass]="{'field-touched': formationForm.get('pedagogical_manager')?.touched && formationForm.get('pedagogical_manager')?.invalid}"
                 class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
             <option value="" disabled selected>Sélectionner un responsable
                 pédagogique</option>

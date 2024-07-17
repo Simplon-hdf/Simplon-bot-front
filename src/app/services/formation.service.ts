@@ -25,43 +25,43 @@ export class FormationService {
         former_1: {
           id: 1,
           name: 'Jean Dupont',
-          profilePictureUrl: 'assets/images/jean-dupont.jpg',
+          profile_picture_url: 'assets/images/jean-dupont.jpg',
         },
         former_2: {
           id: 2,
           name: 'Marie Leclerc',
-          profilePictureUrl: 'assets/images/marie-leclerc.jpg',
+          profile_picture_url: 'assets/images/marie-leclerc.jpg',
         },
         caps: {
           id: 3,
           name: 'Paul Martin',
-          profilePictureUrl: 'assets/images/paul-martin.jpg',
+          profile_picture_url: 'assets/images/paul-martin.jpg',
         },
-        charge_admin: {
+        admin_head: {
           id: 4,
           name: 'Alice Bertrand',
-          profilePictureUrl: 'assets/images/alice-bertrand.jpg',
+          profile_picture_url: 'assets/images/alice-bertrand.jpg',
         },
-        responsable_campus: {
+        campus_manager: {
           id: 5,
           name: 'Lucie Durand',
-          profilePictureUrl: 'assets/images/lucie-durand.jpg',
+          profile_picture_url: 'assets/images/lucie-durand.jpg',
         },
-        responsable_pedagogique: {
+        pedagogical_manager: {
           id: 6,
           name: 'Michel Dubois',
-          profilePictureUrl: 'assets/images/michel-dubois.jpg',
+          profile_picture_url: 'assets/images/michel-dubois.jpg',
         },
       },
     },
   ];
   private people: PersonModel[] = [
-    { id: 1, name: 'Alice', profilePictureUrl: 'https://placehold.co/90' },
-    { id: 2, name: 'Bob', profilePictureUrl: 'https://placehold.co/90' },
-    { id: 3, name: 'Charlie', profilePictureUrl: 'https://placehold.co/90' },
-    { id: 4, name: 'Claire', profilePictureUrl: 'https://placehold.co/90' },
-    { id: 5, name: 'Jean', profilePictureUrl: 'https://placehold.co/90' },
-    { id: 6, name: 'Rémi', profilePictureUrl: 'https://placehold.co/90' },
+    { id: 1, name: 'Alice', profile_picture_url: 'https://placehold.co/90' },
+    { id: 2, name: 'Bob', profile_picture_url: 'https://placehold.co/90' },
+    { id: 3, name: 'Charlie', profile_picture_url: 'https://placehold.co/90' },
+    { id: 4, name: 'Claire', profile_picture_url: 'https://placehold.co/90' },
+    { id: 5, name: 'Jean', profile_picture_url: 'https://placehold.co/90' },
+    { id: 6, name: 'Rémi', profile_picture_url: 'https://placehold.co/90' },
   ];
 
   getFormations(): FormationModel[] {

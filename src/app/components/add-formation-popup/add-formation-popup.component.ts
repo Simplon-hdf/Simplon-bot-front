@@ -49,8 +49,7 @@ export class AddFormationPopupComponent {
 
   constructor(
     private formationService: FormationService,
-    private fb: FormBuilder,
-    private cdr: ChangeDetectorRef
+    private fb: FormBuilder
   ) {
     this.people = this.formationService.getPeople();
     this.formationForm = this.fb.group(
@@ -74,9 +73,9 @@ export class AddFormationPopupComponent {
           caps: [null, Validators.required],
           former_1: [null, Validators.required],
           former_2: [null, Validators.required],
-          charge_admin: [null, Validators.required],
-          responsable_campus: [null, Validators.required],
-          responsable_pedagogique: [null, Validators.required],
+          admin_head: [null, Validators.required],
+          campus_manager: [null, Validators.required],
+          pedagogical_manager: [null, Validators.required],
         }),
       },
       { validators: dateRangeValidator() }

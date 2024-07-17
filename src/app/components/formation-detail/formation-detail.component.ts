@@ -37,7 +37,7 @@ export class FormationDetailComponent implements OnInit {
   ) {
     this.learnerForm = this.fb.group({
       name: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
+      phone_number: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
   }

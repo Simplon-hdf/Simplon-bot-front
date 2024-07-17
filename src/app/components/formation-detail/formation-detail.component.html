@@ -55,7 +55,9 @@
                         class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
                 </div>
                 <div class="overflow-y-scroll max-h-[60vh] ">
-                    <table class=" min-w-full rounded-xl">
+                    <app-learners-table [learners]="learners" />
+                    <!--#region TABLE -->
+                    <!-- <table class=" min-w-full rounded-xl">
                         <thead>
                             <tr class="bg-color-select rounded-md sticky top-0">
                                 <th scope="col"
@@ -117,7 +119,8 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
+                    <!--#endregion -->
                 </div>
             </div>
         </div>

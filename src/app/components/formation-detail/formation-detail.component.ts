@@ -7,6 +7,7 @@ import { StaffCardComponent } from '../staff-card/staff-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-popup.component';
 import { LearnerModel } from '../../models/learner-model';
+import { LearnersTableComponent } from '../learners-table/learners-table.component';
 
 @Component({
   selector: 'app-formation-detail',
@@ -19,6 +20,7 @@ import { LearnerModel } from '../../models/learner-model';
     ReactiveFormsModule,
     CommonModule,
     AddLearnersPopupComponent,
+    LearnersTableComponent,
   ],
   templateUrl: './formation-detail.component.html',
   styleUrl: './formation-detail.component.scss',

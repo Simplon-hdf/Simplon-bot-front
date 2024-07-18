@@ -5,9 +5,10 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { PersonModel } from '../../../models/promo-model';
+
 import { CommonModule, NgFor } from '@angular/common';
 import { PromoService } from '../../../services/promo.service';
+import { PersonModel } from '../../../models/person-model';
 
 @Component({
   selector: 'app-step-2',

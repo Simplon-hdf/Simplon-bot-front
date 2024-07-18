@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PromoService } from '../../services/promo.service';
-import { PromoModel, LearnerModel } from '../../models/promo-model';
+import { PromoModel } from '../../models/promo-model';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { StaffCardComponent } from '../staff-card/staff-card.component';
 import {
@@ -11,6 +11,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { LearnerModel } from '../../models/learner-model';
 
 @Component({
   selector: 'app-promo-detail',

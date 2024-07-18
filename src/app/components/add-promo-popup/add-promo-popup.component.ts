@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PromoModel, PersonModel } from '../../models/promo-model';
+import { PromoModel } from '../../models/promo-model';
 import {
   FormBuilder,
   FormGroup,
@@ -15,6 +15,7 @@ import { ActiveStepDisplayBarComponent } from '../active-step-display-bar/active
 import { Step1Component } from '../popup-promo/step-1/step-1.component';
 import { Step2Component } from '../popup-promo/step-2/step-2.component';
 import { dateRangeValidator } from '../../validators/date-range.validator';
+import { PersonModel } from '../../models/person-model';
 
 @Component({
   selector: 'app-add-promo-popup',

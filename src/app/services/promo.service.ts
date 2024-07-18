@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { PromoModel, LearnerModel, PersonModel } from '../models/promo-model';
+import { PromoModel } from '../models/promo-model';
+import { PersonModel } from '../models/person-model';
+import { LearnerModel } from '../models/learner-model';
 
 @Injectable({
   providedIn: 'root',

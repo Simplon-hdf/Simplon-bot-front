@@ -76,8 +76,12 @@
                                class="block pr-5 pl-12 w-80 py-1 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-color-disabled rounded-full placeholder-gray-400 focus:outline-none"
                                placeholder="Rechercher un apprenant">
                     </div>
-                    <p class="font-nunito font-bold text-xl">{{
+                    <p *ngIf="promo.basicInfo.learners.length > 1"
+                       class="font-nunito font-bold text-xl">{{
                         promo.basicInfo.learners.length }} Apprenants</p>
+                    <p *ngIf="promo.basicInfo.learners.length <= 1"
+                       class="font-nunito font-bold text-xl">{{
+                        promo.basicInfo.learners.length }} Apprenant</p>
                     <button
                             class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
                 </div>

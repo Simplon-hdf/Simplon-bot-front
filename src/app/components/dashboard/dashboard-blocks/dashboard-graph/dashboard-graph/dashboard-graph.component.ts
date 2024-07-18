@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class DashboardGraphComponent {
   // TODO : add integration with real data from DB
-  //Data refers formations, apprenants...
+  //Data refers promos, apprenants...
   ongoingData = 24;
   totalData = 145;
 }

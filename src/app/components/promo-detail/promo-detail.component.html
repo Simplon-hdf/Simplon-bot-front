@@ -1,31 +1,32 @@
-<div class="px-20 py-10 font-nunito" *ngIf="formation">
+<div class="px-20 py-10 font-nunito" *ngIf="promo">
     <div>
         <div class="flex items-center gap-5">
-            <h1 class="text-5xl font-semibold">{{ formation.name }} à {{
-                formation.place }}</h1>
+            <h1 class="text-5xl font-semibold">{{ promo.basicInfo.name }} à {{
+                promo.basicInfo.place }}</h1>
             <li class="bg-color-success bg-opacity-5 px-3 py-1 rounded-md text-color-success border-2 border-color-success font-semibold"
-                *ngIf="formation.status === 'en cours'"> En cours </li>
+                *ngIf="promo.basicInfo.status === 'en cours'"> En cours </li>
             <li class="bg-color-orange bg-opacity-5 px-3 py-1 rounded-md text-color-orange border-2 border-color-orange font-semibold"
-                *ngIf="formation.status === 'à venir'"> À venir </li>
+                *ngIf="promo.basicInfo.status === 'à venir'"> À venir </li>
             <li class="bg-color-red bg-opacity-5 px-3 py-1 rounded-md text-color-red border-2 border-color-red font-semibold"
-                *ngIf="formation.status === 'terminé'"> Terminé </li>
+                *ngIf="promo.basicInfo.status === 'terminé'"> Terminé </li>
         </div>
-        <h3 class="text-2xl font-medium mt-2">{{formation.start_date| date:
-            'dd/MM/yyyy'}} - {{formation.end_date| date: 'dd/MM/yyyy'}}</h3>
+        <h3 class="text-2xl font-medium mt-2">{{promo.basicInfo.start_date|
+            date: 'dd/MM/yyyy'}} - {{promo.basicInfo.end_date| date:
+            'dd/MM/yyyy'}}</h3>
     </div>
-    <p>Type: {{ formation.type }}</p>
+    <p>Type: {{ promo.basicInfo.type }}</p>
     <h2 class=" text-4xl font-semibold mt-10">Staffs</h2>
     <div class="flex gap-2 mt-2">
-        <app-staff-card [person]="formation.former_1"
+        <app-staff-card [person]="promo.staffs.former_1"
                         role="Formateur 1"></app-staff-card>
-        <app-staff-card [person]="formation.former_2"
+        <app-staff-card [person]="promo.staffs.former_2"
                         role="Formateur 2"></app-staff-card>
-        <app-staff-card [person]="formation.caps" role="CAPS"></app-staff-card>
-        <app-staff-card [person]="formation.charge_admin"
+        <app-staff-card [person]="promo.staffs.cdp" role="CDP"></app-staff-card>
+        <app-staff-card [person]="promo.staffs.admin_head"
                         role="Charge Admin"></app-staff-card>
-        <app-staff-card [person]="formation.responsable_campus"
+        <app-staff-card [person]="promo.staffs.campus_manager"
                         role="Responsable Campus"></app-staff-card>
-        <app-staff-card [person]="formation.responsable_pedagogique"
+        <app-staff-card [person]="promo.staffs.pedagogical_manager"
                         role="Responsable Pédagogique"></app-staff-card>
     </div>
     <h2 class=" text-4xl font-semibold mt-10">Apprenants</h2>
@@ -36,10 +37,10 @@
         <div
              *ngIf="learnerForm.get('name')?.invalid && learnerForm.get('name')?.touched">
             Le nom est requis. </div>
-        <label for="phoneNumber">Téléphone:</label>
-        <input id="phoneNumber" formControlName="phoneNumber">
+        <label for="phone_number">Téléphone:</label>
+        <input id="phone_number" formControlName="phone_number">
         <div
-             *ngIf="learnerForm.get('phoneNumber')?.invalid && learnerForm.get('phoneNumber')?.touched">
+             *ngIf="learnerForm.get('phone_number')?.invalid && learnerForm.get('phone_number')?.touched">
             Le numéro de téléphone est requis. </div>
         <label for="email">Email:</label>
         <input id="email" formControlName="email">
@@ -75,8 +76,12 @@
                                class="block pr-5 pl-12 w-80 py-1 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-color-disabled rounded-full placeholder-gray-400 focus:outline-none"
                                placeholder="Rechercher un apprenant">
                     </div>
-                    <p class="font-nunito font-bold text-xl">{{
-                        formation.learners.length }} Apprenants</p>
+                    <p *ngIf="promo.basicInfo.learners.length > 1"
+                       class="font-nunito font-bold text-xl">{{
+                        promo.basicInfo.learners.length }} Apprenants</p>
+                    <p *ngIf="promo.basicInfo.learners.length <= 1"
+                       class="font-nunito font-bold text-xl">{{
+                        promo.basicInfo.learners.length }} Apprenant</p>
                     <button
                             class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
                 </div>
@@ -100,7 +105,7 @@
                         </thead>
                         <tbody class="divide-y divide-gray-300 ">
                             <tr class="bg-white transition-all duration-500 hover:bg-color-red hover:bg-opacity-10 hover:cursor-pointer"
-                                *ngFor="let learner of formation.learners">
+                                *ngFor="let learner of promo.basicInfo.learners">
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 ">
                                     {{learner.name}} </td>
@@ -109,7 +114,7 @@
                                     {{learner.email}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 max-w-[200px]">
-                                    {{learner.phoneNumber}} </td>
+                                    {{learner.phone_number}} </td>
                                 <td class=" p-4 ">
                                     <div class="flex items-center gap-1">
                                         <button
@@ -155,6 +160,6 @@
             </div>
         </div>
     </div>
-    <div *ngIf="!formation">
-        <p>Formation not found.</p>
+    <div *ngIf="!promo">
+        <p>Promo not found.</p>
     </div>

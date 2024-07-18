@@ -26,13 +26,13 @@ export class DashboardComponent {
     'Décembre',
   ];
   //#region charts config
-  formationsChartConfig: any = {
+  promosChartConfig: any = {
     type: 'bar',
     data: {
       labels: this.months,
       datasets: [
         {
-          label: 'Formations active par mois',
+          label: 'Promos active par mois',
           data: ['3', '12', '7', '9', '16', '3', '8', '10', '2', '8', '1', '3'],
           backgroundColor: '#CE003380',
         },
@@ -71,16 +71,13 @@ export class DashboardComponent {
     },
   };
 
-  formationsChart: any;
+  promosChart: any;
   apprenantsChart: any;
 
   //#endregion
 
   ngOnInit(): void {
-    this.formationsChart = new Chart(
-      'formationsChart',
-      this.formationsChartConfig
-    );
+    this.promosChart = new Chart('promosChart', this.promosChartConfig);
 
     this.apprenantsChart = new Chart(
       'apprenantsChart',

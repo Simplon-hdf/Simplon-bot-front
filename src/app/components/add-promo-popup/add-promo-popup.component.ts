@@ -53,7 +53,7 @@ export class AddPromoPopupComponent {
         basicInfo: this.fb.group({
           name: [
             '',
-            [Validators.required, Validators.pattern(/^[a-zA-Z0-9 _éè]+$/)],
+            [Validators.required, Validators.pattern(/^[a-zA-Z0-9\w_éè]+$/)],
           ],
           start_date: ['', Validators.required],
           end_date: ['', Validators.required],

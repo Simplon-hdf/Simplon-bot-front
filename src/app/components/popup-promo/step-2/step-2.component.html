@@ -22,13 +22,13 @@
             <option *ngFor="let person of people" [ngValue]="person">{{
                 person.name }}</option>
         </select>
-        <label class="mt-8" for="caps">Caps <span
+        <label class="mt-8" for="cdp">Cdp <span
                   class="text-color-red font-bold">*</span></label>
-        <select id="caps"
+        <select id="cdp"
                 class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                name="caps" formControlName="caps"
-                [ngClass]="{'field-touched': promoForm.get('caps')?.touched && promoForm.get('caps')?.invalid}">
-            <option value="" disabled selected>Sélectionner un CAPS </option>
+                name="cdp" formControlName="cdp"
+                [ngClass]="{'field-touched': promoForm.get('cdp')?.touched && promoForm.get('cdp')?.invalid}">
+            <option value="" disabled selected>Sélectionner un CDP </option>
             <option *ngFor="let person of people" [ngValue]="person">{{
                 person.name }}</option>
         </select>

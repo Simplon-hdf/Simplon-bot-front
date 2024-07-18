@@ -9,7 +9,7 @@ export interface BasicInfo {
 }
 
 export interface Staffs {
-  caps: PersonModel;
+  cdp: PersonModel;
   former_1: PersonModel;
   former_2: PersonModel;
   admin_head: PersonModel;

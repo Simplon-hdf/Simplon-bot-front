@@ -28,7 +28,7 @@ export class PromoService {
           name: 'Marie Leclerc',
           profile_picture_url: 'assets/images/marie-leclerc.jpg',
         },
-        caps: {
+        cdp: {
           id: 3,
           name: 'Paul Martin',
           profile_picture_url: 'assets/images/paul-martin.jpg',

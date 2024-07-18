@@ -65,7 +65,7 @@ export class AddPromoPopupComponent {
           learners: [[]],
         }),
         staffs: this.fb.group({
-          caps: [null, Validators.required],
+          cdp: [null, Validators.required],
           former_1: [null, Validators.required],
           former_2: [null, Validators.required],
           admin_head: [null, Validators.required],

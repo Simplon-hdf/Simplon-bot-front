@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { PromoService } from '../../services/promo.service';
-import { PromoModel } from '../../models/promo-model';
 import { Router } from '@angular/router';
 import { AddPromoPopupComponent } from '../add-promo-popup/add-promo-popup.component';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IPromo } from '../../Interfaces/IPromo';
 
 @Component({
   selector: 'app-promos',
@@ -14,9 +14,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './promos.component.scss',
 })
 export class PromosComponent {
-  promos: PromoModel[] = [];
-  filteredPromos: PromoModel[] = [];
-  searchTerm: string = '';
+  promos: IPromo[] = [];
+  filteredPromos: IPromo[] = [];
+  searchTerm = '';
   isPopupVisible = false;
 
   constructor(
@@ -68,7 +68,7 @@ export class PromosComponent {
     this.router.navigate(['/promos', id]);
   }
 
-  addPromo(promo: PromoModel) {
+  addPromo(promo: IPromo) {
     this.promoService.addPromo(promo);
     this.closePopup();
   }

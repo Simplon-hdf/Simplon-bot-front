@@ -1,4 +1,4 @@
-import { IFormation } from './IFormation';
+import { IPromo } from './IPromo';
 
 export interface ILearner {
   id: number | undefined;
@@ -6,5 +6,5 @@ export interface ILearner {
   firstName: string;
   mail: string;
   phoneNumber: string;
-  formationId: IFormation | undefined;
+  formationId: IPromo | undefined;
 }

@@ -1,6 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PromoModel } from '../../models/promo-model';
 import {
   FormBuilder,
   FormGroup,
@@ -15,7 +14,8 @@ import { ActiveStepDisplayBarComponent } from '../active-step-display-bar/active
 import { Step1Component } from '../popup-promo/step-1/step-1.component';
 import { Step2Component } from '../popup-promo/step-2/step-2.component';
 import { dateRangeValidator } from '../../validators/date-range.validator';
-import { PersonModel } from '../../models/person-model';
+import { IPromo } from '../../Interfaces/IPromo';
+import { IPerson } from '../../Interfaces/IPerson';
 
 @Component({
   selector: 'app-add-promo-popup',
@@ -36,12 +36,12 @@ import { PersonModel } from '../../models/person-model';
 })
 export class AddPromoPopupComponent {
   @Output() closePopup = new EventEmitter<void>();
-  @Output() addPromo = new EventEmitter<PromoModel>();
+  @Output() addPromo = new EventEmitter<IPromo>();
 
-  step: number = 1;
-  maxSteps: number = 2;
+  step = 1;
+  maxSteps = 2;
   promoForm: FormGroup;
-  people: PersonModel[] = [];
+  people: IPerson[] = [];
 
   constructor(
     private promoService: PromoService,

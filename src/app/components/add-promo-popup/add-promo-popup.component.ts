@@ -38,8 +38,8 @@ export class AddPromoPopupComponent {
   @Output() closePopup = new EventEmitter<void>();
   @Output() addPromo = new EventEmitter<PromoModel>();
 
-  step = 1;
-  maxSteps = 2;
+  step: number = 1;
+  maxSteps: number = 2;
   promoForm: FormGroup;
   people: PersonModel[] = [];
 

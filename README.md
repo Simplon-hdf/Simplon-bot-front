@@ -14,14 +14,14 @@
 
 ## Description
 
-Ce projet est une application Angular conçue pour Simplon. Cette application permet de visualiser les statistiques des formations et des apprenants, de gérer les formations et les apprenants, ainsi que de créer de nouvelles formations en ajoutant des apprenants. L'application est connectée à une base de données et à un bot Discord pour créer automatiquement des salons pour chaque formation.
+Ce projet est une application Angular conçue pour Simplon. Cette application permet de visualiser les statistiques des promos et des apprenants, de gérer les promos et les apprenants, ainsi que de créer de nouvelles promos en ajoutant des apprenants. L'application est connectée à une base de données et à un bot Discord pour créer automatiquement des salons pour chaque promo.
 
 ## Fonctionnalités
 
-- **Visualisation des Statistiques** : Afficher les statistiques sur les formations et les apprenants.
-- **Gestion des Formations** : Voir, ajouter, modifier et supprimer des formations.
-- **Gestion des Apprenants** : Voir, ajouter, modifier et supprimer des apprenants dans une formation.
-- **Création Automatique de Salons Discord** : Lors de la création d'une formation, les salons Discord correspondants sont créés automatiquement.
+- **Visualisation des Statistiques** : Afficher les statistiques sur les promos et les apprenants.
+- **Gestion des Promos** : Voir, ajouter, modifier et supprimer des promos.
+- **Gestion des Apprenants** : Voir, ajouter, modifier et supprimer des apprenants dans une promo.
+- **Création Automatique de Salons Discord** : Lors de la création d'une promo, les salons Discord correspondants sont créés automatiquement.
 
 ## Conventions et Design System
 

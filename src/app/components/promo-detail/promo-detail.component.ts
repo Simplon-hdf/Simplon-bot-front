@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormationService } from '../../services/formation.service';
-import { IFormation } from '../../Interfaces/IFormation';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { StaffCardComponent } from '../staff-card/staff-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StaffCardComponent } from '../staff-card/staff-card.component';
 import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-popup.component';
-import { ILearner } from '../../Interfaces/ILearner';
 import { LearnersTableComponent } from '../learners-table/learners-table.component';
+import { LearnerModel } from '../../models/learner-model';
+import { PromoModel } from '../../models/promo-model';
+import { PromoService } from '../../services/promo.service';
 
 @Component({
-  selector: 'app-formation-detail',
+  selector: 'app-promo-detail',
   standalone: true,
   imports: [
     NgIf,
@@ -22,22 +22,22 @@ import { LearnersTableComponent } from '../learners-table/learners-table.compone
     AddLearnersPopupComponent,
     LearnersTableComponent,
   ],
-  templateUrl: './formation-detail.component.html',
-  styleUrl: './formation-detail.component.scss',
+  templateUrl: './promo-detail.component.html',
+  styleUrl: './promo-detail.component.scss',
 })
-export class FormationDetailComponent implements OnInit {
+export class PromoDetailComponent implements OnInit {
   private _isPopupVisible = false;
-  private _learners: ILearner[] = [];
-  private _formation: IFormation | undefined;
+  private _learners: LearnerModel[] = [];
+  private _promo: PromoModel | undefined;
 
   //#region ACCESSORS
 
-  public get formation(): IFormation | undefined {
-    return this._formation;
+  public get promo(): PromoModel | undefined {
+    return this._promo;
   }
 
-  public set formation(value: IFormation | undefined) {
-    this._formation = value;
+  public set promo(value: PromoModel | undefined) {
+    this._promo = value;
   }
 
   public get isPopupVisible() {
@@ -48,28 +48,28 @@ export class FormationDetailComponent implements OnInit {
     this._isPopupVisible = value;
   }
 
-  public get learners(): ILearner[] {
+  public get learners(): LearnerModel[] {
     return this._learners;
   }
 
-  public set learners(value: ILearner[]) {
+  public set learners(value: LearnerModel[]) {
     this._learners = value;
   }
   //#endregion
 
   constructor(
     private route: ActivatedRoute,
-    private formationService: FormationService
+    private _promoService: PromoService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
-      this.formation = this.formationService.getFormationById(id);
+      this.promo = this._promoService.getPromoById(id);
     });
   }
 
-  addLearnerFromPopup(learners: ILearner[]): void {
+  addLearnerFromPopup(learners: LearnerModel[]): void {
     this.learners = learners;
   }
 

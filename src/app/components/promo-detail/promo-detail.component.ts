@@ -6,8 +6,8 @@ import { StaffCardComponent } from '../staff-card/staff-card.component';
 import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-popup.component';
 import { LearnersTableComponent } from '../learners-table/learners-table.component';
 import { LearnerModel } from '../../models/learner-model';
-import { PromoService } from '../../services/promo.service';
 import { PromoModel } from '../../models/promo-model';
+import { PromoService } from '../../services/promo.service';
 
 @Component({
   selector: 'app-promo-detail',
@@ -29,15 +29,14 @@ export class PromoDetailComponent implements OnInit {
   private _isPopupVisible = false;
   private _learners: LearnerModel[] = [];
   private _promo: PromoModel | undefined;
-  private _promoService: PromoService,
 
   //#region ACCESSORS
 
-  public get promo(): PromoService | undefined {
+  public get promo(): PromoModel | undefined {
     return this._promo;
   }
 
-  public set promo(value: PromoService | undefined) {
+  public set promo(value: PromoModel | undefined) {
     this._promo = value;
   }
 
@@ -60,13 +59,13 @@ export class PromoDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private promoService: PromoService
+    private _promoService: PromoService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
-      this.promo = this.promoService.getPromoById(id);
+      this.promo = this._promoService.getPromoById(id);
     });
   }
 

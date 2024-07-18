@@ -13,52 +13,50 @@
                 *ngIf="promo.basicInfo.status === 'terminé'"> Terminé </li>
         </div>
         <h3 class="text-2xl font-medium mt-2">{{promo.basicInfo.start_date}} -
-            {{promo.end_date}}</h3>
+            {{promo.basicInfo.end_date}}</h3>
     </div>
-    <p class="mb-8">Type: {{ promo.type }}</p>
-    <div class="flex justify-between">
-        <h2 class=" text-3xl">Staffs</h2>
-
+    <p class="mb-8">Type: {{ promo.basicInfo.type }}</p>
+    <h2 class="text-4xl font-semibold mt-10">Staffs</h2>
+    <div class="flex gap-2 mt-2">
+        <app-staff-card [person]="promo.staffs.former_1" role="Formateur 1"></app-staff-card>
+        <app-staff-card [person]="promo.staffs.former_2" role="Formateur 2"></app-staff-card>
+        <app-staff-card [person]="promo.staffs.cdp" role="CDP"></app-staff-card>
+        <app-staff-card [person]="promo.staffs.admin_head" role="Charge Admin"></app-staff-card>
+        <app-staff-card [person]="promo.staffs.campus_manager" role="Responsable Campus"></app-staff-card>
+        <app-staff-card [person]="promo.staffs.pedagogical_manager" role="Responsable Pédagogique"></app-staff-card>
     </div>
-    <app-staff-card [person]="promo.staffs.former_1" role="Formateur 1"></app-staff-card>
-    <app-staff-card [person]="promo.staffs.former_2" role="Formateur 2"></app-staff-card>
-    <app-staff-card [person]="promo.staffs.cdp" role="CDP"></app-staff-card>
-    <app-staff-card [person]="promo.staffs.admin_head" role="Charge Admin"></app-staff-card>
-    <app-staff-card [person]="promo.staffs.campus_manager" role="Responsable Campus"></app-staff-card>
-    <app-staff-card [person]="promo.staffs.pedagogical_manager" role="Responsable Pédagogique"></app-staff-card>
-</div>
-<h2 class=" text-4xl font-semibold mt-10">Apprenants</h2>
-<div class="flex flex-col mt-8 bg-color-white p-8 border border-color-disabled rounded-2xl font-nunito">
-    <div class=" overflow-x-auto">
-        <div class="min-w-full inline-block align-middle">
-            <div class="flex justify-between items-center mb-4">
-                <div class="relative  focus-within:text-gray-900 ">
-                    <div class="absolute inset-y-0 left-1 flex items-center pl-3 pointer-events-none ">
-                        <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M17.5 17.5L15.4167 15.4167M15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333C11.0005 15.8333 12.6614 15.0929 13.8667 13.8947C15.0814 12.6872 15.8333 11.0147 15.8333 9.16667Z"
-                                stroke="#9CA3AF" stroke-width="1.6" stroke-linecap="round" />
-                            <path
-                                d="M17.5 17.5L15.4167 15.4167M15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333C11.0005 15.8333 12.6614 15.0929 13.8667 13.8947C15.0814 12.6872 15.8333 11.0147 15.8333 9.16667Z"
-                                stroke="black" stroke-opacity="0.2" stroke-width="1.6" stroke-linecap="round" />
-                            <path
-                                d="M17.5 17.5L15.4167 15.4167M15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333C11.0005 15.8333 12.6614 15.0929 13.8667 13.8947C15.0814 12.6872 15.8333 11.0147 15.8333 9.16667Z"
-                                stroke="black" stroke-opacity="0.2" stroke-width="1.6" stroke-linecap="round" />
-                        </svg>
+    <h2 class=" text-4xl font-semibold mt-10">Apprenants</h2>
+    <div class="flex flex-col mt-8 bg-color-white p-8 border border-color-disabled rounded-2xl font-nunito">
+        <div class=" overflow-x-auto">
+            <div class="min-w-full inline-block align-middle">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="relative  focus-within:text-gray-900 ">
+                        <div class="absolute inset-y-0 left-1 flex items-center pl-3 pointer-events-none ">
+                            <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.5 17.5L15.4167 15.4167M15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333C11.0005 15.8333 12.6614 15.0929 13.8667 13.8947C15.0814 12.6872 15.8333 11.0147 15.8333 9.16667Z"
+                                    stroke="#9CA3AF" stroke-width="1.6" stroke-linecap="round" />
+                                <path
+                                    d="M17.5 17.5L15.4167 15.4167M15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333C11.0005 15.8333 12.6614 15.0929 13.8667 13.8947C15.0814 12.6872 15.8333 11.0147 15.8333 9.16667Z"
+                                    stroke="black" stroke-opacity="0.2" stroke-width="1.6" stroke-linecap="round" />
+                                <path
+                                    d="M17.5 17.5L15.4167 15.4167M15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333C11.0005 15.8333 12.6614 15.0929 13.8667 13.8947C15.0814 12.6872 15.8333 11.0147 15.8333 9.16667Z"
+                                    stroke="black" stroke-opacity="0.2" stroke-width="1.6" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <input type="text" id="default-search"
+                            class="block pr-5 pl-12 w-80 py-1 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-color-disabled rounded-full placeholder-gray-400 focus:outline-none"
+                            placeholder="Rechercher un apprenant">
                     </div>
-                    <input type="text" id="default-search"
-                        class="block pr-5 pl-12 w-80 py-1 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-color-disabled rounded-full placeholder-gray-400 focus:outline-none"
-                        placeholder="Rechercher un apprenant">
+                    <button (click)="openPopup()"
+                        class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
                 </div>
-                <button (click)="openPopup()"
-                    class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
-            </div>
-            <div class="overflow-y-scroll max-h-[60vh] ">
-                <app-learners-table [learners]="learners" />
+                <div class="overflow-y-scroll max-h-[60vh] ">
+                    <app-learners-table [learners]="learners" />
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div *ngIf="!promo">
-    <p>Formation not found.</p>
-</div>
+    <div *ngIf="!promo">
+        <p>Formation not found.</p>
+    </div>

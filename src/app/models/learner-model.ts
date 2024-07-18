@@ -1,4 +1,4 @@
-import { FormationModel } from './formation-model';
+import { PromoModel } from './promo-model';
 
 export interface LearnerModel {
   id: number | undefined;
@@ -6,5 +6,5 @@ export interface LearnerModel {
   firstName: string;
   mail: string;
   phoneNumber: string;
-  formationId: FormationModel | undefined;
+  formationId: PromoModel | undefined;
 }

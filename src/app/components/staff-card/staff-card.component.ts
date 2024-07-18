@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { PersonModel } from '../../models/formation-model';
 import { NgIf } from '@angular/common';
+import { PersonModel } from '../../models/person-model';
 
 @Component({
   selector: 'app-staff-card',

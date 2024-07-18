@@ -1,8 +1,8 @@
-<app-add-formation-popup *ngIf="isPopupVisible" (closePopup)="closePopup()"
-                         (addFormation)="addFormation($event)">
-</app-add-formation-popup>
+<app-add-promo-popup *ngIf="isPopupVisible" (closePopup)="closePopup()"
+                     (addPromo)="addPromo($event)">
+</app-add-promo-popup>
 <section class="w-[1000px] mx-auto">
-    <h1 class="font-nunito text-4xl font-semibold mt-20">Formations</h1>
+    <h1 class="font-nunito text-4xl font-semibold mt-20">Promos</h1>
     <div
          class="flex flex-col mt-8 bg-color-white p-8 border border-color-disabled rounded-2xl font-nunito">
         <div class=" overflow-x-auto">
@@ -27,8 +27,9 @@
                             </svg>
                         </div>
                         <input type="text" id="default-search"
+                               [(ngModel)]="searchTerm" (input)="filterPromos()"
                                class="block pr-5 pl-12 w-80 py-1 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-color-disabled rounded-full placeholder-gray-400 focus:outline-none"
-                               placeholder="Rechercher une formation">
+                               placeholder="Rechercher une promo">
                     </div>
                     <button class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light"
                             (click)="openPopup()">Ajouter</button>
@@ -45,7 +46,7 @@
                                     Lieu </th>
                                 <th scope="col"
                                     class="p-4 text-left text-nowrap text-sm leading-6 text-gray-900 capitalize">
-                                    Caps </th>
+                                    Cdp </th>
                                 <th scope="col"
                                     class="p-4 text-left text-nowrap text-sm leading-6 text-gray-900 capitalize">
                                     Date de début </th>
@@ -62,26 +63,28 @@
                         </thead>
                         <tbody class="divide-y divide-gray-300 ">
                             <tr class="bg-white transition-all duration-500 hover:bg-color-red hover:bg-opacity-10 hover:cursor-pointer"
-                                *ngFor="let formation of formations"
-                                (click)="navigateToFormationDetail(formation.id)">
+                                *ngFor="let promo of filteredPromos"
+                                (click)="navigateToPromoDetail(promo.id)">
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 ">
-                                    {{formation.name}} </td>
+                                    {{promo.basicInfo.name}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    {{formation.place}} </td>
+                                    {{promo.basicInfo.place}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-wrap text-sm leading-6 font-medium text-gray-900 max-w-[200px]">
-                                    {{formation.caps.name}} </td>
+                                    {{promo.staffs.cdp.name}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    {{formation.start_date}} </td>
+                                    {{promo.basicInfo.start_date | date:
+                                    'dd/MM/yyyy'}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    {{formation.end_date}} </td>
+                                    {{promo.basicInfo.end_date | date:
+                                    'dd/MM/yyyy'}} </td>
                                 <td
                                     class="p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-                                    {{formation.status}} </td>
+                                    {{promo.basicInfo.status}} </td>
                                 <td class=" p-4 ">
                                     <div class="flex items-center gap-1">
                                         <button

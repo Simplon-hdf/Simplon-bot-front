@@ -1,17 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PromoService } from '../../services/promo.service';
-import { PromoModel } from '../../models/promo-model';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StaffCardComponent } from '../staff-card/staff-card.component';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-popup.component';
+import { LearnersTableComponent } from '../learners-table/learners-table.component';
 import { LearnerModel } from '../../models/learner-model';
+import { PromoModel } from '../../models/promo-model';
+import { PromoService } from '../../services/promo.service';
 
 @Component({
   selector: 'app-promo-detail',
@@ -23,38 +19,65 @@ import { LearnerModel } from '../../models/learner-model';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    AddLearnersPopupComponent,
+    LearnersTableComponent,
   ],
   templateUrl: './promo-detail.component.html',
   styleUrl: './promo-detail.component.scss',
 })
 export class PromoDetailComponent implements OnInit {
-  promo: PromoModel | undefined;
-  learnerForm: FormGroup;
+  private _isPopupVisible = false;
+  private _learners: LearnerModel[] = [];
+  private _promo: PromoModel | undefined;
+
+  //#region ACCESSORS
+
+  public get promo(): PromoModel | undefined {
+    return this._promo;
+  }
+
+  public set promo(value: PromoModel | undefined) {
+    this._promo = value;
+  }
+
+  public get isPopupVisible() {
+    return this._isPopupVisible;
+  }
+
+  public set isPopupVisible(value) {
+    this._isPopupVisible = value;
+  }
+
+  public get learners(): LearnerModel[] {
+    return this._learners;
+  }
+
+  public set learners(value: LearnerModel[]) {
+    this._learners = value;
+  }
+  //#endregion
 
   constructor(
     private route: ActivatedRoute,
-    private promoService: PromoService,
-    private fb: FormBuilder
-  ) {
-    this.learnerForm = this.fb.group({
-      name: ['', Validators.required],
-      phone_number: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-    });
-  }
+    private _promoService: PromoService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
-      this.promo = this.promoService.getPromoById(id);
+      this.promo = this._promoService.getPromoById(id);
     });
   }
 
-  addLearner(): void {
-    if (this.learnerForm.valid) {
-      const newLearner: LearnerModel = this.learnerForm.value;
-      this.promoService.addLearnerToPromo(this.promo!.id, newLearner);
-      this.learnerForm.reset();
-    }
+  addLearnerFromPopup(learners: LearnerModel[]): void {
+    this.learners = learners;
+  }
+
+  openPopup() {
+    this.isPopupVisible = true;
+  }
+
+  closePopup() {
+    this.isPopupVisible = false;
   }
 }

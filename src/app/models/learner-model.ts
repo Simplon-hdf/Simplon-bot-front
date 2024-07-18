@@ -1,6 +1,10 @@
+import { PromoModel } from './promo-model';
+
 export interface LearnerModel {
-  id: number;
-  name: string;
-  phone_number: string;
-  email: string;
+  id: number | undefined;
+  lastName: string;
+  firstName: string;
+  mail: string;
+  phoneNumber: string;
+  formationId: PromoModel | undefined;
 }

@@ -16,7 +16,7 @@ export class MapperService {
         lastName: row.NOM,
         mail: row.Mail,
         phoneNumber: row.Téléphone,
-        formationId: undefined,
+        promoId: undefined,
       };
       learners.push(learner);
     }

@@ -8,7 +8,7 @@ import {
 
 import { CommonModule, NgFor } from '@angular/common';
 import { PromoService } from '../../../services/promo.service';
-import { PersonModel } from '../../../models/person-model';
+import { IPerson } from '../../../Interfaces/IPerson';
 
 @Component({
   selector: 'app-step-2',
@@ -21,7 +21,7 @@ export class Step2Component implements OnInit {
   @Input() formGroupName!: string;
 
   promoForm!: FormGroup;
-  people: PersonModel[] = [];
+  people: IPerson[] = [];
 
   constructor(
     private rootFormGroup: FormGroupDirective,

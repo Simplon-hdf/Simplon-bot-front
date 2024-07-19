@@ -1,0 +1,47 @@
+import { Monthes } from '../Enums/Enums';
+
+export class PromosChartConfig {
+  private static _data: any = {
+    //Getting values on ENUM without filter returns both the keys and default number values. Filter() is required to use only the keys of the enum
+    labels: Object.values(Monthes).filter((value) => isNaN(Number(value))),
+    datasets: [
+      {
+        label: 'Promos active par mois',
+        data: ['3', '12', '7', '9', '16', '3', '8', '10', '2', '8', '1', '3'],
+        backgroundColor: '#CE003380',
+      },
+    ],
+  };
+
+  private static _options: any = {
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  };
+
+  //#region  ACCESSORS
+
+  public static get data(): any {
+    return PromosChartConfig._data;
+  }
+
+  public static get options(): any {
+    return PromosChartConfig._options;
+  }
+
+  public static get config(): any {
+    return PromosChartConfig._config;
+  }
+
+  //#endregion
+
+  private static _config: any = {
+    type: 'bar',
+    data: this.data,
+    options: this.options,
+  };
+}

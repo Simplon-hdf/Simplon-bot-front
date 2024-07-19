@@ -5,7 +5,7 @@
                   class="text-color-red font-bold">*</span></label>
         <select id="former_1" name="former_1" formControlName="former_1"
                 [ngClass]="{'field-touched': promoForm.get('former_1')?.touched && promoForm.get('former_1')?.invalid}"
-                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none mt-1">
             <option value="" disabled selected>Sélectionner un formateur
             </option>
             <option *ngFor="let person of people" [ngValue]="person">{{
@@ -16,7 +16,7 @@
         <select id="former_2" name="former_2"
                 [ngClass]="{'field-touched': promoForm.get('former_2')?.touched && promoForm.get('former_2')?.invalid}"
                 formControlName="former_2"
-                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none mt-1">
             <option value="" disabled selected>Sélectionner un formateur
             </option>
             <option *ngFor="let person of people" [ngValue]="person">{{
@@ -25,7 +25,7 @@
         <label class="mt-8" for="cdp">Cdp <span
                   class="text-color-red font-bold">*</span></label>
         <select id="cdp"
-                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none mt-1"
                 name="cdp" formControlName="cdp"
                 [ngClass]="{'field-touched': promoForm.get('cdp')?.touched && promoForm.get('cdp')?.invalid}">
             <option value="" disabled selected>Sélectionner un CDP </option>
@@ -37,7 +37,7 @@
         <label for="admin">Chargé(e) d'Admin <span
                   class="text-color-red font-bold">*</span></label>
         <select id="admin"
-                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
+                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none mt-1"
                 name="admin" formControlName="admin_head"
                 [ngClass]="{'field-touched': promoForm.get('admin_head')?.touched && promoForm.get('admin_head')?.invalid}">
             <option value="" disabled selected>Sélectionner un chargé(e) d'admin
@@ -50,7 +50,7 @@
         <select id="campus_manager" name="campus_manager"
                 formControlName="campus_manager"
                 [ngClass]="{'field-touched': promoForm.get('campus_manager')?.touched && promoForm.get('campus_manager')?.invalid}"
-                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none mt-1">
             <option value="" disabled selected>Sélectionner un responsable
                 campus </option>
             <option *ngFor="let person of people" [ngValue]="person">{{
@@ -62,7 +62,7 @@
         <select id="pedagogical_manager" name="pedagogical_manager"
                 formControlName="pedagogical_manager"
                 [ngClass]="{'field-touched': promoForm.get('pedagogical_manager')?.touched && promoForm.get('pedagogical_manager')?.invalid}"
-                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1">
+                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none mt-1">
             <option value="" disabled selected>Sélectionner un responsable
                 pédagogique</option>
             <option *ngFor="let person of people" [ngValue]="person">{{

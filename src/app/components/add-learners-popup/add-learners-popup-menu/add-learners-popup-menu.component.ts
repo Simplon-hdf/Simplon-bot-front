@@ -20,7 +20,7 @@ export class AddLearnersPopupMenuComponent {
     //   lastName: 'pierre',
     //   mail: 'pierre@mail.com',
     //   phoneNumber: '06 01 02 03 04',
-    //   formationId: undefined,
+    //   promoId: undefined,
     // },
   ];
   @Output() addCsvFile = new EventEmitter<ILearner[]>();

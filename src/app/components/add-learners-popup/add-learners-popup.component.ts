@@ -26,7 +26,7 @@ export class AddLearnersPopupComponent {
     //   lastName: 'pierre',
     //   mail: 'pierre@mail.com',
     //   phoneNumber: '06 01 02 03 04',
-    //   formationId: undefined,
+    //   promoId: undefined,
     // },
   ];
   private _isAddingLearners = false;

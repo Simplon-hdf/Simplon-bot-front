@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { DashboardGraphComponent } from './dashboard-blocks/dashboard-graph/dashboard-graph/dashboard-graph.component';
 import { Chart, registerables } from 'chart.js';
 import { DashboardWheelComponent } from './dashboard-blocks/dashboard-wheel/dashboard-wheel.component';
+import { Monthes } from '../../Enums/Enums';
+import { LearnerChartConfig } from '../../Helpers/LearnerChartConfig';
+import { PromosChartConfig } from '../../Helpers/PromosChartConfig';
 Chart.register(...registerables);
 @Component({
   selector: 'app-dashboard',
@@ -11,65 +14,19 @@ Chart.register(...registerables);
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  months = [
-    'Janvier',
-    'Février',
-    'Mars',
-    'Avril',
-    'Mai',
-    'Juin',
-    'Juillet',
-    'Aout',
-    'Septembre',
-    'Octobre',
-    'Novembre',
-    'Décembre',
-  ];
-  //#region charts config
-  promosChartConfig: any = {
-    type: 'bar',
-    data: {
-      labels: this.months,
-      datasets: [
-        {
-          label: 'Promos active par mois',
-          data: ['3', '12', '7', '9', '16', '3', '8', '10', '2', '8', '1', '3'],
-          backgroundColor: '#CE003380',
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  };
+  //Getting values on ENUM without filter returns both the keys and default number values. Filter() is required to use only the keys of the enum
+  private _MONTHES = Object.values(Monthes).filter((value) =>
+    isNaN(Number(value))
+  );
 
-  apprenantsChartConfig: any = {
-    type: 'line',
-    data: {
-      labels: this.months,
-      datasets: [
-        {
-          label: 'Apprenants par mois',
-          data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56],
-          fill: true,
-          borderColor: '#ce0033',
-          backgroundColor: '#CE003326',
-          tension: 0.1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  };
+  public get MONTHES() {
+    return this._MONTHES;
+  }
+
+  //#region charts config
+  promosChartConfig: any = PromosChartConfig.config;
+
+  apprenantsChartConfig: any = LearnerChartConfig.config;
 
   promosChart: any;
   apprenantsChart: any;

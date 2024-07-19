@@ -1,47 +1,39 @@
 {{promoForm.value | json}} {{promoForm.status | json}} <div
-     class="popup bg-color-black bg-opacity-50 absolute w-full h-full z-10 flex justify-center items-center">
+    class="popup bg-color-black bg-opacity-50 absolute w-full h-full z-10 flex justify-center items-center">
     <div class=" w-[600px] h-[500px] bg-color-white rounded-xl p-8 relative">
-        <button class="absolute top-3 right-3 text-3xl"
-                (click)="closePopup.emit()"><svg
-                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                 class="w-4 hover:fill-color-red"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <button class="absolute top-3 right-3 text-3xl" (click)="closePopup.emit()"><svg
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                class="w-4 hover:fill-color-red"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                 <path
-                      d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
             </svg></button>
-        <form class="w-full h-full" [formGroup]="promoForm"
-              (ngSubmit)="submitPromo()">
+        <form class="w-full h-full" [formGroup]="promoForm" (ngSubmit)="submitPromo()">
             <div *ngIf="step === 1">
                 <app-step-1 formGroupName="basicInfo"></app-step-1>
             </div>
             <div *ngIf="step === 2">
                 <app-step-2 formGroupName="staffs"></app-step-2>
             </div>
-            <app-active-step-display-bar
-                                         [step]="step"></app-active-step-display-bar>
+            <app-active-step-display-bar [step]="step"></app-active-step-display-bar>
             <div class="flex flex-col mt-5">
                 <div class="w-full flex justify-center gap-4 ">
-                    <button *ngIf="step > 1" type="button"
-                            (click)="goToPreviousStep()"><svg
-                             xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 512 512"
-                             class="w-8 fill-color-red disabled:fill-color-disabled">
+                    <button *ngIf="step > 1" type="button" (click)="goToPreviousStep()"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                            class="w-8 fill-color-red disabled:fill-color-disabled">
                             <path
-                                  d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM231 127c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-71 71L376 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-182.1 0 71 71c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L119 273c-9.4-9.4-9.4-24.6 0-33.9L231 127z" />
+                                d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM231 127c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-71 71L376 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-182.1 0 71 71c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L119 273c-9.4-9.4-9.4-24.6 0-33.9L231 127z" />
                         </svg></button>
-                    <button *ngIf="step < maxSteps" type="button"
-                            (click)="goToNextStep()"><svg fill="currentColor"
-                             class="w-8 fill-color-red disabled:fill-color-disabled"
-                             xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 512 512">
+                    <button *ngIf="step < maxSteps" type="button" (click)="goToNextStep()"><svg fill="currentColor"
+                            class="w-8 fill-color-red disabled:fill-color-disabled" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512">
                             <path
-                                  d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z" />
+                                d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z" />
                         </svg></button>
                 </div>
                 <div class="w-full flex justify-center mt-2">
-                    <button *ngIf="step === maxSteps" type="submit"
-                            [ngClass]="{'disabled': !promoForm.valid}"
-                            class="  block font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md  bg-color-red hover:bg-color-red-light"
-                            (click)="submitPromo()">Terminer</button>
+                    <button *ngIf="step === maxSteps" type="submit" [ngClass]="{'disabled': !promoForm.valid}"
+                        class="  block font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md  bg-color-red hover:bg-color-red-light"
+                        (click)="submitPromo()">Terminer</button>
                 </div>
             </div>
         </form>

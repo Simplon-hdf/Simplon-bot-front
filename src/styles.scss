@@ -4,5 +4,27 @@
 @tailwind utilities;
 
 body {
-    @apply bg-color-back
+  @apply bg-color-back;
+}
+
+@layer components {
+  .input-default {
+    @apply mt-1 py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply self-center font-nunito font-bold text-color-white py-[8px] px-[12px] rounded-md bg-color-red
+                    hover:bg-color-red-light disabled:bg-color-disabled;
+  }
+
+  .table-header-default {
+    @apply p-4 text-left text-nowrap text-sm leading-6 text-gray-900 capitalize;
+  }
+
+  .table-data-default {
+    @apply p-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900;
+  }
+
+  .navbar-link {
+    @apply w-full text-lg font-bold font-nunito text-color-white py-[4px] rounded-md hover:bg-color-red-light focus:bg-color-white focus:text-color-red;
+  }
 }

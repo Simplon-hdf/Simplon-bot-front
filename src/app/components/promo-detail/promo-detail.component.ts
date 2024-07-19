@@ -5,9 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StaffCardComponent } from '../staff-card/staff-card.component';
 import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-popup.component';
 import { LearnersTableComponent } from '../learners-table/learners-table.component';
-import { LearnerModel } from '../../models/learner-model';
-import { PromoModel } from '../../models/promo-model';
 import { PromoService } from '../../services/promo.service';
+import { ILearner } from '../../Interfaces/ILearner';
+import { IPromo } from '../../Interfaces/IPromo';
 
 @Component({
   selector: 'app-promo-detail',
@@ -27,16 +27,16 @@ import { PromoService } from '../../services/promo.service';
 })
 export class PromoDetailComponent implements OnInit {
   private _isPopupVisible = false;
-  private _learners: LearnerModel[] = [];
-  private _promo: PromoModel | undefined;
+  private _learners: ILearner[] = [];
+  private _promo: IPromo | undefined;
 
   //#region ACCESSORS
 
-  public get promo(): PromoModel | undefined {
+  public get promo(): IPromo | undefined {
     return this._promo;
   }
 
-  public set promo(value: PromoModel | undefined) {
+  public set promo(value: IPromo | undefined) {
     this._promo = value;
   }
 
@@ -48,11 +48,11 @@ export class PromoDetailComponent implements OnInit {
     this._isPopupVisible = value;
   }
 
-  public get learners(): LearnerModel[] {
+  public get learners(): ILearner[] {
     return this._learners;
   }
 
-  public set learners(value: LearnerModel[]) {
+  public set learners(value: ILearner[]) {
     this._learners = value;
   }
   //#endregion
@@ -69,7 +69,7 @@ export class PromoDetailComponent implements OnInit {
     });
   }
 
-  addLearnerFromPopup(learners: LearnerModel[]): void {
+  addLearnerFromPopup(learners: ILearner[]): void {
     this.learners = learners;
   }
 

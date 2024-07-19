@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { PromoModel } from '../models/promo-model';
-import { PersonModel } from '../models/person-model';
-import { LearnerModel } from '../models/learner-model';
+import { IPromo } from '../Interfaces/IPromo';
+import { IPerson } from '../Interfaces/IPerson';
+import { ILearner } from '../Interfaces/ILearner';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PromoService {
-  private promos: PromoModel[] = [
+  private promos: IPromo[] = [
     {
       id: 1,
       basicInfo: {
@@ -23,58 +23,58 @@ export class PromoService {
         former_1: {
           id: 1,
           name: 'Jean Dupont',
-          profile_picture_url: 'assets/images/jean-dupont.jpg',
+          profilePictureUrl: 'assets/images/jean-dupont.jpg',
         },
         former_2: {
           id: 2,
           name: 'Marie Leclerc',
-          profile_picture_url: 'assets/images/marie-leclerc.jpg',
+          profilePictureUrl: 'assets/images/marie-leclerc.jpg',
         },
         cdp: {
           id: 3,
           name: 'Paul Martin',
-          profile_picture_url: 'assets/images/paul-martin.jpg',
+          profilePictureUrl: 'assets/images/paul-martin.jpg',
         },
         admin_head: {
           id: 4,
           name: 'Alice Bertrand',
-          profile_picture_url: 'assets/images/alice-bertrand.jpg',
+          profilePictureUrl: 'assets/images/alice-bertrand.jpg',
         },
         campus_manager: {
           id: 5,
           name: 'Lucie Durand',
-          profile_picture_url: 'assets/images/lucie-durand.jpg',
+          profilePictureUrl: 'assets/images/lucie-durand.jpg',
         },
         pedagogical_manager: {
           id: 6,
           name: 'Michel Dubois',
-          profile_picture_url: 'assets/images/michel-dubois.jpg',
+          profilePictureUrl: 'assets/images/michel-dubois.jpg',
         },
       },
     },
   ];
-  private people: PersonModel[] = [
-    { id: 1, name: 'Alice', profile_picture_url: 'https://placehold.co/90' },
-    { id: 2, name: 'Bob', profile_picture_url: 'https://placehold.co/90' },
-    { id: 3, name: 'Charlie', profile_picture_url: 'https://placehold.co/90' },
-    { id: 4, name: 'Claire', profile_picture_url: 'https://placehold.co/90' },
-    { id: 5, name: 'Jean', profile_picture_url: 'https://placehold.co/90' },
-    { id: 6, name: 'Rémi', profile_picture_url: 'https://placehold.co/90' },
+  private people: IPerson[] = [
+    { id: 1, name: 'Alice', profilePictureUrl: 'https://placehold.co/90' },
+    { id: 2, name: 'Bob', profilePictureUrl: 'https://placehold.co/90' },
+    { id: 3, name: 'Charlie', profilePictureUrl: 'https://placehold.co/90' },
+    { id: 4, name: 'Claire', profilePictureUrl: 'https://placehold.co/90' },
+    { id: 5, name: 'Jean', profilePictureUrl: 'https://placehold.co/90' },
+    { id: 6, name: 'Rémi', profilePictureUrl: 'https://placehold.co/90' },
   ];
 
-  getPromos(): PromoModel[] {
+  getPromos(): IPromo[] {
     return this.promos;
   }
 
-  getPromoById(id: number): PromoModel | undefined {
+  getPromoById(id: number): IPromo | undefined {
     return this.promos.find((promo) => promo.id === id);
   }
 
-  addPromo(promo: PromoModel) {
+  addPromo(promo: IPromo) {
     this.promos.push({ ...promo, id: this.promos.length + 1 });
   }
 
-  addLearnerToPromo(promoId: number, learner: LearnerModel): void {
+  addLearnerToPromo(promoId: number, learner: ILearner): void {
     const promo = this.getPromoById(promoId);
     if (promo) {
       promo.basicInfo.learners.push(learner);
@@ -88,7 +88,7 @@ export class PromoService {
     }
   }
 
-  getPeople(): PersonModel[] {
+  getPeople(): IPerson[] {
     return this.people;
   }
 }

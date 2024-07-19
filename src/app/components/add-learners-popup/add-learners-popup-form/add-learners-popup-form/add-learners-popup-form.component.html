@@ -2,15 +2,13 @@
     <div class="flex justify-center gap-14">
         <div>
             <label for="lastName">Nom <span class="text-color-red font-bold">*</span></label>
-            <input
-                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                type="text" placeholder="Dupuis" id="lastName" [(ngModel)]="lastName" name="lastName" required>
+            <input class="input-default" type="text" placeholder="Dupuis" id="lastName" [(ngModel)]="lastName"
+                name="lastName" required>
         </div>
         <div>
             <label for="firstName">Prénom <span class="text-color-red font-bold">*</span></label>
-            <input
-                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                type="text" placeholder="Marcel" id="firstName" [(ngModel)]="firstName" name="firstName" required>
+            <input class="input-default" type="text" placeholder="Marcel" id="firstName" [(ngModel)]="firstName"
+                name="firstName" required>
         </div>
     </div>
 
@@ -18,21 +16,16 @@
         <div>
             <div>
                 <label for="mail">Adresse mail<span class="text-color-red font-bold">*</span></label>
-                <input
-                    class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                    type="text" placeholder="DupuisMarcel@gmail.com" [(ngModel)]="mail" name="mail" id="mail" required>
+                <input class="input-default" type="text" placeholder="DupuisMarcel@gmail.com" [(ngModel)]="mail"
+                    name="mail" id="mail" required>
             </div>
         </div>
         <div>
             <label for="phoneNumber">Téléphone<span class="text-color-red font-bold">*</span></label>
-            <input
-                class="py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 mt-1"
-                type="text" placeholder="06 01 02 03 04" [(ngModel)]="phoneNumber" name="phoneNumber" id="phoneNumber"
-                required>
+            <input class="input-default" type="text" placeholder="06 01 02 03 04" [(ngModel)]="phoneNumber"
+                name="phoneNumber" id="phoneNumber" required>
         </div>
     </div>
 
-    <button type="submit" class=" self-center font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red
-                    hover:bg-color-red-light disabled:bg-color-disabled"
-        [disabled]="!learnerForm.form.valid">Ajouter</button>
+    <button type="submit" class="btn-primary" [disabled]="!learnerForm.form.valid">Ajouter</button>
 </form>

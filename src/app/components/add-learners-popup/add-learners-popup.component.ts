@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 // import { parse } from '../../../../node_modules/csv-parse/dist/esm/sync';
-import { LearnerModel } from '../../models/learner-model';
+import { ILearner } from '../../Interfaces/ILearner';
 import { MapperService } from '../../services/mapper.service';
 import { AddLearnersPopupFormComponent } from './add-learners-popup-form/add-learners-popup-form/add-learners-popup-form.component';
 import { AddLearnersPopupMenuComponent } from './add-learners-popup-menu/add-learners-popup-menu.component';
@@ -19,7 +19,7 @@ import { LearnersTableComponent } from '../learners-table/learners-table.compone
   styleUrl: './add-learners-popup.component.scss',
 })
 export class AddLearnersPopupComponent {
-  private _learners: LearnerModel[] = [
+  private _learners: ILearner[] = [
     // {
     //   id: undefined,
     //   firstName: 'jean',
@@ -31,7 +31,7 @@ export class AddLearnersPopupComponent {
   ];
   private _isAddingLearners = false;
   @Output() closePopup = new EventEmitter<void>();
-  @Output() finishClick = new EventEmitter<LearnerModel[]>();
+  @Output() finishClick = new EventEmitter<ILearner[]>();
 
   //#region ACCESSORS
   public get isAddingLearners() {
@@ -42,11 +42,11 @@ export class AddLearnersPopupComponent {
     this._isAddingLearners = value;
   }
 
-  public get learners(): LearnerModel[] {
+  public get learners(): ILearner[] {
     return this._learners;
   }
 
-  public set learners(value: LearnerModel[]) {
+  public set learners(value: ILearner[]) {
     this._learners = value;
   }
   //#endregion
@@ -55,7 +55,7 @@ export class AddLearnersPopupComponent {
     this.closePopup.emit();
   }
 
-  public addLearner(learner: LearnerModel) {
+  public addLearner(learner: ILearner) {
     console.log(learner);
     console.log(this.learners);
     this.isAddingLearners = false;
@@ -72,7 +72,7 @@ export class AddLearnersPopupComponent {
     this.closePopup.emit();
   }
 
-  public onAddedCsvFile(learnersFromCsv: LearnerModel[]) {
+  public onAddedCsvFile(learnersFromCsv: ILearner[]) {
     this.learners = learnersFromCsv;
   }
 }

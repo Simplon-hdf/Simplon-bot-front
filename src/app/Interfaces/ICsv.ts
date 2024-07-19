@@ -1,4 +1,4 @@
-export interface CsvModel {
+export interface ICsv {
   NOM: string;
   Prénom: string;
   Téléphone: string;

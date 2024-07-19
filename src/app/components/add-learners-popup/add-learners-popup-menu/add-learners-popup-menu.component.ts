@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { MapperService } from '../../../services/mapper.service';
-import { LearnerModel } from '../../../models/learner-model';
-import { CsvModel } from '../../../models/csv-model';
+import { ILearner } from '../../../Interfaces/ILearner';
+import { ICsv } from '../../../Interfaces/ICsv';
 import { parse } from 'csv-parse/browser/esm/sync';
 
 @Component({
@@ -13,7 +13,7 @@ import { parse } from 'csv-parse/browser/esm/sync';
 })
 export class AddLearnersPopupMenuComponent {
   private _mapper: MapperService = inject(MapperService);
-  private _learners: LearnerModel[] = [
+  private _learners: ILearner[] = [
     // {
     //   id: undefined,
     //   firstName: 'jean',
@@ -23,15 +23,15 @@ export class AddLearnersPopupMenuComponent {
     //   formationId: undefined,
     // },
   ];
-  @Output() addCsvFile = new EventEmitter<LearnerModel[]>();
+  @Output() addCsvFile = new EventEmitter<ILearner[]>();
   @Output() addButtonClickEmitter = new EventEmitter<void>();
 
   //#region ACCESSORS
-  public get learners(): LearnerModel[] {
+  public get learners(): ILearner[] {
     return this._learners;
   }
 
-  public set learners(value: LearnerModel[]) {
+  public set learners(value: ILearner[]) {
     this._learners = value;
   }
   //#endregion
@@ -43,7 +43,7 @@ export class AddLearnersPopupMenuComponent {
       reader.readAsText(file);
       reader.onload = () => {
         const csv: string = reader.result as string;
-        const records: CsvModel[] = parse(csv, {
+        const records: ICsv[] = parse(csv, {
           columns: true,
           skip_empty_lines: true,
         });

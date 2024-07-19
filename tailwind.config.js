@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors');
 module.exports = {
-  content: ['./src/**/*.{html,ts}'],
+  content: ['./src/**/*.{html,ts,scss}'],
   theme: {
     extend: {},
     fontFamily: {
@@ -20,6 +21,7 @@ module.exports = {
       'color-black': '#000000', //Text (Noir)
       'color-success': '#009640', //Success (Vert)
       'color-disabled': '#c4c4c4', //Disabled (Gris)
+      ...colors,
     },
   },
   plugins: [],

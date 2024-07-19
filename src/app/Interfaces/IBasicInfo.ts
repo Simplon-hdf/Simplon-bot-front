@@ -1,4 +1,4 @@
-import { LearnerModel } from './learner-model';
+import { ILearner } from './ILearner';
 
 export interface BasicInfo {
   name: string;
@@ -7,5 +7,5 @@ export interface BasicInfo {
   type: string;
   place: string;
   status: string;
-  learners: LearnerModel[];
+  learners: ILearner[];
 }

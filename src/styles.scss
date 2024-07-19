@@ -9,8 +9,9 @@ body {
 
 @layer components {
   .input-default {
-    @apply mt-1 py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none;
+    @apply mt-1 py-3 px-4 pe-9 block w-full bg-color-select  rounded-lg text-sm  disabled:opacity-50 disabled:pointer-events-none;
   }
+
   .btn-primary {
     @apply self-center font-nunito font-bold text-color-white py-[8px] px-[12px] rounded-md bg-color-red
                     hover:bg-color-red-light disabled:bg-color-disabled;

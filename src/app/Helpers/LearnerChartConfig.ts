@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Monthes } from '../Enums/Enums';
 
 export class LearnerChartConfig {

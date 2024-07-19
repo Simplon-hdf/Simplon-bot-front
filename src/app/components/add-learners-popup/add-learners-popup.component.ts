@@ -19,16 +19,7 @@ import { LearnersTableComponent } from '../learners-table/learners-table.compone
   styleUrl: './add-learners-popup.component.scss',
 })
 export class AddLearnersPopupComponent {
-  private _learners: ILearner[] = [
-    // {
-    //   id: undefined,
-    //   firstName: 'jean',
-    //   lastName: 'pierre',
-    //   mail: 'pierre@mail.com',
-    //   phoneNumber: '06 01 02 03 04',
-    //   formationId: undefined,
-    // },
-  ];
+  private _learners: ILearner[] = [];
   private _isAddingLearners = false;
   @Output() closePopup = new EventEmitter<void>();
   @Output() finishClick = new EventEmitter<ILearner[]>();
@@ -56,8 +47,6 @@ export class AddLearnersPopupComponent {
   }
 
   public addLearner(learner: ILearner) {
-    console.log(learner);
-    console.log(this.learners);
     this.isAddingLearners = false;
     this.learners?.push(learner);
   }

@@ -79,7 +79,7 @@ export class AddPromoPopupComponent {
     this.updateStatus();
   }
 
-  goToNextStep() {
+  public goToNextStep() {
     if (this.isCurrentStepValid()) {
       this.step++;
     } else {
@@ -106,11 +106,11 @@ export class AddPromoPopupComponent {
     (this.promoForm.get(currentStep) as FormGroup).markAllAsTouched();
   }
 
-  goToPreviousStep() {
+  public goToPreviousStep() {
     this.step--;
   }
 
-  submitPromo() {
+  public submitPromo() {
     if (this.promoForm.valid) {
       this.updateStatus();
       this.addPromo.emit(this.promoForm.value);
@@ -121,7 +121,7 @@ export class AddPromoPopupComponent {
     }
   }
 
-  updateStatus() {
+  private updateStatus() {
     const startDate = new Date(
       this.promoForm.get('basicInfo.start_date')?.value
     );
@@ -137,7 +137,7 @@ export class AddPromoPopupComponent {
     }
   }
 
-  resetForm() {
+  private resetForm() {
     this.step = 1;
     this.promoForm.reset();
   }

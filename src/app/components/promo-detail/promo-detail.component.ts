@@ -142,7 +142,7 @@ export class PromoDetailComponent implements OnInit {
    * @param learners type `ILearner[]`
    * @returns void
    */
-  addLearnerFromPopup(learners: ILearner[]): void {
+  public addLearnerFromPopup(learners: ILearner[]): void {
     this.learners = learners;
   }
 
@@ -150,7 +150,7 @@ export class PromoDetailComponent implements OnInit {
    * Set `this.isAddLearner` to `true`
    * @returns void
    */
-  openPopup(): void {
+  public openPopup(): void {
     this.isAddLearner = true;
   }
 
@@ -159,7 +159,7 @@ export class PromoDetailComponent implements OnInit {
    * - Set `this.isEditLearner` to `false`
    * @returns void
    */
-  closePopup(): void {
+  public closePopup(): void {
     this.isAddLearner = false;
     this.isEditLearner = false;
   }
@@ -170,7 +170,7 @@ export class PromoDetailComponent implements OnInit {
    * @param learner type `ILearner`
    * @returns void
    */
-  editLearner(learner: ILearner): void {
+  public editLearner(learner: ILearner): void {
     // Using this cloning method to avoid having object with the same reference
     this.learnerToEdit = { ...learner };
     this.isEditLearner = true;
@@ -181,7 +181,7 @@ export class PromoDetailComponent implements OnInit {
    * @param learner
    * @returns void
    */
-  updateLearner(learner: ILearner): void {
+  public updateLearner(learner: ILearner): void {
     const index = this.learners.findIndex((l) => l.mail === learner.mail);
     this.learners[index] = learner;
   }

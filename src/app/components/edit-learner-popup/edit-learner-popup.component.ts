@@ -41,7 +41,7 @@ export class EditLearnerPopupComponent {
    * - Emit a `formSubmitted` event with `this.learner` as an argument
    * - Emit a `closePopup` event
    */
-  onFormSubmit() {
+  public onFormSubmit() {
     this.formSubmitted.emit(this.learner);
     this.closePopup.emit();
   }

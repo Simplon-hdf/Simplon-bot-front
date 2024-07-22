@@ -28,7 +28,7 @@ export class PromosComponent {
     this.checkAndUpdatePromoStatus();
   }
 
-  filterPromos(): void {
+  public filterPromos(): void {
     if (!this.searchTerm) {
       this.filteredPromos = this.promos;
     } else {
@@ -40,11 +40,11 @@ export class PromosComponent {
     }
   }
 
-  openPopup() {
+  public openPopup() {
     this.isPopupVisible = true;
   }
 
-  checkAndUpdatePromoStatus(): void {
+  private checkAndUpdatePromoStatus(): void {
     const now = new Date();
     this.promos.forEach((promo) => {
       const startDate = new Date(promo.basicInfo.start_date);
@@ -60,15 +60,15 @@ export class PromosComponent {
     });
   }
 
-  closePopup() {
+  public closePopup() {
     this.isPopupVisible = false;
   }
 
-  navigateToPromoDetail(id: number): void {
+  public navigateToPromoDetail(id: number): void {
     this.router.navigate(['/promos', id]);
   }
 
-  addPromo(promo: IPromo) {
+  public addPromo(promo: IPromo) {
     this.promoService.addPromo(promo);
     this.closePopup();
   }

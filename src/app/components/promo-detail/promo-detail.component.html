@@ -1,7 +1,9 @@
-@if(isPopupVisible){
+@if(isAddLearner){
 <app-add-learners-popup (closePopup)="closePopup()" (finishClick)="addLearnerFromPopup($event)" />
 }
-
+@if(isEditLearner){
+<app-edit-learner-popup [learner]="learnerToEdit" (closePopup)="closePopup()" (formSubmitted)="updateLearner($event)" />
+}
 <div class="px-8 py-8 font-nunito" *ngIf="promo">
     <div>
         <div class="flex items-center gap-5">
@@ -52,7 +54,7 @@
                         class="font-nunito font-bold text-color-white py-[5px] px-[10px] rounded-md bg-color-red hover:bg-color-red-light">Ajouter</button>
                 </div>
                 <div class="overflow-y-scroll max-h-[60vh] ">
-                    <app-learners-table [learners]="learners" />
+                    <app-learners-table (editButtonClick)="editLearner($event)" [learners]="learners" />
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ILearner } from '../../../../Interfaces/ILearner';
 import { CommonModule, NgIf } from '@angular/common';
@@ -23,6 +23,7 @@ export class AddLearnersPopupFormComponent {
   @Output() formSubmitted = new EventEmitter<ILearner>();
 
   //#region ACCESSORS
+  @Input()
   public get learner(): ILearner {
     return this._learner;
   }

@@ -12,7 +12,7 @@ import { AddLearnersPopupComponent } from '../add-learners-popup/add-learners-po
 })
 export class LearnersTableComponent {
   private _learners: ILearner[] = [];
-  @Output() editButtonClick = new EventEmitter<boolean>();
+  @Output() editButtonClick = new EventEmitter<ILearner>();
 
   @Input()
   public get learners(): ILearner[] {
@@ -23,12 +23,12 @@ export class LearnersTableComponent {
     this._learners = value;
   }
 
-  public deleteLearner(learner: ILearner) {
+  public deleteLearner(learner: ILearner): void {
     const learnerIndex = this.learners.indexOf(learner);
     this.learners.splice(learnerIndex, 1);
   }
 
-  public editLearner() {
-    this.editButtonClick.emit(true);
+  public editLearner(learner: ILearner): void {
+    this.editButtonClick.emit(learner);
   }
 }

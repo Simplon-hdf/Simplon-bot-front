@@ -8,6 +8,7 @@ import { LearnersTableComponent } from '../learners-table/learners-table.compone
 import { PromoService } from '../../services/promo.service';
 import { ILearner } from '../../Interfaces/ILearner';
 import { IPromo } from '../../Interfaces/IPromo';
+import { EditLearnerPopupComponent } from '../edit-learner-popup/edit-learner-popup.component';
 
 @Component({
   selector: 'app-promo-detail',
@@ -21,14 +22,32 @@ import { IPromo } from '../../Interfaces/IPromo';
     CommonModule,
     AddLearnersPopupComponent,
     LearnersTableComponent,
+    EditLearnerPopupComponent,
   ],
   templateUrl: './promo-detail.component.html',
   styleUrl: './promo-detail.component.scss',
 })
 export class PromoDetailComponent implements OnInit {
-  private _isPopupVisible = false;
   private _learners: ILearner[] = [];
   private _promo: IPromo | undefined;
+  private _learner: ILearner = {
+    id: undefined,
+    firstName: '',
+    lastName: '',
+    mail: '',
+    phoneNumber: '',
+    formationId: undefined,
+  };
+  private _learnerToEdit: ILearner = {
+    id: undefined,
+    firstName: '',
+    lastName: '',
+    mail: '',
+    phoneNumber: '',
+    formationId: undefined,
+  };
+  private _isAddLearner = false;
+  private _isEditLearner = false;
 
   //#region ACCESSORS
 
@@ -40,12 +59,12 @@ export class PromoDetailComponent implements OnInit {
     this._promo = value;
   }
 
-  public get isPopupVisible() {
-    return this._isPopupVisible;
+  public get isAddLearner() {
+    return this._isAddLearner;
   }
 
-  public set isPopupVisible(value) {
-    this._isPopupVisible = value;
+  public set isAddLearner(value) {
+    this._isAddLearner = value;
   }
 
   public get learners(): ILearner[] {
@@ -54,6 +73,30 @@ export class PromoDetailComponent implements OnInit {
 
   public set learners(value: ILearner[]) {
     this._learners = value;
+  }
+
+  public get isEditLearner() {
+    return this._isEditLearner;
+  }
+
+  public set isEditLearner(value) {
+    this._isEditLearner = value;
+  }
+
+  public get learner(): ILearner {
+    return this._learner;
+  }
+
+  public set learner(value: ILearner) {
+    this._learner = value;
+  }
+
+  public get learnerToEdit(): ILearner {
+    return this._learnerToEdit;
+  }
+
+  public set learnerToEdit(value: ILearner) {
+    this._learnerToEdit = value;
   }
   //#endregion
 
@@ -74,10 +117,21 @@ export class PromoDetailComponent implements OnInit {
   }
 
   openPopup() {
-    this.isPopupVisible = true;
+    this.isAddLearner = true;
   }
 
   closePopup() {
-    this.isPopupVisible = false;
+    this.isAddLearner = false;
+    this.isEditLearner = false;
+  }
+
+  editLearner(learner: ILearner) {
+    this.learnerToEdit = { ...learner };
+    this.isEditLearner = true;
+  }
+
+  updateLearner(learner: ILearner) {
+    const index = this.learners.findIndex((l) => l.mail === learner.mail);
+    this.learners[index] = learner;
   }
 }

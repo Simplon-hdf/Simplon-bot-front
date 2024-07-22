@@ -1,22 +1,23 @@
-<div
-     class="flex justify-center items-center absolute top-0 left-0 z-10 w-full h-full bg-color-black bg-opacity-50">
-    <div
-         class="relative flex flex-col items-center p-6 w-[750px] rounded-lg bg-color-white">
-        <button class="absolute top-3 right-3 text-3xl"
-                (click)="onClosePopupClick()"><svg
-                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                 class="w-4 hover:fill-color-red"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+
+<div class="flex justify-center items-center absolute top-0 left-0 z-10 w-full h-full bg-color-black bg-opacity-50">
+    <div class="relative flex flex-col items-center p-6 w-[750px]  bg-color-white">
+        <button class="absolute top-3 right-3 text-3xl" (click)="onClosePopupClick()"><svg
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                class="w-4 hover:fill-color-red"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                 <path
-                      d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
             </svg></button>
         <p class="mb-8 text-4xl">Ajoutez des apprenants</p>
-        <div class="flex flex-col gap-6 w-[90%]"> @if(isAddingLearners){
-            <app-add-learners-popup-form (formSubmitted)="addLearner($event)" />
-            } @if(!isAddingLearners && learners.length === 0){
-            <app-add-learners-popup-menu (addCsvFile)="onAddedCsvFile($event)"
-                                         (addButtonClickEmitter)="onAddClick()" />
-            } @if(!isAddingLearners && learners.length !== 0) {
-            <app-learners-table [learners]="learners" />
+
+        <div class="flex flex-col gap-6 w-[90%]">
+            @if(isAddingLearners){
+            <app-add-learners-popup-form [learner]="learner" (formSubmitted)="addLearner($event)" />
+            }
+            @if(!isAddingLearners && learners.length === 0){
+            <app-add-learners-popup-menu (addCsvFile)="onAddedCsvFile($event)" (addButtonClickEmitter)="onAddClick()" />
+            }
+            @if(!isAddingLearners && learners.length !== 0) {
+            <app-learners-table (editButtonClick)="onEditClick($event)" [learners]="learners" />
             <button (click)="onAddClick()" class="btn-primary">Ajouter</button>
             <button (click)="onFinishClick()"
                     class="btn-primary mt-4">Terminer</button> }

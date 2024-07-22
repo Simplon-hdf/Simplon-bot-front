@@ -2,12 +2,12 @@
     <div class="flex justify-center gap-14">
         <div>
             <label for="lastName">Nom <span class="text-color-red font-bold">*</span></label>
-            <input class="input-default" type="text" placeholder="Dupuis" id="lastName" [(ngModel)]="lastName"
+            <input class="input-default" type="text" placeholder="Dupuis" id="lastName" [(ngModel)]="learner.lastName"
                 name="lastName" required>
         </div>
         <div>
             <label for="firstName">Prénom <span class="text-color-red font-bold">*</span></label>
-            <input class="input-default" type="text" placeholder="Marcel" id="firstName" [(ngModel)]="firstName"
+            <input class="input-default" type="text" placeholder="Marcel" id="firstName" [(ngModel)]="learner.firstName"
                 name="firstName" required>
         </div>
     </div>
@@ -16,16 +16,16 @@
         <div>
             <div>
                 <label for="mail">Adresse mail<span class="text-color-red font-bold">*</span></label>
-                <input class="input-default" type="text" placeholder="DupuisMarcel@gmail.com" [(ngModel)]="mail"
-                    name="mail" id="mail" required>
+                <input type="email" class="input-default" placeholder="DupuisMarcel@gmail.com" name="mail" id="mail"
+                    required [(ngModel)]="learner.mail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    #mail="ngModel">
             </div>
         </div>
         <div>
             <label for="phoneNumber">Téléphone<span class="text-color-red font-bold">*</span></label>
-            <input class="input-default" type="text" placeholder="06 01 02 03 04" [(ngModel)]="phoneNumber"
-                name="phoneNumber" id="phoneNumber" required>
+            <input class="input-default" type="text" placeholder="06 01 02 03 04" [(ngModel)]="learner.phoneNumber"
+                name="phoneNumber" id="phoneNumber" required pattern="^(0\d{1}(\s?\d{2}){4})$">
         </div>
     </div>
-
     <button type="submit" class="btn-primary" [disabled]="!learnerForm.form.valid">Ajouter</button>
 </form>

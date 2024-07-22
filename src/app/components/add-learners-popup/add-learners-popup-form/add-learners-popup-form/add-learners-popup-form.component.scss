@@ -1,0 +1,3 @@
+.ng-invalid:not(form, .ng-pristine, .ng-untouched, :focus) {
+  outline: solid 2px red;
+}

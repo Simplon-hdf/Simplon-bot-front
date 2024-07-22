@@ -6,5 +6,5 @@ export interface ILearner {
   firstName: string;
   mail: string;
   phoneNumber: string;
-  formationId: IPromo | undefined;
+  promoId: IPromo | undefined;
 }

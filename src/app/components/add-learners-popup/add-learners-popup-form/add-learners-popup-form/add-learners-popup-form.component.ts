@@ -17,7 +17,7 @@ export class AddLearnersPopupFormComponent {
     lastName: '',
     mail: '',
     phoneNumber: '',
-    formationId: undefined,
+    promoId: undefined,
   };
 
   @Output() formSubmitted = new EventEmitter<ILearner>();

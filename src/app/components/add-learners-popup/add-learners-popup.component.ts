@@ -20,6 +20,7 @@ import { InjectSetupWrapper } from '@angular/core/testing';
   styleUrl: './add-learners-popup.component.scss',
 })
 export class AddLearnersPopupComponent {
+
   private _learners: ILearner[] = [];
   private _learner: ILearner = {
     id: undefined,
@@ -29,6 +30,7 @@ export class AddLearnersPopupComponent {
     phoneNumber: '',
     formationId: undefined,
   };
+
   private _isAddingLearners = false;
   @Output() closePopup = new EventEmitter<void>();
   @Output() finishClick = new EventEmitter<ILearner[]>();

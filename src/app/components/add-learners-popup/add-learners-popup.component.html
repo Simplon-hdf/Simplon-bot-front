@@ -1,3 +1,4 @@
+
 <div class="flex justify-center items-center absolute top-0 left-0 z-10 w-full h-full bg-color-black bg-opacity-50">
     <div class="relative flex flex-col items-center p-6 w-[750px]  bg-color-white">
         <button class="absolute top-3 right-3 text-3xl" (click)="onClosePopupClick()"><svg
@@ -18,8 +19,8 @@
             @if(!isAddingLearners && learners.length !== 0) {
             <app-learners-table (editButtonClick)="onEditClick($event)" [learners]="learners" />
             <button (click)="onAddClick()" class="btn-primary">Ajouter</button>
-            <button (click)="onFinishClick()" class="btn-primary mt-4">Terminer</button>
-            }
+            <button (click)="onFinishClick()"
+                    class="btn-primary mt-4">Terminer</button> }
         </div>
     </div>
 </div>

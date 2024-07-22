@@ -7,52 +7,7 @@ import { ILearner } from '../Interfaces/ILearner';
   providedIn: 'root',
 })
 export class PromoService {
-  private promos: IPromo[] = [
-    {
-      id: 1,
-      basicInfo: {
-        name: 'Promo Angular',
-        status: 'En cours',
-        type: 'Développement web',
-        place: 'Paris',
-        start_date: '2024-07-01',
-        end_date: '2024-08-31',
-        learners: [],
-      },
-      staffs: {
-        former_1: {
-          id: 1,
-          name: 'Jean Dupont',
-          profilePictureUrl: 'assets/images/jean-dupont.jpg',
-        },
-        former_2: {
-          id: 2,
-          name: 'Marie Leclerc',
-          profilePictureUrl: 'assets/images/marie-leclerc.jpg',
-        },
-        cdp: {
-          id: 3,
-          name: 'Paul Martin',
-          profilePictureUrl: 'assets/images/paul-martin.jpg',
-        },
-        admin_head: {
-          id: 4,
-          name: 'Alice Bertrand',
-          profilePictureUrl: 'assets/images/alice-bertrand.jpg',
-        },
-        campus_manager: {
-          id: 5,
-          name: 'Lucie Durand',
-          profilePictureUrl: 'assets/images/lucie-durand.jpg',
-        },
-        pedagogical_manager: {
-          id: 6,
-          name: 'Michel Dubois',
-          profilePictureUrl: 'assets/images/michel-dubois.jpg',
-        },
-      },
-    },
-  ];
+  private promos: IPromo[] = [];
   private people: IPerson[] = [
     { id: 1, name: 'Alice', profilePictureUrl: 'https://placehold.co/90' },
     { id: 2, name: 'Bob', profilePictureUrl: 'https://placehold.co/90' },

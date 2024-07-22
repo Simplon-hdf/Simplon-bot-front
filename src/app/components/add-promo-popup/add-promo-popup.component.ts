@@ -47,7 +47,9 @@ export class AddPromoPopupComponent {
     private promoService: PromoService,
     private fb: FormBuilder
   ) {
+    // Initialize the list of people from the service
     this.people = this.promoService.getPeople();
+    // Initialize the form with subgroups 'basicInfo' and 'staffs'
     this.promoForm = this.fb.group(
       {
         basicInfo: this.fb.group({
@@ -76,9 +78,14 @@ export class AddPromoPopupComponent {
       },
       { validators: dateRangeValidator() }
     );
+    // Update the status based on the dates
     this.updateStatus();
   }
 
+  /**
+   * Move to the next step if the current step is valid.
+   * Marks the fields of the current step as touched if it is not valid.
+   */
   public goToNextStep() {
     if (this.isCurrentStepValid()) {
       this.step++;
@@ -88,6 +95,10 @@ export class AddPromoPopupComponent {
     }
   }
 
+  /**
+   * Checks if the current step of the form is valid.
+   * @returns {boolean} - True if the current step is valid, false otherwise.
+   */
   private isCurrentStepValid(): boolean {
     const steps = ['basicInfo', 'staffs'];
     const currentStep = steps[this.step - 1];
@@ -100,16 +111,26 @@ export class AddPromoPopupComponent {
     return this.promoForm.get(currentStep)!.valid;
   }
 
+  /**
+   * Marks all fields of the current step as touched.
+   */
   private markCurrentStepAsTouched() {
     const steps = ['basicInfo', 'staffs'];
     const currentStep = steps[this.step - 1];
     (this.promoForm.get(currentStep) as FormGroup).markAllAsTouched();
   }
 
+  /**
+   * Go to the previous step.
+   */
   public goToPreviousStep() {
     this.step--;
   }
 
+  /**
+   * Submit the form if valid, update the status, and emit the necessary events.
+   * If the form is not valid, marks all fields as touched.
+   */
   public submitPromo() {
     if (this.promoForm.valid) {
       this.updateStatus();
@@ -121,6 +142,9 @@ export class AddPromoPopupComponent {
     }
   }
 
+  /**
+   * Update the status of the promotion based on the start and end dates.
+   */
   private updateStatus() {
     const startDate = new Date(
       this.promoForm.get('basicInfo.start_date')?.value
@@ -129,19 +153,25 @@ export class AddPromoPopupComponent {
     const now = new Date();
 
     if (endDate < now) {
-      this.promoForm.get('basicInfo.status')?.setValue('terminé');
+      this.promoForm.get('basicInfo.status')?.setValue('terminated');
     } else if (startDate > now) {
-      this.promoForm.get('basicInfo.status')?.setValue('à venir');
+      this.promoForm.get('basicInfo.status')?.setValue('upcoming');
     } else {
-      this.promoForm.get('basicInfo.status')?.setValue('en cours');
+      this.promoForm.get('basicInfo.status')?.setValue('ongoing');
     }
   }
 
+  /**
+   * Reset the form and go back to the first step.
+   */
   private resetForm() {
     this.step = 1;
     this.promoForm.reset();
   }
 
+  /**
+   * Marks all fields of the form as touched.
+   */
   private markAllAsTouched() {
     this.promoForm.markAllAsTouched();
   }

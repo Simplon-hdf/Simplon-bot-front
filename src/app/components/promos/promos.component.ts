@@ -67,11 +67,11 @@ export class PromosComponent {
       const endDate = new Date(promo.basicInfo.end_date);
 
       if (endDate < now) {
-        promo.basicInfo.status = 'terminated';
+        promo.basicInfo.status = 'terminée';
       } else if (startDate > now) {
-        promo.basicInfo.status = 'upcoming';
+        promo.basicInfo.status = 'à venir';
       } else {
-        promo.basicInfo.status = 'ongoing';
+        promo.basicInfo.status = 'en cours';
       }
     });
   }

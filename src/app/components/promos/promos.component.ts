@@ -57,7 +57,7 @@ export class PromosComponent {
 
   /**
    * Check and update the status of each promo based on the current date.
-   * Set status to 'terminé' if end date is past, 'à venir' if start date is in the future,
+   * Set status to 'terminée' if end date is past, 'à venir' if start date is in the future,
    * and 'en cours' if current date is between start and end dates.
    */
   private checkAndUpdatePromoStatus(): void {

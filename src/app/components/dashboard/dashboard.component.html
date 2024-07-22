@@ -3,24 +3,22 @@
     <!-- Wheels -->
     <div class="flex flex-col gap-12">
         <div class="flex flex-wrap gap-8">
-            <app-dashboard-wheel [maxAmountOfData]="500" [_currentData]="234">
+            <app-dashboard-wheel [maxAmountOfData]="500" [currentData]="234">
                 <p class="font-semibold text-2xl pb-4">Nombre de salons</p>
             </app-dashboard-wheel>
-            <app-dashboard-wheel [maxAmountOfData]="200" [_currentData]="150">
+            <app-dashboard-wheel [maxAmountOfData]="200" [currentData]="150">
                 <p class="font-semibold text-2xl pb-4">Nombre de role</p>
             </app-dashboard-wheel>
         </div>
         <!-- Graphs -->
         <div class="flex flex-wrap gap-8">
-            <app-dashboard-graph
-                                 class="flex-1 font-semibold p-4 rounded-xl shadow-xl bg-color-white">
+            <app-dashboard-graph class="flex-1 font-semibold p-4 rounded-xl shadow-xl bg-color-white">
                 <p class="pb-2 text-2xl" graph-title>Promos</p>
                 <div graph>
                     <canvas id="promosChart">{{ promosChart }}</canvas>
                 </div>
             </app-dashboard-graph>
-            <app-dashboard-graph
-                                 class="flex-1 font-semibold p-4 rounded-xl shadow-xl bg-color-white">
+            <app-dashboard-graph class="flex-1 font-semibold p-4 rounded-xl shadow-xl bg-color-white">
                 <p class="pb-2 text-2xl" graph-title>Apprenants</p>
                 <div graph>
                     <canvas id="apprenantsChart">{{ apprenantsChart }}</canvas>

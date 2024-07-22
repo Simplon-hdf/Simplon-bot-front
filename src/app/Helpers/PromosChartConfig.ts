@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Monthes } from '../Enums/Enums';
 
+/**
+ * - Define the configuration for the Promos chart
+ * - See {@link https://www.chartjs.org/docs/latest/configuration/}
+ */
 export class PromosChartConfig {
   private static _data: any = {
     //Getting values on ENUM without filter returns both the keys and default number values. Filter() is required to use only the keys of the enum
@@ -8,6 +12,7 @@ export class PromosChartConfig {
     datasets: [
       {
         label: 'Promos active par mois',
+        //These values should be retrieved from the API
         data: ['3', '12', '7', '9', '16', '3', '8', '10', '2', '8', '1', '3'],
         backgroundColor: '#CE003380',
       },

@@ -13,25 +13,32 @@ export class DashboardWheelComponent implements OnInit {
   /**
    *`data` refers to either the number of channels or the number of roles depending on the use of the component
    */
-  @Input() maxAmountOfData!: number;
+  private _maxAmountOfData!: number;
 
   /**
    *`data` refers to either the number of channels or the number of roles depending on the use of the component
    */
-  @Input()
-  _currentData!: number;
+  private _currentData!: number;
 
-  get currentData() {
+  @Input()
+  public get currentData() {
     return this._currentData;
   }
-  set currentData(value: number) {
+
+  public set currentData(value: number) {
     this._currentData = value;
     this.cssVariable = `--percentage: ${(this._currentData * 100) / this.maxAmountOfData}`;
   }
 
-  /**
-   *`data` refers to either the number of channels or the number of roles depending on the use of the component
-   */
+  @Input()
+  public get maxAmountOfData(): number {
+    return this._maxAmountOfData;
+  }
+
+  public set maxAmountOfData(value: number) {
+    this._maxAmountOfData = value;
+  }
+
   cssVariable!: string;
 
   //cssVariable needs _currentData and maxAmountOfData; as Inputs, they receive data in ngOnInit. So cssVariable needs to be calculated in ngOnInit as well

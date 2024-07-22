@@ -6,10 +6,14 @@ import { ILearner } from '../Interfaces/ILearner';
   providedIn: 'root',
 })
 export class MapperService {
+  /**
+   * Map a csv file matching `ICsv` interface to `ILearner`
+   * @param csvModels type `ICsv`
+   * @returns an Array of `ILearner`
+   */
   public csvToLearner(csvModels: ICsv[]): ILearner[] {
     const learners: ILearner[] = [];
-    //Remplacer
-    for (const row of csvModels) {
+    csvModels.map((row) => {
       const learner: ILearner = {
         id: undefined,
         firstName: row.Prénom,
@@ -19,7 +23,7 @@ export class MapperService {
         promoId: undefined,
       };
       learners.push(learner);
-    }
+    });
     return learners;
   }
 }

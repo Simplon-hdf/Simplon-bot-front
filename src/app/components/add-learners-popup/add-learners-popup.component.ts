@@ -20,20 +20,38 @@ import { InjectSetupWrapper } from '@angular/core/testing';
   styleUrl: './add-learners-popup.component.scss',
 })
 export class AddLearnersPopupComponent {
-
+  /**
+   * An array of `ILearner` that will be send to the API to be added in the database
+   */
   private _learners: ILearner[] = [];
+
+  /**
+   * Defines the `ILearner` to be edited when the edit button is clicked
+   * @defaultValue IDs are undefined and oher fields are empty strings
+   */
   private _learner: ILearner = {
     id: undefined,
     firstName: '',
     lastName: '',
     mail: '',
     phoneNumber: '',
-    formationId: undefined,
+    promoId: undefined,
   };
 
+  /**
+   * Define the current action of the popup. If `true` the popup is currently adding a learner via a form
+   */
   private _isAddingLearners = false;
+
+  /**
+   * This event is fired when the X in the corner of the popup is clicked
+   */
   @Output() closePopup = new EventEmitter<void>();
-  @Output() finishClick = new EventEmitter<ILearner[]>();
+
+  /**
+   * This event is fired when the "Terminer" button is clicked
+   */
+  @Output() formSubmitted = new EventEmitter<ILearner[]>();
 
   //#region ACCESSORS
   @Input()
@@ -63,10 +81,18 @@ export class AddLearnersPopupComponent {
   }
   //#endregion
 
+  /**
+   * Emit an event with `closePopup` event
+   */
   public onClosePopupClick() {
     this.closePopup.emit();
   }
 
+  /**
+   * Set `this.isAddingLearners` to `false`
+   * If `learner` will be push in `learners` if not present
+   * @param learner type: `ILearner`
+   */
   public addLearner(learner: ILearner) {
     this.isAddingLearners = false;
     if (!this.learners.includes(learner)) {
@@ -74,6 +100,11 @@ export class AddLearnersPopupComponent {
     }
   }
 
+  /**
+   * - Set `this.isAddingLearners` to `true`
+   * - Set `this.learner` to its default value.
+   * This is done to prevent the form to be filled with the information of a previously eddited learner
+   */
   public onAddClick() {
     this.learner = {
       id: undefined,
@@ -81,23 +112,37 @@ export class AddLearnersPopupComponent {
       lastName: '',
       mail: '',
       phoneNumber: '',
-      formationId: undefined,
+      promoId: undefined,
     };
     this.isAddingLearners = true;
   }
 
+  /**
+   * - Set `this.isAddingLearners` to `true`
+   * - Set `this.learner` to `learner`
+   * @param learner type: `ILearner`
+   */
   public onEditClick(learner: ILearner) {
     this.isAddingLearners = true;
     this.learner = learner!;
   }
 
-  public onFinishClick() {
+  /**
+   * - Emit an event with `formSubmitted` event. Takes `this.learners` as a parameter
+   * - Emit an event with `closePopup` event
+   */
+  public onFormSubmitted() {
     //This function should send an array of learners to the API and add them to the database
-    this.finishClick.emit(this.learners);
+    this.formSubmitted.emit(this.learners);
     this.closePopup.emit();
   }
 
-  public onAddedCsvFile(learnersFromCsv: ILearner[]) {
+  /**
+   * Set `this.learners` to `learnersFromCsv`
+   * @param learnersFromCsv type: `ILearner[]`
+   * @returns void
+   */
+  public onAddedCsvFile(learnersFromCsv: ILearner[]): void {
     this.learners = learnersFromCsv;
   }
 }

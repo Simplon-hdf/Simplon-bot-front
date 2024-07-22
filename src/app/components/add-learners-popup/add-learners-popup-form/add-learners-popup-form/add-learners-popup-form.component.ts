@@ -11,6 +11,10 @@ import { CommonModule, NgIf } from '@angular/common';
   styleUrl: './add-learners-popup-form.component.scss',
 })
 export class AddLearnersPopupFormComponent {
+  /**
+   * Learner to be submitted via the popup form
+   * @defaultValue IDs are undefined and other fields are empty strings
+   */
   private _learner: ILearner = {
     id: undefined,
     firstName: '',
@@ -20,6 +24,10 @@ export class AddLearnersPopupFormComponent {
     promoId: undefined,
   };
 
+  /**
+   * This event is fired when the "Terminer" button is clicked in the form
+   * @type `EventEmitter<ILearner>`
+   */
   @Output() formSubmitted = new EventEmitter<ILearner>();
 
   //#region ACCESSORS
@@ -33,7 +41,12 @@ export class AddLearnersPopupFormComponent {
   }
   //#endregion
 
-  onFormSubmit() {
+  /**
+   * Emit an event with `this.formSubmitted` event
+   * `formSubmitted` emits `this.learner` as an argument
+   * @returns void
+   */
+  public onFormSubmit(): void {
     this.formSubmitted.emit(this.learner);
   }
 }

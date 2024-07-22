@@ -12,19 +12,26 @@ import { parse } from 'csv-parse/browser/esm/sync';
   styleUrl: './add-learners-popup-menu.component.scss',
 })
 export class AddLearnersPopupMenuComponent {
+  /**
+   * Map Csv files that match the `ICsv` interface to `ILearner` interface
+   */
   private _mapper: MapperService = inject(MapperService);
-  private _learners: ILearner[] = [
-    // {
-    //   id: undefined,
-    //   firstName: 'jean',
-    //   lastName: 'pierre',
-    //   mail: 'pierre@mail.com',
-    //   phoneNumber: '06 01 02 03 04',
-    //   promoId: undefined,
-    // },
-  ];
+
+  /**
+   * An array of `ILearner`
+   * @DefaultValue an empty array
+   */
+  private _learners: ILearner[] = [];
+
+  /**
+   * Event is fired when the input type file receives an Csv file
+   */
   @Output() addCsvFile = new EventEmitter<ILearner[]>();
-  @Output() addButtonClickEmitter = new EventEmitter<void>();
+
+  /**
+   * Event is fired when the `addButton` is clicked
+   */
+  @Output() addButtonClick = new EventEmitter<void>();
 
   //#region ACCESSORS
   public get learners(): ILearner[] {
@@ -36,6 +43,11 @@ export class AddLearnersPopupMenuComponent {
   }
   //#endregion
 
+  /**
+   * Read and map the content of a Csv file to `this.learners`
+   * Emit an event with addCsvFile with `this.learners` as an argument
+   * @param uploadedFile the file receive from the form. It matches `ICsv` interface
+   */
   public changeListener(uploadedFile: any): void {
     const file: File = uploadedFile.target.files[0];
     if (file) {
@@ -53,7 +65,11 @@ export class AddLearnersPopupMenuComponent {
     }
   }
 
-  public onAddClick() {
-    this.addButtonClickEmitter.emit();
+  /**
+   * Emit an event with `addButtonClick`
+   * @returns void
+   */
+  public onAddClick(): void {
+    this.addButtonClick.emit();
   }
 }

@@ -9,7 +9,32 @@ import { Component } from '@angular/core';
 })
 export class DashboardGraphComponent {
   // TODO : add integration with real data from DB
-  //Data refers promos, apprenants...
-  ongoingData = 24;
-  totalData = 145;
+
+  /**
+   * Current amount of promos or learners at the time
+   */
+  private _currentData = 24;
+
+  /**
+   * Total amount of promos or learners at the time
+   */
+  private _totalData = 145;
+
+  //#region ACCESSORS
+  public get currentData() {
+    return this._currentData;
+  }
+
+  public set currentData(value) {
+    this._currentData = value;
+  }
+
+  public get totalData() {
+    return this._totalData;
+  }
+
+  public set totalData(value) {
+    this._totalData = value;
+  }
+  //#endregion
 }

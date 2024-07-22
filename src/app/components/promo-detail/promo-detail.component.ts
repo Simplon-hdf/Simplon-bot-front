@@ -28,25 +28,50 @@ import { EditLearnerPopupComponent } from '../edit-learner-popup/edit-learner-po
   styleUrl: './promo-detail.component.scss',
 })
 export class PromoDetailComponent implements OnInit {
+  /**
+   * An array of `ILearner`
+   * @defaultValue an empty array
+   */
   private _learners: ILearner[] = [];
+
+  /**
+   * The promo to be displayed in the page
+   * @defaultValue is defined in the constructor. The promo's Id is sent through the URL
+   */
   private _promo: IPromo | undefined;
+
   private _learner: ILearner = {
     id: undefined,
     firstName: '',
     lastName: '',
     mail: '',
     phoneNumber: '',
-    formationId: undefined,
+    promoId: undefined,
   };
+
+  /**
+   * - Temp value used to edit the learner.
+   * - The temp value is needed otherwise edit in the form directly modifies the table
+   */
   private _learnerToEdit: ILearner = {
     id: undefined,
     firstName: '',
     lastName: '',
     mail: '',
     phoneNumber: '',
-    formationId: undefined,
+    promoId: undefined,
   };
+
+  /**
+   * Define if a learner is being added
+   * @defaultValue is false
+   */
   private _isAddLearner = false;
+
+  /**
+   * Define if a learner is being edited
+   * @defaultValue is false
+   */
   private _isEditLearner = false;
 
   //#region ACCESSORS
@@ -112,25 +137,51 @@ export class PromoDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * Set `this.learners` to `learners` emited from child component
+   * @param learners type `ILearner[]`
+   * @returns void
+   */
   addLearnerFromPopup(learners: ILearner[]): void {
     this.learners = learners;
   }
 
-  openPopup() {
+  /**
+   * Set `this.isAddLearner` to `true`
+   * @returns void
+   */
+  openPopup(): void {
     this.isAddLearner = true;
   }
 
-  closePopup() {
+  /**
+   * - Set `this.isAddLearner` to `false`
+   * - Set `this.isEditLearner` to `false`
+   * @returns void
+   */
+  closePopup(): void {
     this.isAddLearner = false;
     this.isEditLearner = false;
   }
 
-  editLearner(learner: ILearner) {
+  /**
+   * - Set `this.isEditlearner` to `true`
+   * - Clone `learner` to `this.learnerToEdit`
+   * @param learner type `ILearner`
+   * @returns void
+   */
+  editLearner(learner: ILearner): void {
+    // Using this cloning method to avoid having object with the same reference
     this.learnerToEdit = { ...learner };
     this.isEditLearner = true;
   }
 
-  updateLearner(learner: ILearner) {
+  /**
+   * Find `learner` in `this.learners` with `learner.mail` and replaces it with updated values
+   * @param learner
+   * @returns void
+   */
+  updateLearner(learner: ILearner): void {
     const index = this.learners.findIndex((l) => l.mail === learner.mail);
     this.learners[index] = learner;
   }

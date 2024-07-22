@@ -153,11 +153,11 @@ export class AddPromoPopupComponent {
     const now = new Date();
 
     if (endDate < now) {
-      this.promoForm.get('basicInfo.status')?.setValue('terminated');
+      this.promoForm.get('basicInfo.status')?.setValue('terminée');
     } else if (startDate > now) {
-      this.promoForm.get('basicInfo.status')?.setValue('upcoming');
+      this.promoForm.get('basicInfo.status')?.setValue('à venir');
     } else {
-      this.promoForm.get('basicInfo.status')?.setValue('ongoing');
+      this.promoForm.get('basicInfo.status')?.setValue('en cours');
     }
   }
 
